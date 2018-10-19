@@ -1,0 +1,89 @@
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+            authDomain: "reig-1538140691138.firebaseapp.com",
+            databaseURL: "https://reig-1538140691138.firebaseio.com",
+            projectId: "reig-1538140691138",
+            storageBucket: "reig-1538140691138.appspot.com",
+            messagingSenderId: "76801264020"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <!-- <script src="index2.js"></script>   -->
+</head>
+<body>
+    <form id="forming" method="POST" action="testing_alkesh.php">
+        <input type="text" placeholder="User Name" id="username">
+        <input type="text" placeholder="Email" id="email">
+        <input type="text" placeholder="Phone" id="phone">
+        <input type="text" placeholder="Password" id="password">
+        <input type="text" placeholder="Description" id="description">
+        <input type="submit" value="SUBMIT">
+    </form>
+    <!-- <script src="index.js"> </script> -->
+    <!-- <script>
+        var databaseRef = firebase.database().ref();
+        var retrievingData = firebase.database().ref().child("ruchit");
+        var username_value;
+        retrievingData.on("value",function(datavar){
+            
+            document.getElementById("username").value =  datavar.val();
+        });
+        // username_value = document.getElementById("username").value;
+        
+        function signupdata(){
+            
+            
+            var x = document.getElementById("forming");
+            var username_finalval = x.elements[0].value;
+            var email_finalval = x.elements[1].value;
+            var phone_finalval = x.elements[2].value;
+            var password_finalval = x.elements[3].value;
+            var description_finalval = x.elements[4].value;
+            var empty_field;
+            databaseRef.child("users/" + username_finalval).set({
+                
+                "email" : email_finalval,
+                "phone" : phone_finalval,
+                "password" : password_finalval,
+                "description" : description_finalval,
+            });
+            
+            // username_value = "Hello Bhargav";
+            // var fetchval;
+            
+            
+            // window.alert(fetchval);
+            
+            
+            
+        }
+        
+    </script> -->
+</body>
+
+<!-- <script>
+    
+    var username_value =  document.getElementById("username").value;
+    var email_value = document.getElementById("email").value;
+    var password_value = document.getElementById("password").value;
+    var profpicName_value = document.getElementById("phone").value;
+    var database = firebase.database().ref('users/'+username_value);
+    var description_value = document.getElementById("description").value;
+    function writeUserData(email_value,password_value,profpicName_value,description_value) {
+        database.set({
+            email: email_value,
+            password : password_value,
+            phone : profpicName_value,
+            description : description_value
+        });
+    }
+</script> -->
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>REIG-Forgot Password</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     --> 
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
+
+  <style>
+    @media screen and (max-width: 450px){
+    .bt{
+      width: 48% !important;
+  }
+}
+.btn-primary{
+  background-color: #2b6cc4 !important;
+}
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="" style="font-size: 20pt;">
+          REIG </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/digital-moto-360-motorola-23475.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand text-center">
+            <form class="form" method="" action="">
+              <div class="">
+                    <h3 style="color: white !important; font-size: 30pt;">FORGOT PASSWORD</h3>
+                    <br><br><br><br>
+                    <div class="form-group">
+                    <label for="exampleInput1" class="bmd-label-floating" style="color: white; font-size: 15pt;">Enter your Registered E-Mail Id</label>
+                    <input type="email" class="form-control" id="exampleInput1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" style="color: white;">
+                    <span class="bmd-help" style="color:white !important;">We'll never share your email id with anyone else.</span>
+                </div>
+                <br>
+                <div class="col-md-12">
+                   <button class="btn btn-primary btn-round btn-lg bt" style="width: 30%;"><a href="log-sign.html" style="color:white;">Back To Login</a></button>
+                   <button class="btn btn-primary btn-round btn-lg bt" style="width: 30%;"> <a href="login.html" style="color:white;"> Send Code </a></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        <h2 class="title">Your main section here</h2>
+      </div>
+    </div>
+  </div> -->
+  <!-- <footer class="footer footer-default">
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com/">
+              Creative Tim
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, made with <i class="material-icons">favorite</i> by
+        <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for a better web.
+      </div>
+    </div>
+  </footer> -->
+
+  <script>
+    function InvalidMsg(textbox) {
+    
+    if (textbox.value == '') {
+        textbox.setCustomValidity('Required email address');
+    }
+    else if(textbox.validity.typeMismatch){
+        textbox.setCustomValidity('Please enter a valid email address');
+    }
+    else {
+        textbox.setCustomValidity('');
+    }
+    return true;
+}
+  </script>
+</body>
+
+</html>

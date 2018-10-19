@@ -1,0 +1,10 @@
+{
+    "name": "alkesh/reig",
+    "description": "REIG - Firebase with PHP",
+    "type": "project",
+    "license": "GNU3",
+    "minimum-stability": "dev",
+    "require": {
+        "kreait/firebase-php": "4.17.0"
+    }
+}
