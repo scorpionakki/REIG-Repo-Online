@@ -18,7 +18,7 @@
         };
         firebase.initializeApp(config);
     </script>
-    
+    <!-- <script type="text/javascript" src="index.js"></script> -->
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -276,12 +276,14 @@
                 var username_login = x.elements[0].value;
                 var password_login = x.elements[1].value;
                 var full_data;
-                var retrievingData = firebase.database().ref('users/' + username_login + '/password');
+                var retrievingData = databaseRef.child('users').child('testing_reig').child('details').child('password');
                 retrievingData.on('value',function(datavara){
                     
                     full_data = datavara.val();
                     
-                    window.alert(password_login);
+                });
+
+                window.alert(full_data);
                     if(full_data == password_login)
                     {
                         // sessionStorage.set("username",username_login);
@@ -295,7 +297,6 @@
                     {
                         window.alert('Passwords do not match with the database');
                     }
-                });
                 
                 //window.alert(full_data);
                 
