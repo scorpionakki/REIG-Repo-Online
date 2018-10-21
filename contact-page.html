@@ -2,573 +2,699 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    REIG-Add Contacts
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="assets/demo/demo.css" rel="stylesheet" />
-
-  <link href="assets/css/prof_pic_upload.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-<script src="assets/js/prof_pic_upload.js"></script>
-
-<script>
-  var counter  = 0;
-  
-  $(function () {
-  $('.list-group.checked-list-box .list-group-item').each(function () {
-      
-      // Settings
-      var $widget = $(this),
-          $checkbox = $('<input type="checkbox" class="hidden"  />'),
-          color = ($widget.data('color') ? $widget.data('color') : "primary"),
-          style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
-          settings = {
-              on: {
-                  // icon: 'glyphicon glyphicon-check'
-              },
-              off: {
-                  // icon: 'glyphicon glyphicon-unchecked'
-              }
-          };
-          
-      $widget.css('cursor', 'pointer')
-      $widget.append($checkbox);
-
-      // Event Handlers
-      $widget.on('click', function () {
-          $checkbox.prop('checked', !$checkbox.is(':checked'));
-          $checkbox.triggerHandler('change');
-          updateDisplay();
-      });
-      $checkbox.on('change', function () {
-          updateDisplay();
-      });
-        
-
-      // Actions
-      function updateDisplay() {
-          var isChecked = $checkbox.is(':checked');
-          
-          
-          
-          // Set the button's state
-          $widget.data('state', (isChecked) ? "on" : "off");
-
-          // Set the button's icon
-          $widget.find('.state-icon')
-              .removeClass()
-              .addClass('state-icon ' + settings[$widget.data('state')].icon);
-
-
-          
-          // Update the button's color
-          if (isChecked) {
-              $widget.addClass(style + color + ' active');
-
-             
-                              
-          } else {
-
-             
-             
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        REIG-Add Contacts
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/demo/demo.css" rel="stylesheet" />
     
-              $widget.removeClass(style + color + ' active');
-          }
-          
-      }
-
-      // Initialization
-      function init() {
-          
-          if ($widget.data('checked') == true) {
-              $checkbox.prop('checked', !$checkbox.is(':checked'));
-          }
-          
-          
-          updateDisplay();
-
-          // Inject the icon if applicable
-          if ($widget.find('.state-icon').length == 0) {
-              $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
-          }
-      }
-      init();
-  });
-  
-  $('#get-checked-data').on('click', function(event) {
-      event.preventDefault(); 
-      var checkedItems = {}, counter = 0;
-      $("#check-list-box li.active").each(function(idx, li) {
-          checkedItems[counter] = $(li).text();
-          counter++;
-      });
-      $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
-  });
-});
-</script>
-  <style>
-    input[type=checkbox].hidden{
-   display:none;
-}
-.state-icon {
-    left: -5px;
-}
-.list-group-item-primary {
-    color: rgb(255, 255, 255);
-    background-color: rgb(66, 139, 202);
-}
-.well .list-group {
-    margin-bottom: 0px;
-}
-  th{
-    /* border-width: 2% !important; */
-    font-size: 15pt !important;
-}
-td{
-    font-size: 10pt !important;
-}
-.text-body{
-    font-size: 15pt;
-}
-.img-sm-ro{
-    height: 10%;
-    width: 10%;
-}
-.fixed{
-    position: fixed;
-    width: 100%;
-    background-color: black;
-    color: #f1f1f1;
-}
-footer{
-    background-color: black;
-    color: white;
-}
-.logo{
-    font-size: 20pt;
-    color: white;
-    padding-left: 25%;
-    padding-bottom: 25%;
-}
-#myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#myImg:hover {opacity: 0.7;}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 400%;
-    max-width: 400px;
-}
-
-/* Caption of Modal Image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {    
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-.modal-backdrop{
-    z-index: -1 !important;
-}
-
-@-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
-    to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scalex(1)}
-}
-
-/* The Close Button */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-    .modal-content {
-        width: 100%;
-    }
-}
-@media screen and (max-width: 450px){
-    .bt{
-      width: 30% !important;
-      position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-  }
-}
-
-@media screen and (max-width: 450px){
-    .prof{
-      margin-left: 8% !important;
-  }
-}
-
-
-* {
-  box-sizing: border-box;
-}
-
-#myInput {
-  background-image: url('assets/img/110917_search.png');
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myUL {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-#myUL li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block
-}
-
-#myUL li a:hover:not(.header) {
-  background-color: #eee;
-}
-.btn-primary{
-  background-color: #2b6cc4 !important;
-  border: #2b6cc4;
-}
-  </style>
+    <link href="assets/css/prof_pic_upload.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    
+    
+    
+    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css"> -->
+    <script src="assets/js/prof_pic_upload.js"></script>
+    
+    <script>
+        var counter  = 0;
+        
+        $(function () {
+            $('.list-group.checked-list-box .list-group-item').each(function () {
+                
+                // Settings
+                var $widget = $(this),
+                $checkbox = $('<input type="checkbox" class="hidden"  />'),
+                color = ($widget.data('color') ? $widget.data('color') : "primary"),
+                style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+                settings = {
+                    on: {
+                        // icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        // icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+                
+                $widget.css('cursor', 'pointer')
+                $widget.append($checkbox);
+                
+                // Event Handlers
+                $widget.on('click', function () {
+                    $checkbox.prop('checked', !$checkbox.is(':checked'));
+                    $checkbox.triggerHandler('change');
+                    updateDisplay();
+                });
+                $checkbox.on('change', function () {
+                    updateDisplay();
+                });
+                
+                
+                // Actions
+                function updateDisplay() {
+                    var isChecked = $checkbox.is(':checked');
+                    
+                    
+                    
+                    // Set the button's state
+                    $widget.data('state', (isChecked) ? "on" : "off");
+                    
+                    // Set the button's icon
+                    $widget.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$widget.data('state')].icon);
+                    
+                    
+                    
+                    // Update the button's color
+                    if (isChecked) {
+                        $widget.addClass(style + color + ' active');
+                        
+                        
+                        
+                    } else {
+                        
+                        
+                        
+                        
+                        $widget.removeClass(style + color + ' active');
+                    }
+                    
+                }
+                
+                // Initialization
+                function init() {
+                    
+                    if ($widget.data('checked') == true) {
+                        $checkbox.prop('checked', !$checkbox.is(':checked'));
+                    }
+                    
+                    
+                    updateDisplay();
+                    
+                    // Inject the icon if applicable
+                    if ($widget.find('.state-icon').length == 0) {
+                        $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+                    }
+                }
+                init();
+            });
+            
+            $('#get-checked-data').on('click', function(event) {
+                event.preventDefault(); 
+                var checkedItems = {}, counter = 0;
+                $("#check-list-box li.active").each(function(idx, li) {
+                    checkedItems[counter] = $(li).text();
+                    counter++;
+                });
+                $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+            });
+        });
+    </script>
+    <style>
+        input[type=checkbox].hidden{
+            display:none;
+        }
+        .state-icon {
+            left: -5px;
+        }
+        .list-group-item-primary {
+            color: rgb(255, 255, 255);
+            background-color: rgb(66, 139, 202);
+        }
+        .well .list-group {
+            margin-bottom: 0px;
+        }
+        th{
+            /* border-width: 2% !important; */
+            font-size: 15pt !important;
+        }
+        td{
+            font-size: 10pt !important;
+        }
+        .text-body{
+            font-size: 15pt;
+        }
+        .img-sm-ro{
+            height: 10%;
+            width: 10%;
+        }
+        .fixed{
+            position: fixed;
+            width: 100%;
+            background-color: black;
+            color: #f1f1f1;
+        }
+        footer{
+            background-color: black;
+            color: white;
+        }
+        .logo{
+            font-size: 20pt;
+            color: white;
+            padding-left: 25%;
+            padding-bottom: 25%;
+        }
+        #myImg {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        #myImg:hover {opacity: 0.7;}
+        
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+        
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 400%;
+            max-width: 400px;
+        }
+        
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+        
+        /* Add Animation */
+        .modal-content, #caption {    
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        
+        .modal-backdrop{
+            z-index: -1 !important;
+        }
+        
+        @-webkit-keyframes zoom {
+            from {-webkit-transform:scale(0)} 
+            to {-webkit-transform:scale(1)}
+        }
+        
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scalex(1)}
+        }
+        
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px){
+            .modal-content {
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 450px){
+            .bt{
+                width: 30% !important;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%)
+            }
+        }
+        
+        @media screen and (max-width: 450px){
+            .prof{
+                margin-left: 8% !important;
+            }
+        }
+        
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        #myInput {
+            background-image: url('assets/img/110917_search.png');
+            background-position: 10px 12px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+        
+        #myUL {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px; /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block
+        }
+        
+        #myUL li a:hover:not(.header) {
+            background-color: #eee;
+        }
+        .btn-primary{
+            background-color: #2b6cc4 !important;
+            border: #2b6cc4;
+        }
+        /* .tab{float: left;}
+        .tab-2{margin-left: 50px} */
+        /* .tab-2 input{display: block;margin-bottom: 10px} */
+        tr{
+            transition:all .25s ease-in-out
+            }
+        tr:hover{
+            background-color:#EEE;
+            cursor: pointer
+            }
+        
+        #fname{
+            background-image: url('assets/img/110917_search.png');
+            background-position: 10px 12px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+        .table{
+            width: 100%;
+            border: none;
+        }
+        
+    </style>
 </head>
 
 <body class="profile-page sidebar-collapse">
-  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
-    <div class="container">
-      <div class="navbar-translate">
-        <a class="navbar-brand" href="#">
-          REIG </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-
-      <button type="button" class="btn btn-primary bt btn-round" id="nxt_btn" style="width: auto;" data-toggle="modal" data-target="#myModal" >NEXT</button>
-    </div>
-  </nav>
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/backlit-clouds-dusk-853168.jpg');"></div>
-  <div class="main main-raised">
-    <div class="profile-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto">
-            <div class="profile">
-              <div class="name">
-                <br><br><br>
-                <h2 class="title">New Group</h2>
-                <br>
-                <h4>
-                  <strong> Add Participants </strong>
-                </h4>
-              </div> 
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="#">
+                    REIG </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                
+                <button type="button" class="btn btn-primary bt btn-round" id="nxt_btn" style="width: auto;" data-toggle="modal" data-target="#myModal" >NEXT</button>
             </div>
-          </div>
-        </div>
-        <div class="container" style="margin-top:20px;">
-            <div class="row">
-                  <div class="col-md-12">
-                      <div class="well">
-                      <ul class="list-group checked-list-box" id="myUL">
-                          <div class="description" style="color: black;">
-                              <p>Select atleast 2 contacts to create group*</p>
+        </nav>
+        <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/backlit-clouds-dusk-853168.jpg');"></div>
+        <div class="main main-raised">
+            <div class="profile-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 ml-auto mr-auto">
+                            <div class="profile">
+                                <div class="name">
+                                    <br><br><br>
+                                    <h2 class="title">New Group</h2>
+                                    <br>
+                                    <h4>
+                                        <strong> Add Participants </strong>
+                                    </h4>
+                                </div> 
                             </div>
-                            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-                            <li class="list-group-item">
-                              <strong>
-                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                Alkesh Kataria
-                              </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Yash Dave
-                              </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Ruchit Patel
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Bhargav Borse
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              B.S Tamanna
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;                              
-                              Monish klklk
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Ashish Agarwal
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Dharmesh Patel
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Abhishek Patel
-                            </strong>
-                            </li>
-                            <li class="list-group-item">
-                              <strong>
-                              <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                              Sabka Malik Ek
-                            </strong>
-                            </li>
-                          </ul>
-                      </div>
-                        </div>
-                      </div>
-                      <br><br>
-                      <br>
-                  </div>
-      </div>
-    </div>
-  </div>
-  <br><br>
-  <footer class="footer">
-    <div class="container">
-      <div class="copyright" id="copyright">
-        &copy;
-        <script>
-          document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-        </script>, Designed by
-        <a href="#" target="_blank">Bhargav Borse</a>. Coded by
-        <a href="#" target="_blank">Alkesh Kataria</a>.
-      </div>
-    </div>
-  </footer>
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog" style="z-index: 3; display:none;">
-  <form action="group.html"> 
-  <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Group Details</h4>
-        </div>
-        <div class="modal-body">
-          <!-- <p>Some text in the modal.</p> -->
-
-
-
-
-
-
-          <div class="prof" style="margin-left:8%;">
-            <div class="photo" >
-                <input type="file" accept="image/*">
-                <div class="photo__helper">
-                    <div class="photo__frame photo__frame--circle">
-                        <canvas class="photo__canvas"></canvas>
-                        <div class="message is-empty">
-                            <p class="message--desktop">Select Profile Picture</p>
-                            <p class="message--mobile">Tap here to select your group picture.</p>
-                        </div>
-                        <!-- Group Name:
-        <input type="text" style="color:black;" class="form-control" id="exampleInput1" style="color: white;" required> -->
-                        <div class="message is-loading">
-                            <i class="fa fa-2x fa-spin fa-spinner"></i>
-                        </div>
-                        <div class="message is-dragover">
-                            <i class="fa fa-2x fa-cloud-upload"></i>
-                            <p>Drop your photo</p>
-                        </div>
-                        <div class="message is-wrong-file-type">
-                            <p>Only images allowed.</p>
-                            <p class="message--desktop">Select Profile Picture.</p>
-                            <p class="message--mobile">Tap here to select your group picture.</p>
-                        </div>
-                        <div class="message is-wrong-image-size">
-                            <p>Your photo must be larger than 350px.</p>
                         </div>
                     </div>
-                </div>
-    
-                <div class="photo__options hide">
-                    <div class="photo__zoom">
-                        <!-- <input type="range" class="zoom-handler"> -->
-                    </div><a href="javascript:;" class="remove"><i class="fa fa-trash" style="color:black;"></i></a>
+                    <div class="container" style="margin-top:20px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well">
+                                    
+                                    
+                                    <div class="tab tab-2">
+                                        <input type="text" name="fname" id="fname" placeholder="Search Name to add in group">
+                                        
+                                        <button class="btn btn-primary fa fa-user-plus" onclick="addHtmlTableRow();"></button>
+                                        <button class="btn btn-primary fa fa-edit" onclick="editHtmlTbleSelectedRow();"></button>
+                                        <button class="btn btn-primary fa fa-user-times" onclick="removeSelectedRow();"></button>
+                                    </div>
+<br><br>
+                                    <div class="tab tab-1">
+                                            <table class="table" id="table" border="1">
+                                                <tr>
+                                                    <th>Added Members</th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    <!-- <ul class="list-group checked-list-box" id="myUL">
+                                        <div class="description" style="color: black;">
+                                            <p>Select atleast 2 contacts to create group*</p>
+                                        </div>
+                                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Alkesh Kataria
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Yash Dave
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Ruchit Patel
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Bhargav Borse
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                B.S Tamanna
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;                              
+                                                Monish klklk
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Ashish Agarwal
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Dharmesh Patel
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Abhishek Patel
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <strong>
+                                                <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Sabka Malik Ek
+                                            </strong>
+                                        </li>
+                                    </ul> -->
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>
-        <input type="text" style="color:black; border: hidden;" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" placeholder="Group Name" class="form-control" id="exampleInput1" style="color: white;" required>
-        <textarea style="color:black; border: hidden;" placeholder="Group Description" class="form-control" id="exampleInput1" style="color: white;"></textarea>
-        <hr>
-        <!-- <img src="" alt="" class="preview">
-        <img src="" alt="" class="preview preview--rounded"> -->
-        </div>
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-primary" value="Create">
-        </div>
-      
-      </div>
-      </div>
-    </form>
-    </div>
-  </div>
-
-  <script>
-      function myFunction() {
-          var input, filter, ul, li, strong, i;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          ul = document.getElementById("myUL");
-          li = ul.getElementsByTagName("li");
-          for (i = 0; i < li.length; i++) {
-              strong = li[i].getElementsByTagName("strong")[0];
-              if (strong.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                  li[i].style.display = "";
-              } else {
-                  li[i].style.display = "none";
-              }
-          }
-      } 
-      </script>
-      <script>
-          function InvalidMsg(textbox) {
-    
-    if (textbox.value == '') {
-        textbox.setCustomValidity('Group name cannot be left blank');
-    }
-    else if(textbox.validity.typeMismatch){
-        textbox.setCustomValidity('please enter a valid email address');
-    }
-    else {
-        textbox.setCustomValidity('');
-    }
-    return true;
-}
-      </script>
-
-  <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="assets/js/plugins/moment.min.js"></script>
-  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--	Plugin for Sharrre btn -->
-  <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
-  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-  <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-</body>
-
-</html>
+        <br><br>
+        <footer class="footer">
+            <div class="container">
+                <div class="copyright" id="copyright">
+                    &copy;
+                    <script>
+                        document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                    </script>, Designed by
+                    <a href="#" target="_blank">Bhargav Borse</a>. Coded by
+                    <a href="#" target="_blank">Alkesh Kataria</a>.
+                </div>
+            </div>
+        </footer>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog" style="z-index: 3; display:none;">
+            <form action="group.html"> 
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Group Details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <p>Some text in the modal.</p> -->
+                            
+                            
+                            
+                            
+                            
+                            
+                            <div class="prof" style="margin-left:8%;">
+                                <div class="photo" >
+                                    <input type="file" accept="image/*">
+                                    <div class="photo__helper">
+                                        <div class="photo__frame photo__frame--circle">
+                                            <canvas class="photo__canvas"></canvas>
+                                            <div class="message is-empty">
+                                                <p class="message--desktop">Select Profile Picture</p>
+                                                <p class="message--mobile">Tap here to select your group picture.</p>
+                                            </div>
+                                            <!-- Group Name:
+                                                <input type="text" style="color:black;" class="form-control" id="exampleInput1" style="color: white;" required> -->
+                                                <div class="message is-loading">
+                                                    <i class="fa fa-2x fa-spin fa-spinner"></i>
+                                                </div>
+                                                <div class="message is-dragover">
+                                                    <i class="fa fa-2x fa-cloud-upload"></i>
+                                                    <p>Drop your photo</p>
+                                                </div>
+                                                <div class="message is-wrong-file-type">
+                                                    <p>Only images allowed.</p>
+                                                    <p class="message--desktop">Select Profile Picture.</p>
+                                                    <p class="message--mobile">Tap here to select your group picture.</p>
+                                                </div>
+                                                <div class="message is-wrong-image-size">
+                                                    <p>Your photo must be larger than 350px.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="photo__options hide">
+                                            <div class="photo__zoom">
+                                                <!-- <input type="range" class="zoom-handler"> -->
+                                            </div><a href="javascript:;" class="remove"><i class="fa fa-trash" style="color:black;"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" style="color:black; border: hidden;" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" placeholder="Group Name" class="form-control" id="exampleInput1" style="color: white;" required>
+                                <textarea style="color:black; border: hidden;" placeholder="Group Description" class="form-control" id="exampleInput1" style="color: white;"></textarea>
+                                <hr>
+                                <!-- <img src="" alt="" class="preview">
+                                    <img src="" alt="" class="preview preview--rounded"> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary" value="Create">
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script>
+                
+                var rIndex,
+                table = document.getElementById("table");
+                
+                // check the empty input
+                function checkEmptyInput()
+                {
+                    var isEmpty = false,
+                    fname = document.getElementById("fname").value;
+                    // lname = document.getElementById("lname").value,
+                    // age = document.getElementById("age").value;
+                    
+                    // if(fname === ""){
+                        //     alert("First Name Connot Be Empty");
+                        //     isEmpty = true;
+                        // }
+                        // else if(lname === ""){
+                            //     alert("Last Name Connot Be Empty");
+                            //     isEmpty = true;
+                            // }
+                            // else if(age === ""){
+                                //     alert("Age Connot Be Empty");
+                                //     isEmpty = true;
+                                // }
+                                // return isEmpty;
+                            }
+                            
+                            // add Row
+                            function addHtmlTableRow()
+                            {
+                                // get the table by id
+                                // create a new row and cells
+                                // get value from input text
+                                // set the values into row cell's
+                                if(!checkEmptyInput()){
+                                    var newRow = table.insertRow(table.length),
+                                    cell1 = newRow.insertCell(0),
+                                    
+                                    fname = document.getElementById("fname").value;
+                                    
+                                    cell1.innerHTML = fname;
+                                    // call the function to set the event to the new row
+                                    selectedRowToInput();
+                                }
+                            }
+                            
+                            // display selected row data into input text
+                            function selectedRowToInput()
+                            {
+                                
+                                for(var i = 1; i < table.rows.length; i++)
+                                {
+                                    table.rows[i].onclick = function()
+                                    {
+                                        // get the seected row index
+                                        rIndex = this.rowIndex;
+                                        document.getElementById("fname").value = this.cells[0].innerHTML;
+                                    };
+                                }
+                            }
+                            selectedRowToInput();
+                            
+                            function editHtmlTbleSelectedRow()
+                            {
+                                var fname = document.getElementById("fname").value;
+                                if(!checkEmptyInput()){
+                                    table.rows[rIndex].cells[0].innerHTML = fname;
+                                }
+                            }
+                            
+                            function removeSelectedRow()
+                            {
+                                table.deleteRow(rIndex);
+                                // clear input text
+                                document.getElementById("fname").value = "";
+                            }
+                        </script>
+                        <script>
+                            function myFunction() {
+                                var input, filter, ul, li, strong, i;
+                                input = document.getElementById("myInput");
+                                filter = input.value.toUpperCase();
+                                ul = document.getElementById("myUL");
+                                li = ul.getElementsByTagName("li");
+                                for (i = 0; i < li.length; i++) {
+                                    strong = li[i].getElementsByTagName("strong")[0];
+                                    if (strong.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                        li[i].style.display = "";
+                                    } else {
+                                        li[i].style.display = "none";
+                                    }
+                                }
+                            } 
+                        </script>
+                        <script>
+                            function InvalidMsg(textbox) {
+                                
+                                if (textbox.value == '') {
+                                    textbox.setCustomValidity('Group name cannot be left blank');
+                                }
+                                else if(textbox.validity.typeMismatch){
+                                    textbox.setCustomValidity('please enter a valid email address');
+                                }
+                                else {
+                                    textbox.setCustomValidity('');
+                                }
+                                return true;
+                            }
+                        </script>
+                        
+                        <!--   Core JS Files   -->
+                        <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+                        <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+                        <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+                        <script src="assets/js/plugins/moment.min.js"></script>
+                        <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+                        <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+                        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                        <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                        <!--	Plugin for Sharrre btn -->
+                        <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+                        <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+                        <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                    </body>
+                    
+                    </html>
