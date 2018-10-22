@@ -40,17 +40,21 @@ fetchreminderRef.on('child_added', function(snap){
     var id_value_cell = document.createTextNode(id);
     
     var alink_more_details = document.createElement("a");
-    var alink_more_details_text = document.createTextNode('More Details');
+    var alink_more_details_text = document.createTextNode('');
     alink_more_details.appendChild(alink_more_details_text);
     // alink.setAttribute("href","http://index.html");
+    alink_more_details.setAttribute('class',"btn btn-primary")
+    alink_more_details.setAttribute('class',"fa fa-info")
     alink_more_details.href = "http://index.html?id="+id;
 
 
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
     var alink_remove = document.createElement("a");
-    var alink_remove_text = document.createTextNode('Remove');
+    var alink_remove_text = document.createTextNode('');
     alink_remove.appendChild(alink_remove_text);
     // alink.setAttribute("href","http://index.html");
+    alink_remove.setAttribute('class',"btn btn-primary");
+    alink_remove.setAttribute('class',"fa fa-trash");
     alink_remove.href = "http://index.html?id="+id;
 
 
