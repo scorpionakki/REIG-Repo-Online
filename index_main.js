@@ -31,8 +31,8 @@ fetchreminderRef.on('child_added', function(snap){
     var date_cell = newRow.insertCell(1);
     var time_cell = newRow.insertCell(2);
     var more_details_cell = newRow.insertCell(3);
-    var remove_cell = newRow.insertCell(4);
-    var id_cell = newRow.insertCell(5).hidden;
+    //var remove_cell = newRow.insertCell(4);
+    var id_cell = newRow.insertCell(4).hidden;
     // Append a text node to the cell
     var title_value_cell = document.createTextNode(title_reminder_fetch);
     var date_value_cell = document.createTextNode(date_reminder_fetch);
@@ -62,20 +62,20 @@ fetchreminderRef.on('child_added', function(snap){
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
 
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
-    var alink_remove = document.createElement("a");
-    var alink_remove_text = document.createTextNode('');
-    alink_remove.appendChild(alink_remove_text);
-    // alink.setAttribute("href","http://index.html");
-    alink_remove.setAttribute('class',"btn btn-primary");
-    alink_remove.setAttribute('class',"fa fa-trash");
-    alink_remove.href = "http://index.html?id="+id;
+    // var alink_remove = document.createElement("a");
+    // var alink_remove_text = document.createTextNode('');
+    // alink_remove.appendChild(alink_remove_text);
+    // // alink.setAttribute("href","http://index.html");
+    // alink_remove.setAttribute('class',"btn btn-primary");
+    // alink_remove.setAttribute('class',"fa fa-trash");
+    // alink_remove.href = "http://index.html?id="+id;
 
 
     title_cell.appendChild(title_value_cell);
     date_cell.appendChild(date_value_cell);
     time_cell.appendChild(time_value_cell);
     more_details_cell.appendChild(alink_more_details);
-    remove_cell.appendChild(alink_remove);
+    //remove_cell.appendChild(alink_remove);
     id_cell = appendChild(id_value_cell);
 });
 
