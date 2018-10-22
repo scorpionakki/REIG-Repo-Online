@@ -2,23 +2,7 @@
 <html lang="en">
 
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
-            authDomain: "reig-1538140691138.firebaseapp.com",
-            databaseURL: "https://reig-1538140691138.firebaseio.com/",
-            projectId: "reig-1538140691138",
-            storageBucket: "reig-1538140691138.appspot.com",
-            messagingSenderId: "76801264020"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <!-- <script type="text/javascript" src="index.js"></script> -->
+    
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -182,7 +166,7 @@
                                         </span>
                                     </div>
                                     
-                                    <input type="text" id="username" class="form-control" placeholder="Username" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required="required">
+                                    <input type="text" id="username_login" class="form-control" placeholder="Username" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required="required">
                                     
                                     
                                 </div>
@@ -193,13 +177,13 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" class="form-control" placeholder="Password" oninvalid="msg(this);" oninput="msg(this);" required="required">
+                                    <input type="password" id="password_login" class="form-control" placeholder="Password" oninvalid="msg(this);" oninput="msg(this);" required="required">
                                 </div>
                                 
                                 <br><br><br><br><br>
                             </div>
                             <div class="footer text-center">
-                                <input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="Log In" onclick="logindata()">
+                                <input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="Log In" onclick="loginfetching()">
                                 <!-- <a href="index.html" class="btn btn-primary btn-link btn-wd btn-lg">Log In</a> -->
                                 <br>
                                 <div style="color: black;">
@@ -265,45 +249,25 @@
         
         <!--  End Modal -->
         
-        
-        <!--Get Username-->
+        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
         <script>
-            var databaseRef = firebase.database().ref();
-            
-            function logindata(){
-                
-                var x = document.getElementById("loginform");
-                var username_login = x.elements[0].value;
-                var password_login = x.elements[1].value;
-                var full_data;
-                var retrievingData = databaseRef.child('users').child('testing_reig').child('details').child('password');
-                retrievingData.on('value',function(datavara){
-                    
-                    full_data = datavara.val();
-                    
-                });
-
-                window.alert(full_data);
-                    if(full_data == password_login)
-                    {
-                        // sessionStorage.set("username",username_login);
-                        // window.location="index.html";
-                        if(typeof(Storage)!== "undefined"){
-                            sessionStorage.setItem("username",username_login);
-                            window.location = "index.html";
-                        }    
-                    }
-                    else
-                    {
-                        window.alert('Passwords do not match with the database');
-                    }
-                
-                //window.alert(full_data);
-                
-                
-            }
-            
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+                authDomain: "reig-1538140691138.firebaseapp.com",
+                databaseURL: "https://reig-1538140691138.firebaseio.com/",
+                projectId: "reig-1538140691138",
+                storageBucket: "reig-1538140691138.appspot.com",
+                messagingSenderId: "76801264020"
+            };
+            firebase.initializeApp(config);
         </script>
+        <script type="text/javascript" src="index.js"></script>
+
+
         <!-- password visibility -->
         <script>
             function pass_visible() {
