@@ -39,20 +39,27 @@ fetchreminderRef.on('child_added', function(snap){
     var time_value_cell = document.createTextNode(time_reminder_fetch);
     var id_value_cell = document.createTextNode(id);
     
-    var alink = document.createElement("a");
-    var alink_text = document.createTextNode('More Details');
-    alink.appendChild(alink_text);
+    var alink_more_details = document.createElement("a");
+    var alink_more_details_text = document.createTextNode('More Details');
+    alink_more_details.appendChild(alink_more_details_text);
     // alink.setAttribute("href","http://index.html");
-    alink.href = "http://index.html?id="+id;
+    alink_more_details.href = "http://index.html?id="+id;
 
 
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
+    var alink_remove = document.createElement("a");
+    var alink_remove_text = document.createTextNode('Remove');
+    alink_remove.appendChild(alink_remove_text);
+    // alink.setAttribute("href","http://index.html");
+    alink_remove.href = "http://index.html?id="+id;
 
-    newCell1.appendChild(newText1);
-    newCell2.appendChild(newText2);
-    newCell3.appendChild(newText3);
-    newCell4.appendChild(alink);
-    newCell5.appendChild(newText4);
+
+    title_cell.appendChild(title_value_cell);
+    date_cell.appendChild(date_value_cell);
+    time_cell.appendChild(time_value_cell);
+    more_details_cell.appendChild(alink_more_details);
+    remove_cell.appendChild(alink_remove);
+    id_cell = appendChild(id_value_cell);
 });
 
 function addreminderdata(){
