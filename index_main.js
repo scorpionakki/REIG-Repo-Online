@@ -47,7 +47,7 @@ fetchreminderRef.on('child_added', function(snap){
     alink_more_details.setAttribute('class',"btn btn-primary")
     alink_more_details.setAttribute('class',"fa fa-info")
 
-    alink_more_details.href = "more-detail.html?id="+id;
+    //alink_more_details.href = "more-detail.html?id="+id;
 
     alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
     // d18354b4120a4ec1e9021823058e823e27b0b7ce
