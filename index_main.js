@@ -45,7 +45,7 @@ fetchreminderRef.on('child_added', function(snap){
     // alink.setAttribute("href","http://index.html");
     alink_more_details.setAttribute('class',"btn btn-primary")
     alink_more_details.setAttribute('class',"fa fa-info")
-    alink_more_details.href = "more-detail.html?id="+id;
+    alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
 
 
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
@@ -55,7 +55,7 @@ fetchreminderRef.on('child_added', function(snap){
     // alink.setAttribute("href","http://index.html");
     alink_remove.setAttribute('class',"btn btn-primary");
     alink_remove.setAttribute('class',"fa fa-trash");
-    alink_remove.href = "more-detail.html?id="+id;
+    alink_remove.href = "more-detail.html?id="+id+"?type=reminders";
 
 
     title_cell.appendChild(title_value_cell);

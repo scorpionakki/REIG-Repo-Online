@@ -17,13 +17,13 @@
   <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
-
+  
   <style>
     .btn-primary{
-    /* lightseagreen */
-    background-color: #2b6cc4 !important;
-    border: none;
-}
+      /* lightseagreen */
+      background-color: #2b6cc4 !important;
+      border: none;
+    }
   </style>
 </head>
 
@@ -33,108 +33,127 @@
       <div class="navbar-translate">
         <a class="navbar-brand" href="#">
           REIG </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
       </div>
-    </div>
-  </nav>
-  <div class="page-header header-filter" style="background-image: url('assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-          <div class="card card-login">
-            <form class="form" method="" action="">
-              <div class="card-header card-header-primary text-center">
-                <h4 class="card-title">More Details</h4>
-              </div>
-              <!-- <p class="description text-center">Or Be Classical</p> -->
-              <div class="card-body">
-                
+    </nav>
+    <div class="page-header header-filter" style="background-image: url('assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="card card-login">
+              <form class="form" method="" action="">
+                <div class="card-header card-header-primary text-center">
+                  <h4 class="card-title">More Details</h4>
+                </div>
+                <!-- <p class="description text-center">Or Be Classical</p> -->
+                <div class="card-body">
+                  
                   <div class="input-group">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text">
-                          <i class="material-icons">view_list</i>
-                          </span>
-                      </div>
-                      <select class="form-control">
-                          <option value="Default">Default</option>
-                          <option value="Personal">Personal</option>
-                          <option value="Shopping">Shopping</option>
-                          <option value="Shopping">Work</option>
-                          <option value="Whishlist">Whishlist</option>
-                      </select>
-                  </div>
-                  <div class="input-group">
-                  <div class="input-group-prepend">
+                    <div class="input-group-prepend">
                       <span class="input-group-text">
-                      <i class="material-icons">spellcheck</i>
+                        <i class="material-icons">view_list</i>
                       </span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Title">
+                    </div>
+                    <select class="form-control" id="more_detail_category">
+                      <option value="Default">Default</option>
+                      <option value="Personal">Personal</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Shopping">Work</option>
+                      <option value="Whishlist">Whishlist</option>
+                    </select>
                   </div>
                   <div class="input-group">
-                  <div class="input-group-prepend">
+                    <div class="input-group-prepend">
                       <span class="input-group-text">
-                      <i class="material-icons">description</i>
+                        <i class="material-icons">spellcheck</i>
                       </span>
-                  </div>
-                  <input type="email" class="form-control" placeholder="Description">
+                    </div>
+                    <input type="text" id="more_detail_title" class="form-control" placeholder="Title">
                   </div>
                   <div class="input-group">
-                  <div class="input-group-prepend">
+                    <div class="input-group-prepend">
                       <span class="input-group-text">
-                      <i class="material-icons">date_range</i>
+                        <i class="material-icons">description</i>
                       </span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Date">
+                    </div>
+                    <input type="text" id="more_detail_description" class="form-control" placeholder="Description">
                   </div>
                   <div class="input-group">
-                  <div class="input-group-prepend">
+                    <div class="input-group-prepend">
                       <span class="input-group-text">
-                      <i class="material-icons">watch_later</i>
+                        <i class="material-icons">date_range</i>
                       </span>
+                    </div>
+                    <input type="text" id="more_detail_date" class="form-control" placeholder="Date">
                   </div>
-                  <input type="password" class="form-control" placeholder="Time">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">watch_later</i>
+                      </span>
+                    </div>
+                    <input type="text" id="more_detail_time" class="form-control" placeholder="Time">
                   </div>
-              </div>
-              <br><br><br>
-              <div class="footer text-center">
-                <a href="#pablo" class="btn btn-primary btn-lg">OK</a>
-              </div>
-            </form>
+                </div>
+                <br><br><br>
+                <div class="footer text-center">
+                  <a href="index.html" class="btn btn-primary btn-lg">
+                    <button onclick="updatevalues()" style="background:none;border:0%;">OK</button>
+                  </a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <footer class="footer">
-      <div class="container">
-        <div class="copyright float-right">
-          &copy;
-          <script>
-            document.write(new Date().getFullYear())
-          </script>, Designed by
-          <a href="https://www.creative-tim.com" target="_blank">Bhargav Borse and Alkesh Kataria</a>
+      <footer class="footer">
+        <div class="container">
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, Designed by
+            <a href="https://www.creative-tim.com" target="_blank">Bhargav Borse and Alkesh Kataria</a>
+          </div>
         </div>
-      </div>
-    </footer>
-  </div>
-  <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="assets/js/plugins/moment.min.js"></script>
-  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--	Plugin for Sharrre btn -->
-  <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
-  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-  <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-</body>
-
-</html>
+      </footer>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+        authDomain: "reig-1538140691138.firebaseapp.com",
+        databaseURL: "https://reig-1538140691138.firebaseio.com/",
+        projectId: "reig-1538140691138",
+        storageBucket: "reig-1538140691138.appspot.com",
+        messagingSenderId: "76801264020"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="more-detail_main.js"></script>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--	Plugin for Sharrre btn -->
+    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+  </body>
+  
+  </html>
