@@ -35,9 +35,16 @@ function updatevalues(){
         time : time_updated,
         category : category_updated
     });
-
+    
+    redirect();
 }
 
 function deletevalues(){
     fetchreminderRef.remove();
+
+    redirect();
+}
+
+function redirect(){
+    window.location = "index.html";
 }
