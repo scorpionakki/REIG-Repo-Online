@@ -39,26 +39,7 @@ fetchreminderRef.on('child_added', function(snap){
     var time_value_cell = document.createTextNode(time_reminder_fetch);
     var id_value_cell = document.createTextNode(id);
     
-    var alink_more_details = document.createElement("a");
-    var alink_more_details_text = document.createTextNode('');
-    alink_more_details.appendChild(alink_more_details_text);
-    // alink.setAttribute("href","http://index.html");
-    alink_more_details.setAttribute('class',"btn btn-primary")
-    alink_more_details.setAttribute('class',"fa fa-info")
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    alink_more_details.href = "more-detail.html?id="+id;
-=======
-    alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
->>>>>>> d18354b4120a4ec1e9021823058e823e27b0b7ce
-=======
-    alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
->>>>>>> d18354b4120a4ec1e9021823058e823e27b0b7ce
-=======
-    alink_more_details.href = "http://index.html?id="+id;
->>>>>>> 91f5c169c91bad0dc0780cb9bf7c61705dfeccf8
-
+    
 
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
     var alink_remove = document.createElement("a");
