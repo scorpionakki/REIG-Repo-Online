@@ -127,7 +127,7 @@
       <!-- message text box -->
       <input type="text" style="padding-top: 0.5%; margin-top:1%; width: 45%;"> 
       &nbsp;&nbsp;
-    <!-- send message -->
+      <!-- send message -->
       <button class="fa fa-paper-plane btn btn-primary" style="height:37px; margin-bottom: 1%;"></button>
     </div>
   </div>
@@ -360,6 +360,24 @@
           </div>
         </div>
         <!-- Modal -->  
+        
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+            authDomain: "reig-1538140691138.firebaseapp.com",
+            databaseURL: "https://reig-1538140691138.firebaseio.com/",
+            projectId: "reig-1538140691138",
+            storageBucket: "reig-1538140691138.appspot.com",
+            messagingSenderId: "76801264020"
+          };
+          firebase.initializeApp(config);
+        </script>
+        <script type="text/javascript" src="group_creation.js"></script>
         
         <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
         <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
