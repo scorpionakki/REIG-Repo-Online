@@ -183,7 +183,7 @@
                                 <br><br><br><br><br>
                             </div>
                             <div class="footer text-center">
-                                <input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="Log In" onclick="loginfetching()">
+                                <input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="Log In" id="btn_login" onclick="loginfetching();return false;">
                                 <!-- <a href="index.html" class="btn btn-primary btn-link btn-wd btn-lg">Log In</a> -->
                                 <br>
                                 <div style="color: black;">
@@ -266,8 +266,6 @@
             firebase.initializeApp(config);
         </script>
         <script type="text/javascript" src="index.js"></script>
-
-
         <!-- password visibility -->
         <script>
             function pass_visible() {

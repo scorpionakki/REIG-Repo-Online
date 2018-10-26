@@ -23,16 +23,24 @@ function signupinsertion(){
     window.alert('Inserted');
 }
 
-var firebaseRef2 = firebase.database();
-var password_login_val;
+
 function loginfetching(){
-    var username_login_val = document.getElementById('username_login').value;
-    password_login_val = document.getElementById('password_login').value;
-    var fetchingData2 = firebaseRef2.ref('users');
-    var password_database;
-    fetchingData2.on('value',function(snapshot){
-        password_database = snapshot.val();
+    var username_val_login = document.getElementById('username_login').value;
+    var password_val_login = document.getElementById('password_login').value;
+    var databaseRef = firebaseRef.child(username_val_login).child('details').child('password');
+
+    databaseRef.on('value',function(snap){
+
+        var password_db = snap.val();
+        if(password_db == password_val_login){
+            window.alert('Login Success');
+        }
+        else
+        {
+            window.alert('Please Try again');
+        }
     });
-    window.alert(password_database);
+
 }
+
 
