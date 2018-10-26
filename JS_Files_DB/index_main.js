@@ -1,6 +1,7 @@
 var databaseRef = firebase.database().ref();
 var eventRef = firebase.database().ref('users');
-var fetchreminderRef = firebase.database().ref('users').child('testing_reig').child('reminders');
+var username = sessionStorage.getItem('username');
+var fetchreminderRef = firebase.database().ref('users').child(username).child('reminders');
 //for getting no. of events i.e event count
 // var countRef = firebase.database().ref('users').child('testing_reig').child('total_events');
 // var event_count;

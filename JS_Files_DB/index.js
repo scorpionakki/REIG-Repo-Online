@@ -33,7 +33,9 @@ function loginfetching(){
 
         var password_db = snap.val();
         if(password_db == password_val_login){
-            window.alert('Login Success');
+            sessionStorage.setItem("username", username_val_login);
+            window.alert('Done');
+            window.location.href = "index.html";
         }
         else
         {

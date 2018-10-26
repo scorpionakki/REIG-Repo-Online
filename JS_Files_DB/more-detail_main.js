@@ -7,8 +7,8 @@ var full_type = url_split[2];
 var full_type_split = full_type.split("=");
 var final_type = full_type_split[1];
 
-
-var fetchreminderRef = firebase.database().ref('users').child('testing_reig').child(final_type).child(final_id);
+var username = sessionStorage.getItem('username');
+var fetchreminderRef = firebase.database().ref('users').child(username).child(final_type).child(final_id);
 
 fetchreminderRef.on('value',function(snap){
 
