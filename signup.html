@@ -146,7 +146,7 @@
                                             <i class="material-icons">face</i>
                                         </span>
                                     </div>
-                                    <input type="text" id="username" oninvalid="username(this);" oninput="username(this);" class="form-control" placeholder="User Name" required>
+                                    <input type="text" id="username" class="form-control" placeholder="User Name" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -154,7 +154,7 @@
                                             <i class="material-icons">mail</i>
                                         </span>
                                     </div>
-                                    <input type="email" id="email" oninvalid="email(this);" oninput="email(this);" class="form-control" placeholder="Email" required>
+                                    <input type="email" id="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -162,7 +162,7 @@
                                             <i class="material-icons">phone</i>
                                         </span>
                                     </div>
-                                    <input type="text" id="phone" oninvalid="phone(this);" oninput="phone(this);" pattern="^\d{4}\d{3}\d{3}$" class="form-control" placeholder="Phone Number" required>
+                                    <input type="text" id="phone" pattern="^\d{4}\d{3}\d{3}$" class="form-control" placeholder="Phone Number" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -170,7 +170,7 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" id="password" name="pwd1" oninvalid="password(this);" oninput="password(this);" class="form-control" placeholder="Password" required>
+                                    <input type="password" id="password" name="pwd1"  class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -178,7 +178,7 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" id="confirm_password" name="pwd2" oninvalid="conpass(this);" oninput="conpass(this);" class="form-control" placeholder="Confirm Password" required>
+                                    <input type="password" id="confirm_password" name="pwd2" class="form-control" placeholder="Confirm Password" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -303,76 +303,21 @@
             
         </script>
         
-        <script>
-            function username(textbox) {
-                
-                if (textbox.value == '') {
-                    textbox.setCustomValidity('Please enter User Name');
-                }
-                else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('please enter a valid user name');
-                }
-                else {
-                    textbox.setCustomValidity('');
-                }
-                return true;
-            }
-            
-            function phone(textbox) {
-                
-                if (textbox.value == '') {
-                    textbox.setCustomValidity('Please enter your phone number');
-                }
-                else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('please enter a valid number');
-                }
-                else {
-                    textbox.setCustomValidity('');
-                }
-                return true;
-            }
-            
-            function password(textbox) {
-                
-                if (textbox.value == '') {
-                    textbox.setCustomValidity('Please enter password');
-                }
-                else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('please enter a valid password');
-                }
-                else {
-                    textbox.setCustomValidity('');
-                }
-                return true;
-            }
-            
-            function conpass(textbox) {
-                
-                if (textbox.value == '') {
-                    textbox.setCustomValidity('Please enter Confirm password');
-                }
-                else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('please enter a valid user name');
-                }
-                else {
-                    textbox.setCustomValidity('');
-                }
-                return true;
-            }
-            function email(textbox) {
-                
-                if (textbox.value == '') {
-                    textbox.setCustomValidity('Please enter Enter Email Address');
-                }
-                else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('please enter a valid email');
-                }
-                else {
-                    textbox.setCustomValidity('');
-                }
-                return true;
-            }
-        </script>  
+        <!-- <script>
+            function Name(textbox) {
+    
+    if (textbox.value == '') {
+        textbox.setCustomValidity('Required User Name');
+    }
+    else if(textbox.validity.typeMismatch){
+        textbox.setCustomValidity('please enter a valid User Name');
+    }
+    else {
+        textbox.setCustomValidity('');
+    }
+    return true;
+}
+        </script> -->
         
         <!-- password visibility -->
         <script>

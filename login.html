@@ -282,10 +282,10 @@
             function InvalidMsg(textbox) {
                 
                 if (textbox.value == '') {
-                    textbox.setCustomValidity('Required email address');
+                    textbox.setCustomValidity('Required User Name');
                 }
                 else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('Please enter a valid email address');
+                    textbox.setCustomValidity('Please enter a valid User Name');
                 }
                 else {
                     textbox.setCustomValidity('');
@@ -298,7 +298,7 @@
                     textbox.setCustomValidity('Please enter Password');
                 }
                 else if(textbox.validity.typeMismatch){
-                    textbox.setCustomValidity('Please enter a valid email address');
+                    textbox.setCustomValidity('Please enter a valid Password');
                 }
                 else {
                     textbox.setCustomValidity('');
