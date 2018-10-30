@@ -43,23 +43,50 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    #myUL {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #myUL li a {
+        border: 1px solid #ddd;
+        margin-top: -1px; /* Prevent double borders */
+        background-color: #f6f6f6;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        color: black;
+        display: block
+    }
+    
+    #myUL li a:hover:not(.header) {
+        background-color: #eee;
+    }
+    
+    
 </style>
 <body>
     <div class="wrap">
         <div class="search">
-            <input type="text" class="searchTerm" id="search_value" placeholder="Enter Username" onkeyup="getusername();return false">
-            <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
+            <input type="text" class="searchTerm" id="search_value" placeholder="Enter Username">
+            <input type="submit" class="searchButton" value="Search" onclick="getusername();">
         </div>
     </div>
+    <ul id="myUL">
+        <li id="myLI">
+            <strong>    
+                
+            </strong>
+        </li>
+    </ul>
     <table id="myTable">
         <tr>
             <td></td>
         </tr>
     </table>
-    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
     <script>
