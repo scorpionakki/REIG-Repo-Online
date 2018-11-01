@@ -1,5 +1,5 @@
 var firebaseRef = firebase.database().ref('users');
-
+//var authRef = firebase.auth();
 function signupinsertion(){
     
     var username_val = document.getElementById('username').value;
@@ -11,16 +11,25 @@ function signupinsertion(){
     var profpic_FileName_val_split_filename = profpic_FileName_val_split[profpic_FileName_val_split.length - 1];
     var description_val = document.getElementById('description').value;
     
+    if(username_val == ""){
+        document.getElementById('display_error').innerText = "Username cant be left blank";
+        return false;
+    }
+
+    // firebase.auth().createUserWithEmailAndPassword(email_val, password_val).catch(function(error) {
+    //     console.log(error.code);
+    //     console.log(error.message);
+    //     window.alert('Error');
+    //  });
+    // firebaseRef.child(username_val).child('details').set({
+    //     email : email_val,
+    //     phone : phone_val,
+    //     password : password_val,
+    //     profpic_FileName : profpic_FileName_val_split_filename,
+    //     description : description_val
+    // });
     
-    firebaseRef.child(username_val).child('details').set({
-        email : email_val,
-        phone : phone_val,
-        password : password_val,
-        profpic_FileName : profpic_FileName_val_split_filename,
-        description : description_val
-    });
     
-    window.alert('Inserted');
 }
 
 
@@ -44,5 +53,4 @@ function loginfetching(){
     });
 
 }
-
 

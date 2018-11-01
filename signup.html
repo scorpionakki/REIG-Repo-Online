@@ -133,7 +133,7 @@
                 
                 <div class="col-md-5" style="margin-top:20%;">
                     <div class="card card-login login-mg-top">
-                        <form class="form" id="signup_form">
+                        <form class="form" id="signup_form" name="registration">
                             <div class="card-header backgroundtitle card-header-primary text-center ">
                                 <h4 class="card-title">Sign Up</h4>
                                 
@@ -170,7 +170,7 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" id="password" name="pwd1"  class="form-control" placeholder="Password" required>
+                                    <input type="password" id="password"  class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -178,7 +178,7 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" id="confirm_password" name="pwd2" class="form-control" placeholder="Confirm Password" required>
+                                    <input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -235,6 +235,7 @@
                             <p style="color:white;font-size:20px;line-height:35px;padding:30px;">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
                             </p>
+                            <p id="display_error"></p>
                         </div>
                         <div class="col-md-2">
                             
@@ -265,9 +266,12 @@
         </div>
         
         <!--  End Modal -->
+        <!--Validation-->
+        
         <!-- Database -->
         <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.6/firebase-auth.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
         <script>
@@ -287,19 +291,18 @@
 
         <script type="text/javascript">
             
-            function checkForm(form)
-            {
-                if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
-                    
-                } else {
-                    alert("Error: Please check that your password and confirmed password match!");
-                    form.pwd1.focus();
-                    return false;
-                }
+            // function checkForm(form)
+            // {
+            //     if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+            //         alert("You entered a valid password: " + form.pwd1.value);
+            //     } else {
+            //         alert("Error: Please check that your password and confirmed password match!");
+            //         form.pwd1.focus();
+            //         return false;
+            //     }
                 
-                alert("You entered a valid password: " + form.pwd1.value);
-                return true;
-            }
+                
+            // }
             
         </script>
         
