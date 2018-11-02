@@ -485,12 +485,20 @@
                                         
                                         <div class="tab tab-2">
                                             <input type="text" id="search_value" placeholder="Search Name to add in group">
-                                            <button class="btn btn-primary fa fa-user-plus" onclick="getusername();"></button>
+                                            <!-- <button class="btn btn-primary fa fa-user-plus" onclick="getusername();"></button> -->
+                                            <input type="submit" value="Search" onclick="getusername(); return false">
                                             <!-- <button type="submit" class="btn btn-primary fa fa-search" value="Search" onclick="getusername();"></button> -->
                                         </div>
                                         <br><br>
                                         <div class="tab tab-1">
-                                            <table class="table" id="table" border="1">
+                                            <table class="table" id="table_searchresults" border="1">
+                                                <tr>
+                                                    <th>Search Results</th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="tab tab-1">
+                                            <table class="table" id="table_addedmembers" border="1">
                                                 <tr>
                                                     <th>Added Members</th>
                                                 </tr>
@@ -504,11 +512,7 @@
                                                     </strong>
                                                 </li>
                                             </ul>
-                                            <table id="myTable">
-                                                <tr>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                            
                                         <!-- <ul class="list-group checked-list-box" id="myUL">
                                             <div class="description" style="color: black;">
                                                 <p>Select atleast 2 contacts to create group*</p>
