@@ -92,7 +92,7 @@ function addreminderdata(){
     var reminder_ampm_only = reminder_datetime_split[2];
     var reminder_fulltime_only = reminder_time_only + " " + reminder_ampm_only;
     
-    eventRef.child('testing_reig').child('reminders').push({
+    eventRef.child(username).child('reminders').push({
         title : reminder_title_val,
         content : reminder_content_val,
         category : reminder_category_val,
