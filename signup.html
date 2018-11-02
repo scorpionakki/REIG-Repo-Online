@@ -133,7 +133,7 @@
                 
                 <div class="col-md-5" style="margin-top:20%;">
                     <div class="card card-login login-mg-top">
-                        <form class="form" id="signup_form" name="registration">
+                        <form class="form" action="login.html"id="signup_form" name="registration">
                             <div class="card-header backgroundtitle card-header-primary text-center ">
                                 <h4 class="card-title">Sign Up</h4>
                                 
@@ -287,139 +287,154 @@
             firebase.initializeApp(config);
         </script>
         <script src="JS_Files_DB/index.js"></script>
-
-
+        
+        
         <script type="text/javascript">
             
             // function checkForm(form)
             // {
-            //     if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
-            //         alert("You entered a valid password: " + form.pwd1.value);
-            //     } else {
-            //         alert("Error: Please check that your password and confirmed password match!");
-            //         form.pwd1.focus();
-            //         return false;
-            //     }
-                
-                
-            // }
-            
-        </script>
-        
-        <!-- <script>
-            function Name(textbox) {
-    
-    if (textbox.value == '') {
-        textbox.setCustomValidity('Required User Name');
-    }
-    else if(textbox.validity.typeMismatch){
-        textbox.setCustomValidity('please enter a valid User Name');
-    }
-    else {
-        textbox.setCustomValidity('');
-    }
-    return true;
-}
-        </script> -->
-        
-        <!-- password visibility -->
-        <script>
-            function pass_visible() {
-                var x = document.getElementById("myInput");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-        </script>
-        
-        <!--   Core JS Files   -->
-        <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-        <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-        <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-        <script src="assets/js/plugins/moment.min.js"></script>
-        <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-        <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-        <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-        <!--	Plugin for Sharrre btn -->
-        <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
-        <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-        <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-        <script>
-            $(document).ready(function() {
-                //init DateTimePickers
-                materialKit.initFormExtendedDatetimepickers();
-                
-                // Sliders Init
-                materialKit.initSliders();
-            });
-            
-            
-            function scrollToDownload() {
-                if ($('.section-download').length != 0) {
-                    $("html, body").animate({
-                        scrollTop: $('.section-download').offset().top
-                    }, 1000);
-                }
-            }
-            
-            
-            $(document).ready(function() {
-                
-                $('#facebook').sharrre({
-                    share: {
-                        facebook: true
-                    },
-                    enableHover: false,
-                    enableTracking: false,
-                    enableCounter: false,
-                    click: function(api, options) {
-                        api.simulateClick();
-                        api.openPopup('facebook');
-                    },
-                    template: '<i class="fab fa-facebook-f"></i> Facebook',
-                    url: 'https://demos.creative-tim.com/material-kit/index.html'
-                });
-                
-                $('#googlePlus').sharrre({
-                    share: {
-                        googlePlus: true
-                    },
-                    enableCounter: false,
-                    enableHover: false,
-                    enableTracking: true,
-                    click: function(api, options) {
-                        api.simulateClick();
-                        api.openPopup('googlePlus');
-                    },
-                    template: '<i class="fab fa-google-plus"></i> Google',
-                    url: 'https://demos.creative-tim.com/material-kit/index.html'
-                });
-                
-                $('#twitter').sharrre({
-                    share: {
-                        twitter: true
-                    },
-                    enableHover: false,
-                    enableTracking: false,
-                    enableCounter: false,
-                    buttons: {
-                        twitter: {
-                            via: 'CreativeTim'
+                //     if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+                    //         alert("You entered a valid password: " + form.pwd1.value);
+                    //     } else {
+                        //         alert("Error: Please check that your password and confirmed password match!");
+                        //         form.pwd1.focus();
+                        //         return false;
+                        //     }
+                        
+                        
+                        // }
+                        
+                    </script>
+                    
+                    <!-- <script>
+                        function Name(textbox) {
+                            
+                            if (textbox.value == '') {
+                                textbox.setCustomValidity('Required User Name');
+                            }
+                            else if(textbox.validity.typeMismatch){
+                                textbox.setCustomValidity('please enter a valid User Name');
+                            }
+                            else {
+                                textbox.setCustomValidity('');
+                            }
+                            return true;
                         }
-                    },
-                    click: function(api, options) {
-                        api.simulateClick();
-                        api.openPopup('twitter');
-                    },
-                    template: '<i class="fab fa-twitter"></i> Twitter',
-                    url: 'https://demos.creative-tim.com/material-kit/index.html'
-                });
+                    </script> -->
+                    <script>
+                        var password = document.getElementById("password")
+                        , confirm_password = document.getElementById("confirm_password");
+                        
+                        function validatePassword(){
+                            if(password.value != confirm_password.value) {
+                                confirm_password.setCustomValidity("Passwords Don't Match");
+                            } else {
+                                confirm_password.setCustomValidity('');
+                            }
+                        }
+                        
+                        password.onchange = validatePassword;
+                        confirm_password.onkeyup = validatePassword;
+                        
+                    </script>
+                    <!-- password visibility -->
+                    <script>
+                        function pass_visible() {
+                            var x = document.getElementById("myInput");
+                            if (x.type === "password") {
+                                x.type = "text";
+                            } else {
+                                x.type = "password";
+                            }
+                        }
+                    </script>
+                    
+                    <!--   Core JS Files   -->
+                    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+                    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+                    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+                    <script src="assets/js/plugins/moment.min.js"></script>
+                    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+                    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+                    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                    <!--	Plugin for Sharrre btn -->
+                    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+                    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+                    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                    <script>
+                        $(document).ready(function() {
+                            //init DateTimePickers
+                            materialKit.initFormExtendedDatetimepickers();
+                            
+                            // Sliders Init
+                            materialKit.initSliders();
+                        });
+                        
+                        
+                        function scrollToDownload() {
+                            if ($('.section-download').length != 0) {
+                                $("html, body").animate({
+                                    scrollTop: $('.section-download').offset().top
+                                }, 1000);
+                            }
+                        }
+                        
+                        
+                        $(document).ready(function() {
+                            
+                            $('#facebook').sharrre({
+                                share: {
+                                    facebook: true
+                                },
+                                enableHover: false,
+                                enableTracking: false,
+                                enableCounter: false,
+                                click: function(api, options) {
+                                    api.simulateClick();
+                                    api.openPopup('facebook');
+                                },
+                                template: '<i class="fab fa-facebook-f"></i> Facebook',
+                                url: 'https://demos.creative-tim.com/material-kit/index.html'
+                            });
+                            
+                            $('#googlePlus').sharrre({
+                                share: {
+                                    googlePlus: true
+                                },
+                                enableCounter: false,
+                                enableHover: false,
+                                enableTracking: true,
+                                click: function(api, options) {
+                                    api.simulateClick();
+                                    api.openPopup('googlePlus');
+                                },
+                                template: '<i class="fab fa-google-plus"></i> Google',
+                                url: 'https://demos.creative-tim.com/material-kit/index.html'
+                            });
+                            
+                            $('#twitter').sharrre({
+                                share: {
+                                    twitter: true
+                                },
+                                enableHover: false,
+                                enableTracking: false,
+                                enableCounter: false,
+                                buttons: {
+                                    twitter: {
+                                        via: 'CreativeTim'
+                                    }
+                                },
+                                click: function(api, options) {
+                                    api.simulateClick();
+                                    api.openPopup('twitter');
+                                },
+                                template: '<i class="fab fa-twitter"></i> Twitter',
+                                url: 'https://demos.creative-tim.com/material-kit/index.html'
+                            });
+                            
+                        });
+                    </script>
+                </body>
                 
-            });
-        </script>
-    </body>
-    
-    </html>
+                </html>
