@@ -17,10 +17,50 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="group-sidebar/docs/docs.js"></script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
 </head>
 
 <style>
+  .members-count,
+    .members-list,
+    .messages {
+      border: 1px solid #e4e4e4;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .messages {
+      flex-shrink: 1;
+      overflow: auto;
+    }
+
+    .message {
+      padding: 5px 0;
+    }
+    .message .member {
+      display: inline-block;
+    }
+
+    .member {
+      padding-right: 10px;
+      position: relative;
+    }
+
+    .message-form {
+      display: flex;
+      flex-shrink: 0;
+    }
+    .message-form__input {
+      /* flex-grow: 1; */
+      border: 1px solid #dfdfdf;
+      padding: 10px 15px;
+      font-size: 16px;
+      width: 65% !important;
+    }
+    .message-form__button {
+      margin: 10px;
+    }
+
   a{
     font-size: 13pt; 
   }
@@ -123,16 +163,27 @@
     <a href="#" class="fa fa-clock-o" title="add reminder" data-toggle="modal" data-target="#darkModalForm"> </a>
     <!-- add event -->
     <a href="#" title="add event" class="fa fa-calendar-o" data-toggle="modal" data-target="#darkModalForm2"> </a>
-    <div class="set">
-      <!-- message text box -->
+    <!-- <div class="set">
       <input type="text" style="padding-top: 0.5%; margin-top:1%; width: 45%;"> 
       &nbsp;&nbsp;
-      <!-- send message -->
       <button class="fa fa-paper-plane btn btn-primary" style="height:37px; margin-bottom: 1%;"></button>
-    </div>
+    </div> -->
+    <form class="message-form" onsubmit="return false;">
+        <input class="message-form__input" style="margin-top:2%;" placeholder="Type a message.." type="text"/>
+        <!-- <input class="fa fa-paper-plane btn btn-primary" style="margin-top:2%; margin-left: 1%;" value="SEND"  type="submit"/> -->
+        <button class="fa fa-paper-plane btn btn-primary" style="margin-top:2%; margin-left: 1%;"></button>  
+    </form>
   </div>
-  <div class="container">
+  <div class="container" style="margin-top:5%;">
     
+      <div class="members-count">-</div>
+      <div class="members-list">-</div>
+      <div class="messages"></div>
+      <!-- <form class="message-form" onsubmit="return false;">
+        <input class="message-form__input" placeholder="Type a message.." type="text"/>
+        <input class="message-form__button" value="Send" type="submit"/>
+      </form> -->
+      <script src="script.js"></script>
     <!-- <div class="jumbotron">
       <h1>
         Bootstrap Navbar Sidebar
