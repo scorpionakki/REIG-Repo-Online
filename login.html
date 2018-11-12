@@ -159,14 +159,14 @@
                             <p class="description text-center">Continue your journey!</p>
                             <div class="card-body">
                                 
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="material-icons">account_circle</i>
                                         </span>
                                     </div>
                                     
-                                    <input type="text" id="username_login" class="form-control" placeholder="Username" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required="required">
+                                    <input type="email" id="email_login" class="form-control" placeholder="Email" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required="required">
                                     
                                     
                                 </div>
@@ -180,10 +180,10 @@
                                     <input type="password" id="password_login" class="form-control" placeholder="Password" oninvalid="msg(this);" oninput="msg(this);" required="required">
                                 </div>
                                 
-                                <br><br><br><br><br>
+                                <br><br><br><br><br> -->
                             </div>
                             <div class="footer text-center">
-                                <input type="submit" class="btn btn-primary btn-link btn-wd btn-lg" value="Log In" id="btn_login" onclick="loginfetching();return false;">
+                                <input type="button" class="btn btn-primary btn-link btn-wd btn-lg" value="Log In" id="btn_login" onclick="googlesignin();">
                                 <!-- <a href="index.html" class="btn btn-primary btn-link btn-wd btn-lg">Log In</a> -->
                                 <br>
                                 <div style="color: black;">
@@ -249,10 +249,11 @@
         
         <!--  End Modal -->
         
-        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
         <script>
             // Initialize Firebase
             var config = {
