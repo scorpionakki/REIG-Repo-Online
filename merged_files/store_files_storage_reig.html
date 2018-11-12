@@ -1,0 +1,27 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <input type="file" id="file" onchange="getFile(event)">
+    <input type="submit" onclick="storefile();return false;" value="STORE">
+    <img id="put_image" alt="profPic" height="100" width="100">
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+            authDomain: "reig-1538140691138.firebaseapp.com",
+            databaseURL: "https://reig-1538140691138.firebaseio.com/",
+            projectId: "reig-1538140691138",
+            storageBucket: "reig-1538140691138.appspot.com",
+            messagingSenderId: "76801264020"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="store_files_storage_reig.js"></script>
+</body>
+</html>

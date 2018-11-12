@@ -1,0 +1,30 @@
+<html>
+<head>
+    
+</head>
+<body>
+
+    
+    <input type="button" value="signin" onclick="getcurrentuser();">
+    <input type="button" value="signout" onclick="logoutcurrentuser();">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+            authDomain: "reig-1538140691138.firebaseapp.com",
+            databaseURL: "https://reig-1538140691138.firebaseio.com/",
+            projectId: "reig-1538140691138",
+            storageBucket: "reig-1538140691138.appspot.com",
+            messagingSenderId: "76801264020"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="authentication2.js"></script>
+    
+</body>
+</html>

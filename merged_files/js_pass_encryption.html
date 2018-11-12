@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/components/enc-base64-min.js"></script>
+</head>
+<body>
+    <input type="text" id="value">
+    <input type="submit" onclick="encrypt()" value="encrypt">
+    <input type="submit" onclick="decrypt();" value="decrypt">
+    
+    <p id="see_value"></p>
+    
+    <!-- <script type="text/javascript" src="js_pass_encryption.js"></script> -->
+    <script>
+        
+        // function encrypt(){
+            //     var SHA256 = require("crypto-js/sha256");
+            //     var value = document.getElementById('value').value;
+            //     // document.getElementById('value');
+            //     var encryption = SHA256(value);
+            //     window.alert(encryption);
+            //     window.alert("Hello");
+            // }
+            var hash = CryptoJS.SHA256("Message");
+            
+            alert(hash.toString(CryptoJS.enc.Base64));
+            
+        </script>
+    </body>
+    </html>

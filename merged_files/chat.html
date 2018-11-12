@@ -1,0 +1,31 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <input type="text" id="get_message">
+    <input type="submit" onclick="appendmessage();" value="SEND">
+    
+    <table id="appendmessagetable">
+        
+    </table>
+
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+            authDomain: "reig-1538140691138.firebaseapp.com",
+            databaseURL: "https://reig-1538140691138.firebaseio.com/",
+            projectId: "reig-1538140691138",
+            storageBucket: "reig-1538140691138.appspot.com",
+            messagingSenderId: "76801264020"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="chat.js"></script>
+</body>
+</html>

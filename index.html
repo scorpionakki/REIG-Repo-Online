@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    <link rel="stylesheet" href="lightbox/dist/css/lightbox.min.css">
     <style>
         body {
             font-family: "Lato", sans-serif; 
@@ -268,6 +268,7 @@
                 <a href="reminder.html">Reminder</a>
                 <a href="event.html">Event</a>
                 <a href="group.html">Group</a>
+                <a href="saved-images.html">Saved Images</a>
                 <a id="session_result" href="user-setting.html"></a>
                 <a href="">Exit</a>
                 <script>
@@ -441,6 +442,7 @@
                     <div class="col-md-3">
                     </div>
                 </div> -->
+                <br><br>
                 <br>
                 <div class="row">
                     <div class="col-md-1">
@@ -452,17 +454,21 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:50%;max-width:50px">
-                                            
-                                            <!-- The Modal -->
-                                            <div id="myModal" class="modal">
-                                                <span class="close">&times;</span>
-                                                <img class="modal-content" id="img01">
-                                                <div id="caption"></div>
-                                            </div>
+                                            Group Picture
                                         </th>
-                                        <th></th>
                                         <th style="padding-bottom:2% !important;">Group Name</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a class="example-image-link" href="assets/img/faces/card-profile4-square.jpg" data-lightbox="example-1"><img class="example-image" style="border-radius: 50%; width:50%;max-width:50px" src="assets/img/faces/card-profile4-square.jpg" alt="image-1" /></a>
+                                        </td>
+                                        <td>Group Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a class="example-image-link" href="assets/img/faces/card-profile2-square.jpg" data-lightbox="example-1"><img class="example-image" style="border-radius: 50%; width:50%;max-width:50px" src="assets/img/faces/card-profile2-square.jpg" alt="image-1" /></a>
+                                        </td>
+                                        <td>Group Name</td>
                                     </tr>
                                 </thead>
                                 <!-- <tbody>
@@ -756,7 +762,7 @@
                         <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
                         <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
                         <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-                        
+                        <script src="lightbox/dist/js/lightbox-plus-jquery.min.js"></script>
                         <script>
                             $(document).ready(function() {
                                 //init DateTimePickers
