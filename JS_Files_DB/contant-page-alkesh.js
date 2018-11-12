@@ -97,3 +97,30 @@ function add_member_in_table_addedmembers(){
     table.deleteRow(1);
 }
 
+var databaseRef = firebase.database().ref('groups');
+
+function creategroup(){
+    
+   
+    var username = sessionStorage.getItem('username');
+    var group_pic = document.getElementById('group_pic').value;
+    var group_name = document.getElementById('group_name').value;
+    var group_description = document.getElementById('group_description').value;
+    
+    databaseRef.child(group_name).child('details').set({
+            description : group_description,
+            created_by : username
+    });
+    
+    var table = document.getElementById('table_addedmembers');
+    for(var i=1;i<table.rows.length;i++){
+        var value = table.rows[i].cells[0].innerHTML;
+        var member = "member"+i;
+        databaseRef.child(group_name).child('members').push({
+           member : value 
+        });
+    }
+
+   
+    
+}

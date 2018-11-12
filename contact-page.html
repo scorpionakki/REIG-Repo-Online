@@ -341,7 +341,7 @@
                 border: 1px solid #ddd;
                 margin-bottom: 12px;
             }
-
+            
             #search_value{
                 background-image: url('assets/img/110917_search.png');
                 background-position: 10px 12px;
@@ -352,7 +352,7 @@
                 border: 1px solid #ddd;
                 margin-bottom: 12px;
             }
-
+            
             .table{
                 width: 100%;
                 border: none;
@@ -504,15 +504,15 @@
                                                 </tr>
                                             </table>
                                         </div>
-
+                                        
                                         <ul id="myUL">
-                                                <li id="myLI">
-                                                    <strong>    
-                                                        
-                                                    </strong>
-                                                </li>
-                                            </ul>
-                                            
+                                            <li id="myLI">
+                                                <strong>    
+                                                    
+                                                </strong>
+                                            </li>
+                                        </ul>
+                                        
                                         <!-- <ul class="list-group checked-list-box" id="myUL">
                                             <div class="description" style="color: black;">
                                                 <p>Select atleast 2 contacts to create group*</p>
@@ -613,7 +613,7 @@
             </footer>
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog" style="z-index: 3; display:none;">
-                <form action="group.html"> 
+                <form> 
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
@@ -631,7 +631,7 @@
                                 
                                 <div class="prof" style="margin-left:8%;">
                                     <div class="photo" >
-                                        <input type="file" accept="image/*">
+                                        <input type="file" accept="image/*" id="group_pic">
                                         <div class="photo__helper">
                                             <div class="photo__frame photo__frame--circle">
                                                 <canvas class="photo__canvas"></canvas>
@@ -666,14 +666,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="text" style="color:black; border: hidden;" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" placeholder="Group Name" class="form-control" id="exampleInput1" style="color: white;" required>
-                                    <textarea style="color:black; border: hidden;" placeholder="Group Description" class="form-control" id="exampleInput1" style="color: white;"></textarea>
+                                    <input type="text" style="color:black; border: hidden;" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" placeholder="Group Name" class="form-control" id="group_name" style="color: white;" required>
+                                    <textarea style="color:black; border: hidden;" placeholder="Group Description" class="form-control" id="group_description" style="color: white;"></textarea>
                                     <hr>
                                     <!-- <img src="" alt="" class="preview">
                                         <img src="" alt="" class="preview preview--rounded"> -->
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-primary" value="Create">
+                                        <input type="submit" class="btn btn-primary" value="Create" onclick="creategroup();return false;">
                                     </div>
                                     
                                 </div>
@@ -701,6 +701,25 @@
                         <td></td>
                     </tr>
                 </table> -->
+                
+                <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+                <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+                <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+                <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
+                <script>
+                    // Initialize Firebase
+                    var config = {
+                        apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+                        authDomain: "reig-1538140691138.firebaseapp.com",
+                        databaseURL: "https://reig-1538140691138.firebaseio.com/",
+                        projectId: "reig-1538140691138",
+                        storageBucket: "reig-1538140691138.appspot.com",
+                        messagingSenderId: "76801264020"
+                    };
+                    firebase.initializeApp(config);
+                </script>
+                <script type="text/javascript" src="JS_Files_DB/contant-page-alkesh.js"></script>
+                
                 
                 <script>
                     
