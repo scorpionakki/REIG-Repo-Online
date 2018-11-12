@@ -1,0 +1,39 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <input type="button" value="Subscribe" onclick="subscribe()">
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/init.js"></script> -->
+<script>
+    var config = {
+        apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+        authDomain: "reig-1538140691138.firebaseapp.com",
+        databaseURL: "https://reig-1538140691138.firebaseio.com/",
+        projectId: "reig-1538140691138",
+        storageBucket: "reig-1538140691138.appspot.com",
+        messagingSenderId: "76801264020"
+    };
+    firebase.initializeApp(config);
+</script>
+<script>
+   
+    const messaging = firebase.messaging();
+    messaging.usePublicVapidKey('BH10-Rr7OBsVNaTzi02QnDfR6y4w2NADFSIu0uQiPYehDQweHb2CnyT0I0HGHo9XjjiBzRXgIkoJCUUuMCi9hX0');
+    messaging.requestPermission().then(function() {
+        console.log('Notification permission granted.');
+        return messaging.getToken();
+        // TODO(developer): Retrieve an Instance ID token for use with FCM.
+        // ...
+    })
+    .then(function(token){
+        console.log(token);
+    })
+    .catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+    });
+</script>
+</html>
