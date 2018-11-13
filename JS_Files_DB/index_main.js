@@ -47,21 +47,21 @@ fetchreminderRef.on('child_added', function(snap){
     // alink.setAttribute("href","http://index.html");
     alink_more_details.setAttribute('class',"btn btn-primary")
     alink_more_details.setAttribute('class',"fa fa-info")
-
+    
     //alink_more_details.href = "more-detail.html?id="+id;
-
+    
     alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
     // d18354b4120a4ec1e9021823058e823e27b0b7ce
-
+    
     // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
     // d18354b4120a4ec1e9021823058e823e27b0b7ce
-
+    
     // alink_more_details.href = "more-detail.html?id="+id;
     // f5c169c91bad0dc0780cb9bf7c61705dfeccf8
-
-
+    
+    
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
-
+    
     //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
     // var alink_remove = document.createElement("a");
     // var alink_remove_text = document.createTextNode('');
@@ -70,8 +70,8 @@ fetchreminderRef.on('child_added', function(snap){
     // alink_remove.setAttribute('class',"btn btn-primary");
     // alink_remove.setAttribute('class',"fa fa-trash");
     // alink_remove.href = "http://index.html?id="+id;
-
-
+    
+    
     title_cell.appendChild(title_value_cell);
     date_cell.appendChild(date_value_cell);
     time_cell.appendChild(time_value_cell);
