@@ -243,6 +243,19 @@
         .active{
             color: white !important;
         }
+        #loading{
+            position:fixed;
+            top:50px;
+            right:50px;
+            width:100%;
+            height:100%;
+            background-color:#666;
+            background-repeat:no-repeat;
+            background-position:center;
+            z-index:10000000;
+            opacity: 0.4;
+            filter: alpha(opacity=40);
+        }
     </style>
     
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -261,6 +274,7 @@
         </script> -->
     </head>
     <body>
+        <img src="https://media1.tenor.com/images/db85ba00c6073b451a8f05156a66524e/tenor.gif" id="loading_gif">
         <div class="main">
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -639,260 +653,260 @@
                                     </div>
                                     <script type="text/javascript">
                                         // $(function () {
-                                        //     $('#datetimepicker1').datetimepicker();
-                                        // });
-                                    </script>
-                                    <!-- <div class="form-group mt-4">
-                                        <input class="form-check-input" type="checkbox" id="checkbox624">
-                                        <label for="checkbox624" class="white-text form-check-label">
-                                            Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
-                                        </div> -->
-                                        <!--Grid row-->
-                                        <div class="row d-flex align-items-center mb-4">
-                                            
-                                            <!--Grid column-->
-                                            <div class="text-center mb-3 col-md-12">
-                                                <input type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1" value="ADD" onclick="addeventdata()">
+                                            //     $('#datetimepicker1').datetimepicker();
+                                            // });
+                                        </script>
+                                        <!-- <div class="form-group mt-4">
+                                            <input class="form-check-input" type="checkbox" id="checkbox624">
+                                            <label for="checkbox624" class="white-text form-check-label">
+                                                Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                                            </div> -->
+                                            <!--Grid row-->
+                                            <div class="row d-flex align-items-center mb-4">
+                                                
+                                                <!--Grid column-->
+                                                <div class="text-center mb-3 col-md-12">
+                                                    <input type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1" value="ADD" onclick="addeventdata()">
+                                                </div>
+                                                <!--Grid column-->
+                                                
                                             </div>
-                                            <!--Grid column-->
+                                            <!--Grid row-->
                                             
-                                        </div>
-                                        <!--Grid row-->
-                                        
-                                        
-                                        <!--Grid row-->
-                                        
-                                        <!--Grid row-->
-                                    </form>
+                                            
+                                            <!--Grid row-->
+                                            
+                                            <!--Grid row-->
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--/.Content-->
-                    </div>
-                </div>
-                <!-- Modal -->  
-                
-                
-                <br><br>
-                <footer class="footer">
-                    <div class="container">
-                        <div class="copyright" id="copyright">
-                            &copy;
-                            <script>
-                                document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                            </script>, Designed by
-                            <a href="#" target="_blank">Bhargav Borse</a>. Coded by
-                            <a href="#" target="_blank">Alkesh Kataria</a>.
+                            <!--/.Content-->
                         </div>
                     </div>
-                </footer>
-                
-                
-                <!--Adding Reminder-->
-                
-                <!--Database Reminder-->
-                
-                <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
-                <script>
-                    // Initialize Firebase
-                    var config = {
-                        apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
-                        authDomain: "reig-1538140691138.firebaseapp.com",
-                        databaseURL: "https://reig-1538140691138.firebaseio.com/",
-                        projectId: "reig-1538140691138",
-                        storageBucket: "reig-1538140691138.appspot.com",
-                        messagingSenderId: "76801264020"
-                    };
-                    firebase.initializeApp(config);
-                </script>
-                <script type="text/javascript" src="JS_Files_DB/index_main.js"></script>
-                
-                <script>
-                    // Get the modal
-                    // var modal = document.getElementById('myModal');
+                    <!-- Modal -->  
                     
-                    // // Get the image and insert it inside the modal - use its "alt" text as a caption
-                    // var img = document.getElementById('myImg');
-                    // var modalImg = document.getElementById("img01");
-                    // var captionText = document.getElementById("caption");
-                    // img.onclick = function(){
-                    //     modal.style.display = "block";
-                    //     modalImg.src = this.src;
-                    //     captionText.innerHTML = this.alt;
-                    // }
                     
-                    // // Get the <span> element that closes the modal
-                    //     var span = document.getElementsByClassName("close")[0];
-                        
-                    //     // When the user clicks on <span> (x), close the modal
-                    //         span.onclick = function() { 
-                    //             modal.style.display = "none";
-                    //         }
-                        </script>
-                        
-                        <script>
-                            function openNav() {
-                                document.getElementById("mySidenav").style.width = "250px";
-                                document.getElementById("main").style.marginLeft = "250px";
-                                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-                            }
-                            
-                            function closeNav() {
-                                document.getElementById("mySidenav").style.width = "0";
-                                
-                                minwidth = $('html').css('min-width');
-                                if(minwidth >= '450px'){
-                                    document.getElementById("main").style.marginLeft= "50";
-                                }
-                                else{
-                                    document.getElementById("main").style.marginLeft= "0";
-                                }
-                                document.body.style.backgroundColor = "white";
-                            }
-                        </script>
-                        <!--   Core JS Files   -->
-                        <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-                        <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-                        <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-                        <script src="assets/js/plugins/moment.min.js" type="text/javascript"></script>
-                        <--  Google Maps Plugin    -->
-                        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
-                        
-                        
-                        <!--   Core JS Files   -->
-                        <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script> -->
-                        <!-- <script src="assets/js/core/popper.min.js" type="text/javascript"></script> -->
-                        <!-- <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-                        <script src="assets/js/plugins/moment.min.js"></script> -->
-                        <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-                        <!-- <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script> -->
-                        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-                        <!-- <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script> -->
-                        <!--	Plugin for Sharrre btn -->
-                        <!-- <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script> -->
-                        <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-                        <!-- <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-                        <script src="lightbox/dist/js/lightbox-plus-jquery.min.js"></script> -->
-                        <script>
-                            // $(document).ready(function() {
-                                //init DateTimePickers
-                                // materialKit.initFormExtendedDatetimepickers();
-                                
-                                // Sliders Init
-                        //         materialKit.initSliders();
-                        //     });
-                            
-                            
-                        //     function scrollToDownload() {
-                        //         if ($('.section-download').length != 0) {
-                        //             $("html, body").animate({
-                        //                 scrollTop: $('.section-download').offset().top
-                        //             }, 1000);
-                        //         }
-                        //     }
-                            
-                        //     $(document).ready(function() {
-                        //         // the body of this function is in assets/js/now-ui-kit.js
-                        //         nowuiKit.initSliders();
-                        //     });
-                            
-                        //     function scrollToDownload() {
-                                
-                        //         if ($('.section-download').length != 0) {
-                        //             $("html, body").animate({
-                        //                 scrollTop: $('.section-download').offset().top
-                        //             }, 1000);
-                        //         }
-                        //     }
-                            
-                        //     $(document).ready(function() {
-                                
-                        //         $('#facebook').sharrre({
-                        //             share: {
-                        //                 facebook: true
-                        //             },
-                        //             enableHover: false,
-                        //             enableTracking: false,
-                        //             enableCounter: false,
-                        //             click: function(api, options) {
-                        //                 api.simulateClick();
-                        //                 api.openPopup('facebook');
-                        //             },
-                        //             template: '<i class="fab fa-facebook-f"></i> Facebook',
-                        //             url: 'https://demos.creative-tim.com/material-kit/index.html'
-                        //         });
-                                
-                        //         $('#googlePlus').sharrre({
-                        //             share: {
-                        //                 googlePlus: true
-                        //             },
-                        //             enableCounter: false,
-                        //             enableHover: false,
-                        //             enableTracking: true,
-                        //             click: function(api, options) {
-                        //                 api.simulateClick();
-                        //                 api.openPopup('googlePlus');
-                        //             },
-                        //             template: '<i class="fab fa-google-plus"></i> Google',
-                        //             url: 'https://demos.creative-tim.com/material-kit/index.html'
-                        //         });
-                                
-                        //         $('#twitter').sharrre({
-                        //             share: {
-                        //                 twitter: true
-                        //             },
-                        //             enableHover: false,
-                        //             enableTracking: false,
-                        //             enableCounter: false,
-                        //             buttons: {
-                        //                 twitter: {
-                        //                     via: 'CreativeTim'
-                        //                 }
-                        //             },
-                        //             click: function(api, options) {
-                        //                 api.simulateClick();
-                        //                 api.openPopup('twitter');
-                        //             },
-                        //             template: '<i class="fab fa-twitter"></i> Twitter',
-                        //             url: 'https://demos.creative-tim.com/material-kit/index.html'
-                        //         });
-                                
-                        //     });
-                        </script>
-                        <script>
-                        //     function InvalidMsg(textbox) {
-                                
-                        //         if (textbox.value == '') {
-                        //             textbox.setCustomValidity('Title Required');
-                        //         }
-                        //         else if(textbox.validity.typeMismatch){
-                        //             textbox.setCustomValidity('please enter a valid email address');
-                        //         }
-                        //         else {
-                        //             textbox.setCustomValidity('');
-                        //         }
-                        //         return true;
-                        //     }
-                        // </script>
-                        // <!-- <script>
-                        //     function myFunction() {
-                        //         var table = document.getElementById("myTable");
-                        //         var reminderform =  document.getElementById("reminderform");
-                        //         var title = reminderform.getElementById("title").value;
-                        //         var row = table.insertRow(0);
-                        //         var cell1 = row.insertCell(0);
-                        //         var cell2 = row.insertCell(1);
-                        //         var cell3 = row.insertCell(2);
-                        //         cell1.innerHTML = title;
-                        //         cell2.innerHTML = "NEW CELL2";
-                        //         cell3.innerHTML = "NEW CELL BLAH"
-                        //     }
-                        // </script> -->
-                        
-                    </body>
-                    </html> 
+                    <br><br>
+                    <footer class="footer">
+                        <div class="container">
+                            <div class="copyright" id="copyright">
+                                &copy;
+                                <script>
+                                    document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                                </script>, Designed by
+                                <a href="#" target="_blank">Bhargav Borse</a>. Coded by
+                                <a href="#" target="_blank">Alkesh Kataria</a>.
+                            </div>
+                        </div>
+                    </footer>
                     
+                    
+                    <!--Adding Reminder-->
+                    
+                    <!--Database Reminder-->
+                    
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+                    <script>
+                        // Initialize Firebase
+                        var config = {
+                            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+                            authDomain: "reig-1538140691138.firebaseapp.com",
+                            databaseURL: "https://reig-1538140691138.firebaseio.com/",
+                            projectId: "reig-1538140691138",
+                            storageBucket: "reig-1538140691138.appspot.com",
+                            messagingSenderId: "76801264020"
+                        };
+                        firebase.initializeApp(config);
+                    </script>
+                    <script type="text/javascript" src="JS_Files_DB/index_main.js"></script>
+                    
+                    <script>
+                        // Get the modal
+                        // var modal = document.getElementById('myModal');
+                        
+                        // // Get the image and insert it inside the modal - use its "alt" text as a caption
+                        // var img = document.getElementById('myImg');
+                        // var modalImg = document.getElementById("img01");
+                        // var captionText = document.getElementById("caption");
+                        // img.onclick = function(){
+                            //     modal.style.display = "block";
+                            //     modalImg.src = this.src;
+                            //     captionText.innerHTML = this.alt;
+                            // }
+                            
+                            // // Get the <span> element that closes the modal
+                                //     var span = document.getElementsByClassName("close")[0];
+                                
+                                //     // When the user clicks on <span> (x), close the modal
+                                    //         span.onclick = function() { 
+                                        //             modal.style.display = "none";
+                                        //         }
+                                    </script>
+                                    
+                                    <script>
+                                        function openNav() {
+                                            document.getElementById("mySidenav").style.width = "250px";
+                                            document.getElementById("main").style.marginLeft = "250px";
+                                            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+                                        }
+                                        
+                                        function closeNav() {
+                                            document.getElementById("mySidenav").style.width = "0";
+                                            
+                                            minwidth = $('html').css('min-width');
+                                            if(minwidth >= '450px'){
+                                                document.getElementById("main").style.marginLeft= "50";
+                                            }
+                                            else{
+                                                document.getElementById("main").style.marginLeft= "0";
+                                            }
+                                            document.body.style.backgroundColor = "white";
+                                        }
+                                    </script>
+                                    <!--   Core JS Files   -->
+                                    <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+                                        <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+                                        <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                                        <script src="assets/js/plugins/moment.min.js" type="text/javascript"></script>
+                                        <--  Google Maps Plugin    -->
+                                        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+                                        
+                                        
+                                        <!--   Core JS Files   -->
+                                        <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script> -->
+                                        <!-- <script src="assets/js/core/popper.min.js" type="text/javascript"></script> -->
+                                        <!-- <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+                                            <script src="assets/js/plugins/moment.min.js"></script> -->
+                                            <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+                                            <!-- <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script> -->
+                                            <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                                            <!-- <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script> -->
+                                            <!--	Plugin for Sharrre btn -->
+                                            <!-- <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script> -->
+                                            <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+                                            <!-- <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                                                <script src="lightbox/dist/js/lightbox-plus-jquery.min.js"></script> -->
+                                                <script>
+                                                    // $(document).ready(function() {
+                                                        //init DateTimePickers
+                                                        // materialKit.initFormExtendedDatetimepickers();
+                                                        
+                                                        // Sliders Init
+                                                        //         materialKit.initSliders();
+                                                        //     });
+                                                        
+                                                        
+                                                        //     function scrollToDownload() {
+                                                            //         if ($('.section-download').length != 0) {
+                                                                //             $("html, body").animate({
+                                                                    //                 scrollTop: $('.section-download').offset().top
+                                                                    //             }, 1000);
+                                                                    //         }
+                                                                    //     }
+                                                                    
+                                                                    //     $(document).ready(function() {
+                                                                        //         // the body of this function is in assets/js/now-ui-kit.js
+                                                                        //         nowuiKit.initSliders();
+                                                                        //     });
+                                                                        
+                                                                        //     function scrollToDownload() {
+                                                                            
+                                                                            //         if ($('.section-download').length != 0) {
+                                                                                //             $("html, body").animate({
+                                                                                    //                 scrollTop: $('.section-download').offset().top
+                                                                                    //             }, 1000);
+                                                                                    //         }
+                                                                                    //     }
+                                                                                    
+                                                                                    //     $(document).ready(function() {
+                                                                                        
+                                                                                        //         $('#facebook').sharrre({
+                                                                                            //             share: {
+                                                                                                //                 facebook: true
+                                                                                                //             },
+                                                                                                //             enableHover: false,
+                                                                                                //             enableTracking: false,
+                                                                                                //             enableCounter: false,
+                                                                                                //             click: function(api, options) {
+                                                                                                    //                 api.simulateClick();
+                                                                                                    //                 api.openPopup('facebook');
+                                                                                                    //             },
+                                                                                                    //             template: '<i class="fab fa-facebook-f"></i> Facebook',
+                                                                                                    //             url: 'https://demos.creative-tim.com/material-kit/index.html'
+                                                                                                    //         });
+                                                                                                    
+                                                                                                    //         $('#googlePlus').sharrre({
+                                                                                                        //             share: {
+                                                                                                            //                 googlePlus: true
+                                                                                                            //             },
+                                                                                                            //             enableCounter: false,
+                                                                                                            //             enableHover: false,
+                                                                                                            //             enableTracking: true,
+                                                                                                            //             click: function(api, options) {
+                                                                                                                //                 api.simulateClick();
+                                                                                                                //                 api.openPopup('googlePlus');
+                                                                                                                //             },
+                                                                                                                //             template: '<i class="fab fa-google-plus"></i> Google',
+                                                                                                                //             url: 'https://demos.creative-tim.com/material-kit/index.html'
+                                                                                                                //         });
+                                                                                                                
+                                                                                                                //         $('#twitter').sharrre({
+                                                                                                                    //             share: {
+                                                                                                                        //                 twitter: true
+                                                                                                                        //             },
+                                                                                                                        //             enableHover: false,
+                                                                                                                        //             enableTracking: false,
+                                                                                                                        //             enableCounter: false,
+                                                                                                                        //             buttons: {
+                                                                                                                            //                 twitter: {
+                                                                                                                                //                     via: 'CreativeTim'
+                                                                                                                                //                 }
+                                                                                                                                //             },
+                                                                                                                                //             click: function(api, options) {
+                                                                                                                                    //                 api.simulateClick();
+                                                                                                                                    //                 api.openPopup('twitter');
+                                                                                                                                    //             },
+                                                                                                                                    //             template: '<i class="fab fa-twitter"></i> Twitter',
+                                                                                                                                    //             url: 'https://demos.creative-tim.com/material-kit/index.html'
+                                                                                                                                    //         });
+                                                                                                                                    
+                                                                                                                                    //     });
+                                                                                                                                </script>
+                                                                                                                                <script>
+                                                                                                                                    //     function InvalidMsg(textbox) {
+                                                                                                                                        
+                                                                                                                                        //         if (textbox.value == '') {
+                                                                                                                                            //             textbox.setCustomValidity('Title Required');
+                                                                                                                                            //         }
+                                                                                                                                            //         else if(textbox.validity.typeMismatch){
+                                                                                                                                                //             textbox.setCustomValidity('please enter a valid email address');
+                                                                                                                                                //         }
+                                                                                                                                                //         else {
+                                                                                                                                                    //             textbox.setCustomValidity('');
+                                                                                                                                                    //         }
+                                                                                                                                                    //         return true;
+                                                                                                                                                    //     }
+                                                                                                                                                    // </script>
+                                                                                                                                                    // <!-- <script>
+                                                                                                                                                        //     function myFunction() {
+                                                                                                                                                            //         var table = document.getElementById("myTable");
+                                                                                                                                                            //         var reminderform =  document.getElementById("reminderform");
+                                                                                                                                                            //         var title = reminderform.getElementById("title").value;
+                                                                                                                                                            //         var row = table.insertRow(0);
+                                                                                                                                                            //         var cell1 = row.insertCell(0);
+                                                                                                                                                            //         var cell2 = row.insertCell(1);
+                                                                                                                                                            //         var cell3 = row.insertCell(2);
+                                                                                                                                                            //         cell1.innerHTML = title;
+                                                                                                                                                            //         cell2.innerHTML = "NEW CELL2";
+                                                                                                                                                            //         cell3.innerHTML = "NEW CELL BLAH"
+                                                                                                                                                            //     }
+                                                                                                                                                            // </script> -->
+                                                                                                                                                            
+                                                                                                                                                        </body>
+                                                                                                                                                        </html> 
+                                                                                                                                                        

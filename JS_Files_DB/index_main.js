@@ -1,5 +1,6 @@
 var eventRef = firebase.database().ref('users');
-var fetchreminderRef = firebase.database().ref('users')
+var fetchreminderRef = firebase.database().ref('users');
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
@@ -25,12 +26,12 @@ firebase.auth().onAuthStateChanged(function(user) {
             var id = snap.key;
             // var id = snap.val();
             // var id_id = Object.elements(id);
-        
+            
             var tableRef = document.getElementById('remindertable').getElementsByTagName('tbody')[0];
-        
+            
             // Insert a row in the table at the last row
             var newRow   = tableRef.insertRow(tableRef.rows.length);
-        
+            
             // Insert a cell in the row at index 0
             var title_cell = newRow.insertCell(0);
             var date_cell = newRow.insertCell(1);
@@ -43,29 +44,29 @@ firebase.auth().onAuthStateChanged(function(user) {
             var date_value_cell = document.createTextNode(date_reminder_fetch);
             var time_value_cell = document.createTextNode(time_reminder_fetch);
             var id_value_cell = document.createTextNode(id);
-        
-        
+            
+            
             var alink_more_details = document.createElement("a");
             var alink_more_details_text = document.createTextNode('');
             alink_more_details.appendChild(alink_more_details_text);
             // alink.setAttribute("href","http://index.html");
             alink_more_details.setAttribute('class',"btn btn-primary")
             alink_more_details.setAttribute('class',"fa fa-info")
-        
+            
             //alink_more_details.href = "more-detail.html?id="+id;
-        
+            
             alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
             // d18354b4120a4ec1e9021823058e823e27b0b7ce
-        
+            
             // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
             // d18354b4120a4ec1e9021823058e823e27b0b7ce
-        
+            
             // alink_more_details.href = "more-detail.html?id="+id;
             // f5c169c91bad0dc0780cb9bf7c61705dfeccf8
-        
-        
+            
+            
             //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
-        
+            
             //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
             // var alink_remove = document.createElement("a");
             // var alink_remove_text = document.createTextNode('');
@@ -74,16 +75,19 @@ firebase.auth().onAuthStateChanged(function(user) {
             // alink_remove.setAttribute('class',"btn btn-primary");
             // alink_remove.setAttribute('class',"fa fa-trash");
             // alink_remove.href = "http://index.html?id="+id;
-        
-        
+            
+            
             title_cell.appendChild(title_value_cell);
             date_cell.appendChild(date_value_cell);
             time_cell.appendChild(time_value_cell);
             more_details_cell.appendChild(alink_more_details);
             //remove_cell.appendChild(alink_remove);
             id_cell = appendChild(id_value_cell);
+            
+            
         });
-        
+        var img = document.getElementById('loading_gif');
+        img.style.visibility = 'hidden';
         // store reminder
         document.getElementById('btn_reminder_add').onclick = function(){
             var reminder_title_val = document.getElementById('reminder_title').value;
