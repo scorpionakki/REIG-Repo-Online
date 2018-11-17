@@ -33,7 +33,8 @@ function signupinsertion(){
             firebaseRef.child(user.uid).child('details').set({
                 "phone" : phone_val,
                 "profpic_FileName" : "null",
-                "description" : description_val
+                "description" : description_val,
+                "email" : user.email
             });
             
             if((confirm("Sure with your details?"))){
