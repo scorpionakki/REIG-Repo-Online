@@ -1,0 +1,71 @@
+<html>
+<head>
+    
+</head>
+<style>
+    [aria-hidden="true"] {
+        display: none;
+        visibility: hidden;
+    }
+</style>
+<body>
+    <span class="js-currentVersion" aria-hidden="true">3.9.5</span>
+    <input type="submit" value="Click" onclick="getNoti();">
+    <script>
+        function getNoti(){
+            (function() {
+                // Check permissions
+                if ("Notification" in window) {
+                    var permission = Notification.permission;
+                    
+                    if (permission === "denied") { 
+                        return;
+                    } else if (permission === "granted") { 
+                        return checkVersion();
+                    }
+                    
+                    Notification.requestPermission().then(function() {
+                        checkVersion();
+                    });
+                }
+                
+                function checkVersion() {
+                    // Retrieve current version
+                    // var latestVersion = document.querySelector(".js-currentVersion").textContent;
+                    // var currentVersion = localStorage.getItem("conciseVersion");
+                          
+                        displayNotification(
+                        `Body`,
+                        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/concise-logo.png",
+                        "Title",
+                        1000
+                        );
+                        
+                        //localStorage.setItem("conciseVersion", latestVersion);
+                    
+                }
+                
+                function displayNotification(body, icon, title, duration) {
+                     // Default duration is 5 seconds
+                    
+                    var options = {
+                        body: body,
+                        icon: icon
+                    };
+                    
+                    var n = new Notification(title, options);
+                    
+                    // if (link) {
+                    //     n.onclick = function () {
+                    //         window.open(link);
+                    //     };
+                    // }
+                    
+                    setTimeout(n.close.bind(n), duration);
+                }
+            }());
+        }
+        
+    </script>
+</body>
+</html>
