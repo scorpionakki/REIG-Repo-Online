@@ -224,6 +224,19 @@
             .modal-content {
                 width: 100%;
             }
+            .loading_gif{
+            position:fixed;
+            top:50% !important;
+            right:40% !important;
+            width:20% !important;
+            height:10% !important;
+            /* background-color:black; */
+            background-repeat:repeat;
+            background-position:center;
+            z-index:10000000;
+            opacity: 1;
+            filter: alpha(opacity=40);
+        }
         }
         
         .btn-primary{
@@ -243,17 +256,17 @@
         .active{
             color: white !important;
         }
-        #loading{
+        #loading_gif{
             position:fixed;
-            top:50px;
-            right:50px;
-            width:100%;
-            height:100%;
-            background-color:#666;
-            background-repeat:no-repeat;
+            top:55%;
+            right:50%;
+            width:5%;
+            height:10%;
+            /* background-color:black; */
+            background-repeat:repeat;
             background-position:center;
             z-index:10000000;
-            opacity: 0.4;
+            opacity: 1;
             filter: alpha(opacity=40);
         }
     </style>
@@ -274,7 +287,6 @@
         </script> -->
     </head>
     <body>
-        <img src="https://media1.tenor.com/images/db85ba00c6073b451a8f05156a66524e/tenor.gif" id="loading_gif">
         <div class="main">
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -345,6 +357,7 @@
                                         <th></th>
                                         <th></th>
                                     </tr>
+                                    <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
                                 </thead>
                                 <tbody>
                                     
