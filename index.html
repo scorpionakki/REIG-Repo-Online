@@ -28,7 +28,106 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="lightbox/dist/css/lightbox.min.css">
+
+
+   
+    <!-- <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" /> -->
+    
     <style>
+
+        footer {
+  padding: 0.9375rem 0;
+  text-align: center;
+  display: -webkit-flex;
+  /* Safari */
+  /* Safari 6.1+ */
+  display: flex;
+}
+
+footer ul {
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer ul li {
+  display: inline-block;
+}
+
+footer ul li a {
+  color: inherit;
+  padding: 0.9375rem;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+
+footer ul li a:hover {
+  text-decoration: none;
+}
+
+footer ul li .btn {
+  margin: 0;
+}
+
+footer ul.links-horizontal:first-child a {
+  padding-left: 0;
+}
+
+footer ul.links-horizontal:last-child a {
+  padding-right: 0;
+}
+
+footer ul.links-vertical li {
+  display: block;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+footer ul.links-vertical li a {
+  padding: 5px;
+}
+
+footer .social-buttons a,
+footer .social-buttons .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+footer .footer-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-left: -15px;
+}
+
+footer .footer-brand:hover,
+footer .footer-brand:focus {
+  color: #3C4858;
+}
+
+footer .copyright {
+  padding: 15px 0;
+}
+
+footer .copyright .material-icons {
+  font-size: 18px;
+  position: relative;
+  top: 3px;
+}
+
+footer .pull-center {
+  display: inline-block;
+  float: none;
+}
+
+
         body {
             font-family: "Lato", sans-serif; 
             overflow-x: hidden;
@@ -295,11 +394,11 @@
                 <a href="event.html">Event</a>
                 <a href="group.html">Group</a>
                 <a href="saved-images.html">Saved Images</a>
-                <a id="session_result" href="user-setting.html"></a>
+                <a id="user_email" href="user-setting.html"></a>
                 <a href="">Exit</a>
-                <script>
+                <!-- <script>
                     document.getElementById("session_result").innerHTML = sessionStorage.getItem("username");
-                </script>
+                </script> -->
             </div>
             <div>
                 <div class="row" style="background-color: black; color: white;">
@@ -713,6 +812,27 @@
                             </div>
                         </div>
                     </footer>
+
+
+                    <!--   Core JS Files   -->
+                    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+                    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+                    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+                    <script src="assets/js/plugins/moment.min.js"></script>
+                    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+                    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+                    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                    <!--	Plugin for Sharrre btn -->
+                    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+                    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+                    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                    
+                    
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
                     
                     
                     <!--Adding Reminder-->
@@ -905,7 +1025,7 @@
                                                                                                                                                     //         return true;
                                                                                                                                                     //     }
                                                                                                                                                     // </script>
-                                                                                                                                                    // <!-- <script>
+                                                                                                                                                     <!-- <script>
                                                                                                                                                         //     function myFunction() {
                                                                                                                                                             //         var table = document.getElementById("myTable");
                                                                                                                                                             //         var reminderform =  document.getElementById("reminderform");
