@@ -2,6 +2,12 @@ var databaseRef = firebase.database().ref().child('users');
 var databaseRef_group = firebase.database().ref().child('groups');
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+        var table_currentUser = document.getElementById("table_addedmembers");
+        var row_currentuser = table_currentUser.insertRow(1);
+        var cell1_user = row_currentuser.insertCell(0);
+        cell1_user.innerHTML = user.email;
+        
+        
         document.getElementById('search_member_btn').onclick = function(){
             var input_value = document.getElementById('search_value').value;
             
@@ -25,8 +31,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 var cell1 = row.insertCell(0);
                                 var cell2 = row.insertCell(1);
                                 
-                                
-                                
                                 var alink_more_details = document.createElement("button");
                                 var alink_more_details_text = document.createTextNode('ADD');
                                 alink_more_details.appendChild(alink_more_details_text);
@@ -39,7 +43,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 
                                 // alink_more_details.href = "#table_addedmembers?id="+id;
                                 
-                                
                                 cell1.innerHTML = email.val();
                                 cell2.appendChild(alink_more_details);
                                 
@@ -47,7 +50,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 hidden_field.setAttribute("type","hidden");
                                 hidden_field.setAttribute("id","hidden_value");
                                 document.body.appendChild(hidden_field);
-                                
                                 
                                 document.getElementById('hidden_value').value = email.val();
                                 
@@ -74,19 +76,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             
             databaseRef.on('value',function(snap){
-                
-                
                 if(snap.val() == null){
                     window.alert("No such user exist");
                 }
-                else
-                {
-                    
-                }
-                
-                
-                
-                
             });
             
         };
@@ -97,59 +89,150 @@ firebase.auth().onAuthStateChanged(function(user) {
             //     //window.alert('Name already taken! Please try with some different name');
             //     console.log('Name already taken');
             // });
-            databaseRef_group.on('value',function(snap){
-                var group_names = snap.val();
-                var keys = Object.keys(group_names);
-                
-                for(var i = 0; i< keys.length;i++){
-                    if(group_name == keys[i])
-                    {
-                        alert('Same group name already exists! Please try again with different name');
-                        window.location = "contact-page.html";
-                        
-                    }
-                    else
-                    {
-                        var group_description = document.getElementById('group_description').value;
-                        
-                        databaseRef_group.child(group_name).child('details').set({
-                            description : group_description,
-                            created_by : user.email
-                        });
-                        
-                        
-                        var table = document.getElementById('table_addedmembers');
-                        // var row = table.insertRow(1);
-                        // var cell1 = row.insertCell(0);
-                        // cell1.innerHTML = user.email;
-                        for(var i=1;i<table.rows.length;i++){
-                            var value = table.rows[i].cells[0].innerHTML;
-                            var member = "member"+i;
-                            databaseRef_group.child(group_name).child('members').push({
-                                member : value 
-                            });
-                        }
-
-                        console.log('Member added');
-                        break;
-                    }
-                    
-                    console.log('In loop');
-                }
-                console.log('Out of loop');
-                // if(flag == 1){
-                //     alert('Same Name Exists! Please try again with different name');
-                //     return false;
-                // }
-                // else
-                // {
-                // var group_pic = document.getElementById('group_pic').value;
-                
-                
-                
+            
+            var groupID = databaseRef_group.push().getKey();
+            var group_description = document.getElementById('group_description').value;
+            
+            databaseRef_group.child(groupID).child(group_name).child('details').set({
+                created_by : user.email,
+                group_description : group_description
             });
             
+            
+            var table = document.getElementById('table_addedmembers');
+            for(var i=1;i<table.rows.length;i++){
+                var table_cell_value_email = table.rows[i].cells[0].innerHTML;
+                
+                    databaseRef_group.child(groupID).child(group_name).child('members').push({
+                        member : table_cell_value_email
+                    });
+                    console.log('Member details added in group');
+                
+            }
+            
+            // databaseRef.on('value',function(snapshot_user_keys){
+            //     var users_key = snapshot_user_keys.val();
+            //     var keys =  Object.keys(users_key);
+                
+            //     for(var j=1;j<keys.length;j++){
+            //         databaseRef.child(keys[j]).child('details').child('email').on('value',function(email){
+                        
+                        
+            //         });
+            //     }
+                
+                
+                
+            // });
+            
+            
+            // function addgroupintouser(keys_para,i_para,group_name_para,groupID_para){
+            //     databaseRef.child(keys_para[i_para]).child('groups').push({
+            //         group : group_name_para,
+            //         ID : groupID_para
+            //     });
+                
+            //     break;
+            // }
+            //     // databaseRef.on('value',function(snap){
+            //     //     var users = snap.val();
+            //     //     var keys = Object.keys(users);
+            
+            //     //     for(var j = 0; j< keys.length;j++){
+            //     //         databaseRef.child(keys[j]).child('details').child('email').on('value',function(email){
+            //     //             if(value == email.val()){
+            //     //                 databaseRef.child(keys[j]).child('groups').push({
+            //     //                     group_name_key : group_name
+            //     //                 });
+            
+            //     //             }
+            //     //         });
+            //     //     }
+            //     // });
+            // }
+            
+            
             return false;
+            //window.location = 'contact-page.html?gn='+group_name;
+            // databaseRef_group.on('value',function(snap){
+            //     var group_names = snap.val();
+            //     var keys = Object.keys(group_names);
+            
+            //     // keys.forEach(function(group_name_foreach){
+            //     //     if(group_name == group_name_foreach){
+            //     //         alert('Same group name already exists! Please try again with different name');
+            //     //         window.location = "contact-page.html";
+            
+            //     //     }
+            //     //     else
+            //     //     {
+            //     //         console.log('Match not found');
+            //     //     }
+            //     // });
+            
+            //     // for(var i = 0; i< keys.length;i++){
+            //     //     if(group_name == keys[i])
+            //     //     {
+            //     //         alert('Same group name already exists! Please try again with different name');
+            //     //         window.location.replace = "contact-page.html";
+            
+            //     //     }
+            //     //     else
+            //     //     {
+            //     //         var group_description = document.getElementById('group_description').value;
+            
+            //     //         databaseRef_group.child(group_name).child('details').set({
+            //     //             description : group_description,
+            //     //             created_by : user.email
+            //     //         });
+            
+            
+            //     //         var table = document.getElementById('table_addedmembers');
+            
+            //     //         for(var i=1;i<table.rows.length;i++){
+            //     //             var value = table.rows[i].cells[0].innerHTML;
+            //     //             // var member = "member"+i;
+            //     //             databaseRef_group.child(group_name).child('members').push({
+            //     //                 member : value 
+            //     //             });
+            
+            //     //             databaseRef.on('value',function(snap){
+            //     //                 var users = snap.val();
+            //     //                 var keys = Object.keys(users);
+            
+            //     //                 for(var j = 0; j< keys.length;j++){
+            //     //                     databaseRef.child(keys[j]).child('details').child('email').on('value',function(email){
+            //     //                         if(value == email.val()){
+            //     //                             databaseRef.child(keys[j]).child('groups').push({
+            //     //                                 group_name : group_name
+            //     //                             });
+            
+            //     //                         }
+            //     //                     });
+            //     //                 }
+            //     //             });
+            //     //         }
+            
+            //     //         window.alert('Group Created');
+            //     //         window.location = 'group.html?grpid='+group_name;
+            //     //     }
+            //     //     break;
+            
+            //     // }
+            
+            //     // // if(flag == 1){
+            //     //     alert('Same Name Exists! Please try again with different name');
+            //     //     return false;
+            //     // }
+            //     // else
+            //     // {
+            //     // var group_pic = document.getElementById('group_pic').value;
+            
+            
+            
+            // });
+            
+            
             
         };
     }
@@ -187,7 +270,3 @@ function add_member_in_table_addedmembers(){
 }
 
 // var databaseRef = firebase.database().ref('groups');
-
-function creategroup(){
-    
-}

@@ -1,4 +1,5 @@
 var eventRef = firebase.database().ref('users');
+var groupRef = firebase.database().ref('groups');
 var fetchreminderRef = firebase.database().ref('users');
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -86,6 +87,47 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             
         });
+
+        //fetch group name
+        groupRef.on('value',function(snapshot){
+            var groupIDs = snapshot.val();
+            var keys = Object.keys(groupIDs);
+
+            for(var i=0;i<keys.length;i++)
+            {
+                groupRef.child(keys[i]).on('value',function(snapshot_gn){
+                    console.log(keys[i]);
+                    var groupname = snapshot_gn.val();
+                    var keysgroupname = Object.keys(groupname);
+                    groupRef.child(keys[i]).child(keysgroupname[0]).child('members').on('value',function(snapshot_mem){
+                        var members_id = snapshot_mem.val();
+                        var keysmembers_id = Object.keys(members_id);
+                        for(var j=0;j<keysmembers_id.length;j++){
+                            console.log(keysmembers_id[j]);
+                            groupRef.child(keys[i]).child(keysgroupname[0]).child('members').child(keysmembers_id[j]).on('value',function(email_snapshot){
+                                var emails = email_snapshot.val();
+                                console.log(emails.member);
+                                if(emails.member == user.email)
+                                {
+                                    console.log('Match Found' + keysgroupname[0]);
+                                    var table = document.getElementById('group_table');
+                                    var row = table.insertRow(1);
+                                    var cell1 = row.insertCell(0);
+                                    
+                                    var alink_group_name = document.createElement('a');
+                                    alink_group_name_text = document.createTextNode(keysgroupname[0]);
+                                    alink_group_name.appendChild(alink_group_name_text);
+                                    alink_group_name.setAttribute('href','group.html?name='+keysgroupname[0]+'&id='+keys[i]);
+
+                                    cell1.appendChild(alink_group_name);
+                                }
+                            });
+                        }
+                    });
+                }); 
+            }
+        });
+
         var img = document.getElementById('loading_gif');
         img.style.visibility = 'hidden';
         // store reminder
