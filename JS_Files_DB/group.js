@@ -22,6 +22,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var row2 = table.insertRow(0);
                     var cell_row2 = row2.insertCell(0);
                     var cell2_row2 = row2.insertCell(1);
+                    var cell3_row2 = row2.insertCell(2);
                     //var cell3_row2 = row2.insertCell(2);
                     
                     var div_creation = document.createElement('div');
@@ -29,16 +30,18 @@ firebase.auth().onAuthStateChanged(function(user) {
                     row2.appendChild(div_creation);
 
                     var h5_creation = document.createElement('h5');
-                    var h5_creation_text = document.createTextNode(message_content.sent_by);
+                    var h5_creation_text = document.createTextNode(message_content.content);
                     h5_creation.appendChild(h5_creation_text);
 
                     cell_row2.appendChild(h5_creation);
+           
+                    cell2_row2.innerHTML ="&nbsp; &nbsp;";
                     
                     var p_creation = document.createElement('p');
-                    var p_creation_text = document.createTextNode(message_content.content);
+                    var p_creation_text = document.createTextNode(message_content.sent_by);
                     p_creation.appendChild(p_creation_text);
 
-                    cell2_row2.appendChild(p_creation);
+                    cell3_row2.appendChild(p_creation);
                     // cell_row2.innerHTML =  message_content.sent_by;
                     //cell2_row2.innerHTML = " - ";
                     //cell3_row2.innerHTML = message_content.content;
