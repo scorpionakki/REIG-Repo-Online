@@ -396,10 +396,9 @@
                 <a href="index.html" class="active">Home</a>
                 <a href="reminder.html">Reminder</a>
                 <a href="event.html">Event</a>
-                <a href="group.html">Group</a>
                 <a href="saved-images.html">Saved Images</a>
                 <a id="user_email"></a>
-                <a href="">Exit</a>
+                <a href="" style="margin-left:4% !important;"><li>Logout</li></a>
                 <!-- <script>
                     document.getElementById("session_result").innerHTML = sessionStorage.getItem("username");
                 </script> -->
@@ -414,7 +413,7 @@
                     </div>
                 </div>
             </div>
-            <br><br><br><br><br>
+            <br><br>
             
             <div class="" id="main">
                 <div class="row">
@@ -718,9 +717,10 @@
                                 
                                 <form method="POST" id="eventform">
                                     <!--Body-->
-                                    <div class="md-form mb-5">
+                                    <div class="md-form mb-5" id="title_div"> 
                                         <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
                                         <input type="text" id="event_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control" required>
+                                        <div id="title_error"></div>
                                     </div>
                                     
                                     <div class="md-form pb-3">
@@ -759,7 +759,8 @@
                                                 
                                                 <!--Grid column-->
                                                 <div class="text-center mb-3 col-md-12">
-                                                    <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_event_add">ADD</button>
+                                                    <!-- <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_event_add">ADD</button> -->
+                                                    <input type="submit" value="ADD" id="btn_event_add">
                                                 </div>
                                                 <!--Grid column-->
                                                 
@@ -859,7 +860,7 @@
                                     
                                     <script>
                                         function openNav() {
-                                            document.getElementById("mySidenav").style.width = "250px";
+                                            document.getElementById("mySidenav").style.width = "auto";
                                             document.getElementById("main").style.marginLeft = "250px";
                                             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
                                         }

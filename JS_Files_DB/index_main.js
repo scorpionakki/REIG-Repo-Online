@@ -92,8 +92,11 @@ firebase.auth().onAuthStateChanged(function(user) {
             id_cell = appendChild(id_value_cell);
             
             
+        },function(error){
+            alert('There was some error! Please Try Again');
+            document.location.reload(true);
         });
-
+        
         //fetch event details
         eventRef2 = eventRef2.child(user.uid).child('events');
         
@@ -163,13 +166,16 @@ firebase.auth().onAuthStateChanged(function(user) {
             id_cell = appendChild(id_value_cell);
             
             
+        },function(error){
+            alert('There was some error');
+            document.location.reload(true);
         });
-
+        
         //fetch group name
         groupRef.on('value',function(snapshot){
             var groupIDs = snapshot.val();
             var keys = Object.keys(groupIDs);
-
+            
             for(var i=0;i<keys.length;i++)
             {
                 groupRef.child(keys[i]).on('value',function(snapshot_gn){
@@ -195,7 +201,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     alink_group_name_text = document.createTextNode(keysgroupname[0]);
                                     alink_group_name.appendChild(alink_group_name_text);
                                     alink_group_name.setAttribute('href','group.html?name='+keysgroupname[0]+'&id='+keys[i]);
-
+                                    
                                     cell1.appendChild(alink_group_name);
                                 }
                             });
@@ -203,8 +209,11 @@ firebase.auth().onAuthStateChanged(function(user) {
                     });
                 }); 
             }
+        },function(error){
+            alert('There was some error');
+            document.location.reload(true);
         });
-
+        
         var img = document.getElementById('loading_gif');
         img.style.visibility = 'hidden';
         // store reminder
@@ -219,6 +228,10 @@ firebase.auth().onAuthStateChanged(function(user) {
             var reminder_ampm_only = reminder_datetime_split[2];
             var reminder_fulltime_only = reminder_time_only + " " + reminder_ampm_only;
             
+            if(reminder_title_val == ""){
+                eventRef.preventDefault();
+            }
+
             eventRef.child(user.uid).child('reminders').push({
                 title : reminder_title_val,
                 content : reminder_content_val,
@@ -229,7 +242,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             console.log('Done');
         };
-
+        
         //store event
         document.getElementById('btn_event_add').onclick = function(){
             var event_title_val = document.getElementById('event_title').value;
@@ -241,6 +254,10 @@ firebase.auth().onAuthStateChanged(function(user) {
             var event_time_only = event_datetime_split[1];
             var event_ampm_only = event_datetime_split[2];
             var event_fulltime_only = event_time_only + " " + event_ampm_only;
+            
+            if(event_title_val == ""){
+                eventRef.preventDefault();
+            }
             
             eventRef.child(user.uid).child('events').push({
                 title : event_title_val,
