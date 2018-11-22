@@ -1,6 +1,14 @@
+var databaseRef = firebase.database().ref('users');
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
+        databaseRef.child(user.uid).child('details').set({
+            email : user.email,
+            description : "",
+            phone : "",
+            profpic_URL = ""
+        });
+        alert('Welcome');
         window.location.replace('index.html');
         // ...
     } else {
