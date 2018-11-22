@@ -5,13 +5,7 @@ var fetchreminderRef = firebase.database().ref('users');
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        eventRef.child(user.uid).child('details').set({
-            email : user.email,
-            description : "",
-            phone : "",
-            profpic_URL = ""
-        });
-        alert('Welcome');
+        
         //display reminders
         fetchreminderRef = fetchreminderRef.child(user.uid).child('reminders');
         // //for getting no. of events i.e event count
@@ -93,12 +87,12 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             
         });
-        
+
         //fetch group name
         groupRef.on('value',function(snapshot){
             var groupIDs = snapshot.val();
             var keys = Object.keys(groupIDs);
-            
+
             for(var i=0;i<keys.length;i++)
             {
                 groupRef.child(keys[i]).on('value',function(snapshot_gn){
@@ -124,7 +118,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     alink_group_name_text = document.createTextNode(keysgroupname[0]);
                                     alink_group_name.appendChild(alink_group_name_text);
                                     alink_group_name.setAttribute('href','group.html?name='+keysgroupname[0]+'&id='+keys[i]);
-                                    
+
                                     cell1.appendChild(alink_group_name);
                                 }
                             });
@@ -133,7 +127,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 }); 
             }
         });
-        
+
         var img = document.getElementById('loading_gif');
         img.style.visibility = 'hidden';
         // store reminder
