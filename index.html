@@ -28,110 +28,110 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="lightbox/dist/css/lightbox.min.css">
-
-
-   
+    
+    
+    
     <!-- <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" /> -->
     
     <style>
-
+        
         body{
             font-family: "Lato", sans-serif;
         }
-
+        
         footer {
-  padding: 0.9375rem 0;
-  text-align: center;
-  display: -webkit-flex;
-  /* Safari */
-  /* Safari 6.1+ */
-  display: flex;
-}
-
-footer ul {
-  margin-bottom: 0;
-  padding: 0;
-  list-style: none;
-}
-
-footer ul li {
-  display: inline-block;
-}
-
-footer ul li a {
-  color: inherit;
-  padding: 0.9375rem;
-  font-weight: 500;
-  font-size: 12px;
-  text-transform: uppercase;
-  border-radius: 3px;
-  text-decoration: none;
-  position: relative;
-  display: block;
-}
-
-footer ul li a:hover {
-  text-decoration: none;
-}
-
-footer ul li .btn {
-  margin: 0;
-}
-
-footer ul.links-horizontal:first-child a {
-  padding-left: 0;
-}
-
-footer ul.links-horizontal:last-child a {
-  padding-right: 0;
-}
-
-footer ul.links-vertical li {
-  display: block;
-  margin-left: -5px;
-  margin-right: -5px;
-}
-
-footer ul.links-vertical li a {
-  padding: 5px;
-}
-
-footer .social-buttons a,
-footer .social-buttons .btn {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-footer .footer-brand {
-  float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
-  margin-left: -15px;
-}
-
-footer .footer-brand:hover,
-footer .footer-brand:focus {
-  color: #3C4858;
-}
-
-footer .copyright {
-  padding: 15px 0;
-}
-
-footer .copyright .material-icons {
-  font-size: 18px;
-  position: relative;
-  top: 3px;
-}
-
-footer .pull-center {
-  display: inline-block;
-  float: none;
-}
-
-
+            padding: 0.9375rem 0;
+            text-align: center;
+            display: -webkit-flex;
+            /* Safari */
+            /* Safari 6.1+ */
+            display: flex;
+        }
+        
+        footer ul {
+            margin-bottom: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        footer ul li {
+            display: inline-block;
+        }
+        
+        footer ul li a {
+            color: inherit;
+            padding: 0.9375rem;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-radius: 3px;
+            text-decoration: none;
+            position: relative;
+            display: block;
+        }
+        
+        footer ul li a:hover {
+            text-decoration: none;
+        }
+        
+        footer ul li .btn {
+            margin: 0;
+        }
+        
+        footer ul.links-horizontal:first-child a {
+            padding-left: 0;
+        }
+        
+        footer ul.links-horizontal:last-child a {
+            padding-right: 0;
+        }
+        
+        footer ul.links-vertical li {
+            display: block;
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        
+        footer ul.links-vertical li a {
+            padding: 5px;
+        }
+        
+        footer .social-buttons a,
+        footer .social-buttons .btn {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        footer .footer-brand {
+            float: left;
+            height: 50px;
+            padding: 15px 15px;
+            font-size: 18px;
+            line-height: 20px;
+            margin-left: -15px;
+        }
+        
+        footer .footer-brand:hover,
+        footer .footer-brand:focus {
+            color: #3C4858;
+        }
+        
+        footer .copyright {
+            padding: 15px 0;
+        }
+        
+        footer .copyright .material-icons {
+            font-size: 18px;
+            position: relative;
+            top: 3px;
+        }
+        
+        footer .pull-center {
+            display: inline-block;
+            float: none;
+        }
+        
+        
         body {
             font-family: "Lato", sans-serif; 
             overflow-x: hidden;
@@ -328,18 +328,18 @@ footer .pull-center {
                 width: 100%;
             }
             .loading_gif{
-            position:fixed;
-            top:50% !important;
-            right:40% !important;
-            width:20% !important;
-            height:10% !important;
-            /* background-color:black; */
-            background-repeat:repeat;
-            background-position:center;
-            z-index:10000000;
-            opacity: 1;
-            filter: alpha(opacity=40);
-        }
+                position:fixed;
+                top:50% !important;
+                right:40% !important;
+                width:20% !important;
+                height:10% !important;
+                /* background-color:black; */
+                background-repeat:repeat;
+                background-position:center;
+                z-index:10000000;
+                opacity: 1;
+                filter: alpha(opacity=40);
+            }
         }
         
         .btn-primary{
@@ -398,7 +398,7 @@ footer .pull-center {
                 <a href="event.html">Event</a>
                 <a href="group.html">Group</a>
                 <a href="saved-images.html">Saved Images</a>
-                <a id="user_email" href="user-setting.html"></a>
+                <a id="user_email"></a>
                 <a href="">Exit</a>
                 <!-- <script>
                     document.getElementById("session_result").innerHTML = sessionStorage.getItem("username");
@@ -506,7 +506,7 @@ footer .pull-center {
                     </div>
                     <div class="col-md-10">
                         <div class="table-responsive">          
-                            <table class="table table-hover" >
+                            <table class="table table-hover" id="eventtable">
                                 <thead>
                                     <tr>
                                         <th>Title</th>
@@ -517,14 +517,14 @@ footer .pull-center {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <a href="more-detail.html" style="color: black;">
                                                 <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm">
-                                                    More Details<!-- <i class="fa fa-plus"></i> -->
+                                                    More Details <i class="fa fa-plus"></i>
                                                 </button>
                                             </a> 
                                         </td>
@@ -533,7 +533,7 @@ footer .pull-center {
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -782,7 +782,7 @@ footer .pull-center {
                                                 
                                                 <!--Grid column-->
                                                 <div class="text-center mb-3 col-md-12">
-                                                    <input type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1" value="ADD" onclick="addeventdata()">
+                                                    <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_event_add">ADD</button>
                                                 </div>
                                                 <!--Grid column-->
                                                 
@@ -816,32 +816,7 @@ footer .pull-center {
                             </div>
                         </div>
                     </footer>
-
-
-                    <!--   Core JS Files   -->
-                    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-                    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-                    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-                    <script src="assets/js/plugins/moment.min.js"></script>
-                    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-                    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-                    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-                    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-                    <!--	Plugin for Sharrre btn -->
-                    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
-                    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-                    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
                     
-                    
-                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-                    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
-                    
-                    
-                    <!--Adding Reminder-->
-                    
-                    <!--Database Reminder-->
                     
                     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
                     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
@@ -861,6 +836,26 @@ footer .pull-center {
                         firebase.initializeApp(config);
                     </script>
                     <script type="text/javascript" src="JS_Files_DB/index_main.js"></script>
+                    
+                    <!--   Core JS Files   -->
+                    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+                    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+                    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+                    <script src="assets/js/plugins/moment.min.js"></script>
+                    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+                    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+                    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                    <!--	Plugin for Sharrre btn -->
+                    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+                    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+                    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                    
+                    <!--Adding Reminder-->
+                    
+                    <!--Database Reminder-->
+                    
+                    
                     
                     <script>
                         // Get the modal
@@ -1029,7 +1024,7 @@ footer .pull-center {
                                                                                                                                                     //         return true;
                                                                                                                                                     //     }
                                                                                                                                                     // </script>
-                                                                                                                                                     <!-- <script>
+                                                                                                                                                    <!-- <script>
                                                                                                                                                         //     function myFunction() {
                                                                                                                                                             //         var table = document.getElementById("myTable");
                                                                                                                                                             //         var reminderform =  document.getElementById("reminderform");
@@ -1044,37 +1039,37 @@ footer .pull-center {
                                                                                                                                                             //     }
                                                                                                                                                             // </script> -->
                                                                                                                                                             <script>
-                                                                                                                                                                    $(document).ready(function() {
-                                                                                                                                                                      //init DateTimePickers
-                                                                                                                                                                      materialKit.initFormExtendedDatetimepickers();
+                                                                                                                                                                $(document).ready(function() {
+                                                                                                                                                                    //init DateTimePickers
+                                                                                                                                                                    materialKit.initFormExtendedDatetimepickers();
+                                                                                                                                                                    
+                                                                                                                                                                    // Sliders Init
+                                                                                                                                                                    materialKit.initSliders();
+                                                                                                                                                                });
                                                                                                                                                                 
-                                                                                                                                                                      // Sliders Init
-                                                                                                                                                                      materialKit.initSliders();
-                                                                                                                                                                    });
                                                                                                                                                                 
-                                                                                                                                                                
-                                                                                                                                                                    function scrollToDownload() {
-                                                                                                                                                                      if ($('.section-download').length != 0) {
+                                                                                                                                                                function scrollToDownload() {
+                                                                                                                                                                    if ($('.section-download').length != 0) {
                                                                                                                                                                         $("html, body").animate({
-                                                                                                                                                                          scrollTop: $('.section-download').offset().top
+                                                                                                                                                                            scrollTop: $('.section-download').offset().top
                                                                                                                                                                         }, 1000);
-                                                                                                                                                                      }
                                                                                                                                                                     }
+                                                                                                                                                                }
                                                                                                                                                                 
-                                                                                                                                                                    $(document).ready(function() {
-                                                                                                                                                                      // the body of this function is in assets/js/now-ui-kit.js
-                                                                                                                                                                      nowuiKit.initSliders();
-                                                                                                                                                                    });
+                                                                                                                                                                $(document).ready(function() {
+                                                                                                                                                                    // the body of this function is in assets/js/now-ui-kit.js
+                                                                                                                                                                    nowuiKit.initSliders();
+                                                                                                                                                                });
                                                                                                                                                                 
-                                                                                                                                                                    function scrollToDownload() {
-                                                                                                                                                                
-                                                                                                                                                                      if ($('.section-download').length != 0) {
+                                                                                                                                                                function scrollToDownload() {
+                                                                                                                                                                    
+                                                                                                                                                                    if ($('.section-download').length != 0) {
                                                                                                                                                                         $("html, body").animate({
-                                                                                                                                                                          scrollTop: $('.section-download').offset().top
+                                                                                                                                                                            scrollTop: $('.section-download').offset().top
                                                                                                                                                                         }, 1000);
-                                                                                                                                                                      }
                                                                                                                                                                     }
-                                                                                                                                                                  </script>
+                                                                                                                                                                }
+                                                                                                                                                            </script>
                                                                                                                                                         </body>
                                                                                                                                                         </html> 
                                                                                                                                                         

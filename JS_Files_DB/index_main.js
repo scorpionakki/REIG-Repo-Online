@@ -1,11 +1,17 @@
 var eventRef = firebase.database().ref('users');
 var groupRef = firebase.database().ref('groups');
 var fetchreminderRef = firebase.database().ref('users');
-
+var eventRef2 = firebase.database().ref('users');
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        
+        // console.log(user.uid);
+        // console.log(user.email);
+        eventRef.child(user.uid).child('details').update({
+            email : user.email
+        });
+        var nav_user_prof = document.getElementById('user_email');
+        nav_user_prof.innerHTML = user.email;
         //display reminders
         fetchreminderRef = fetchreminderRef.child(user.uid).child('reminders');
         // //for getting no. of events i.e event count
@@ -56,7 +62,78 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             //alink_more_details.href = "more-detail.html?id="+id;
             
-            alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
+            alink_more_details.href = "more-detail.html?id="+id+"&type=reminders";
+            // d18354b4120a4ec1e9021823058e823e27b0b7ce
+            
+            // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
+            // d18354b4120a4ec1e9021823058e823e27b0b7ce
+            
+            // alink_more_details.href = "more-detail.html?id="+id;
+            // f5c169c91bad0dc0780cb9bf7c61705dfeccf8
+            
+            
+            //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
+            
+            //REMOVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE is still left
+            // var alink_remove = document.createElement("a");
+            // var alink_remove_text = document.createTextNode('');
+            // alink_remove.appendChild(alink_remove_text);
+            // // alink.setAttribute("href","http://index.html");
+            // alink_remove.setAttribute('class',"btn btn-primary");
+            // alink_remove.setAttribute('class',"fa fa-trash");
+            // alink_remove.href = "http://index.html?id="+id;
+            
+            
+            title_cell.appendChild(title_value_cell);
+            date_cell.appendChild(date_value_cell);
+            time_cell.appendChild(time_value_cell);
+            more_details_cell.appendChild(alink_more_details);
+            //remove_cell.appendChild(alink_remove);
+            id_cell = appendChild(id_value_cell);
+            
+            
+        });
+
+        //fetch event details
+        eventRef2 = eventRef2.child(user.uid).child('events');
+        
+        eventRef2.on('child_added', function(snap){
+            var title_reminder_fetch = snap.child('title').val();
+            var date_reminder_fetch =  snap.child('date').val();
+            var time_reminder_fetch = snap.child('time').val();
+            var id = snap.key;
+            // var id = snap.val();
+            // var id_id = Object.elements(id);
+            
+            var tableEventRef = document.getElementById('eventtable').getElementsByTagName('tbody')[0];
+            
+            // Insert a row in the table at the last row
+            var newRow   = tableEventRef.insertRow(tableEventRef.rows.length);
+            
+            // Insert a cell in the row at index 0
+            var title_cell = newRow.insertCell(0);
+            var date_cell = newRow.insertCell(1);
+            var time_cell = newRow.insertCell(2);
+            var more_details_cell = newRow.insertCell(3);
+            //var remove_cell = newRow.insertCell(4);
+            var id_cell = newRow.insertCell(4).hidden;
+            // Append a text node to the cell
+            var title_value_cell = document.createTextNode(title_reminder_fetch);
+            var date_value_cell = document.createTextNode(date_reminder_fetch);
+            var time_value_cell = document.createTextNode(time_reminder_fetch);
+            var id_value_cell = document.createTextNode(id);
+            
+            
+            var alink_more_details = document.createElement("a");
+            var alink_more_details_text = document.createTextNode('');
+            alink_more_details.appendChild(alink_more_details_text);
+            // alink.setAttribute("href","http://index.html");
+            alink_more_details.setAttribute('class',"btn btn-primary")
+            alink_more_details.setAttribute('class',"fa fa-info")
+            
+            //alink_more_details.href = "more-detail.html?id="+id;
+            
+            alink_more_details.href = "more-detail.html?id="+id+"&type=events";
             // d18354b4120a4ec1e9021823058e823e27b0b7ce
             
             // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
@@ -148,6 +225,29 @@ firebase.auth().onAuthStateChanged(function(user) {
                 category : reminder_category_val,
                 date : reminder_date_only,
                 time : reminder_fulltime_only
+            });
+            
+            console.log('Done');
+        };
+
+        //store event
+        document.getElementById('btn_event_add').onclick = function(){
+            var event_title_val = document.getElementById('event_title').value;
+            var event_content_val = document.getElementById('event_content').value;
+            var event_category_val = document.getElementById('event_category').value;
+            var event_datetime_val = document.getElementById('event_datetime').value;
+            var event_datetime_split = event_datetime_val.split(" ");
+            var event_date_only = event_datetime_split[0];
+            var event_time_only = event_datetime_split[1];
+            var event_ampm_only = event_datetime_split[2];
+            var event_fulltime_only = event_time_only + " " + event_ampm_only;
+            
+            eventRef.child(user.uid).child('events').push({
+                title : event_title_val,
+                content : event_content_val,
+                category : event_category_val,
+                date : event_date_only,
+                time : event_fulltime_only
             });
             
             console.log('Done');
