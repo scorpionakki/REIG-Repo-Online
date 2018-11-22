@@ -53,6 +53,19 @@
         margin-left: 10% !important;
       }
     }
+    .loading_gif{
+      position:fixed;
+      top:50% !important;
+      right:48% !important;
+      width:5% !important;
+      height:10% !important;
+      /* background-color:black; */
+      background-repeat:repeat;
+      background-position:center;
+      z-index:10000000;
+      opacity: 1;
+      filter: alpha(opacity=40);
+    }
   </style>
 </head>
 
@@ -131,6 +144,8 @@
                           <input type="text" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" style="color:black; border: hidden;" placeholder="Group Name" class="form-control" id="group_name" style="color: white;" required readonly> 
                           <br>
                           <input type="text" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" style="color:black; border: hidden;" placeholder="Created By" class="form-control" id="created_by" style="color: white;" required readonly>
+                          
+                          
                           <br>
                           <textarea style="color:black; border: hidden;" placeholder="Group Description" class="form-control" id="group_description" style="color: white;"></textarea>
                           <br>
@@ -144,6 +159,7 @@
                       </div>
                     </div>
                   </div>
+                  
                   <!-- <div class="description text-center">
                     <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
                   </div> -->
@@ -215,6 +231,7 @@
               </div>
             </div>
             <footer class="footer footer-default">
+                <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
               <div class="container">
                 <!-- <nav class="float-left">
                   <ul>

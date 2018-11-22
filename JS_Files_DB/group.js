@@ -12,6 +12,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             document.getElementById('group_details_a').href = "group-details.html?id="+grp_id+"&name="+grp_name;
             document.getElementById('group_members_a').href = "group-members.html?id="+grp_id+"&name="+grp_name;
+            document.getElementById('group_re').href = "r_e_group.html?id="+grp_id+"&name="+grp_name;
             //check if the current user is member of that group if somehow he directly pastes the url.
             var groupRef = firebase.database().ref('groups');
             groupRef.on('value',function(groupids_snapshot){
@@ -128,6 +129,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 alert('Error! Please try again');
                 window.location = "index.html";
             });
+            
+            var img = document.getElementById('loading_gif');
+            img.style.visibility = 'hidden';
             // User is signed in.
             document.getElementById('send_message').onclick =  function(){
                 var chat_message = document.getElementById('chat_message').value;

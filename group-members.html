@@ -280,7 +280,19 @@
                         transform: translate(-50%, -50%)
                     }
                 }
-                
+                .loading_gif{
+                    position:fixed;
+                    top:50% !important;
+                    right:48% !important;
+                    width:5% !important;
+                    height:10% !important;
+                    /* background-color:black; */
+                    background-repeat:repeat;
+                    background-position:center;
+                    z-index:10000000;
+                    opacity: 1;
+                    filter: alpha(opacity=40);
+                }
                 
                 
                 * {
@@ -372,13 +384,13 @@
                                                     <p>Select atleast 2 contacts to create group*</p>
                                                 </div> -->
                                                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-                                                <li class="list-group-item">
+                                                <!-- <li class="list-group-item">
                                                     <strong>
                                                         <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
                                                         
                                                         Alkesh Kataria
                                                     </strong>
-                                                    <!-- <i class="fa fa-times" style="float:right; padding-top: 1%;" data-toggle="modal" data-target="#myModal"></i> -->
+                                                    <i class="fa fa-times" style="float:right; padding-top: 1%;" data-toggle="modal" data-target="#myModal"></i>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <strong>
@@ -451,7 +463,9 @@
                                                         Sabka Malik Ek
                                                     </strong>
                                                     <i class="fa fa-times" style="float:right; padding-top: 1%;" data-toggle="modal" data-target="#myModal"></i>
-                                                </li>
+                                                </li> -->
+                                                
+                                                
                                             </ul>
                                         </div>
                                         <br><br>
@@ -463,6 +477,7 @@
                     </div>
                 </div>
                 <br><br>
+                <!-- <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif"> -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" style="z-index: 3">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -565,8 +580,10 @@
                         </div>
                     </div>
                     
-                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+                    
                     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
                     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
                     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
                     <script>
@@ -581,7 +598,7 @@
                         };
                         firebase.initializeApp(config);
                     </script>
-                    <script type="text/javascript" src="JS_Files_DB/group_creation.js"></script>
+                    <script type="text/javascript" src="JS_Files_DB/group-members.js"></script>
                     <script>
                         function myFunction() {
                             var input, filter, ul, li, strong, i;
