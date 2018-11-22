@@ -1,0 +1,29 @@
+{
+    "name" : "Reig",
+    "short_name" : "Reig",
+    "icons" : [
+        
+        {
+            "src" : "assets/img/red-192x192.png",
+            "type" : "image/png",
+            "sizes" : "192x192"
+        },
+        {
+            "src" : "assets/img/R-Logo-Dark512.png",
+            "type" : "image/png",
+            "sizes" : "512x512"
+        }
+    ],
+    "start_url" : "login.html",
+    "scope" : ".",
+    "display" : "standalone",
+    "orientation" : "portrait-primary",
+    "background_color" : "black",
+    "theme_color" : "black",
+    "description" : "A simple reminder app.",
+    "dir" : "ltr",
+    "lang" : "en-US",  
+
+    "gcm_sender_id": "539876079581",
+  "gcm_sender_id_comment": "Do not change the GCM Sender ID"
+}
