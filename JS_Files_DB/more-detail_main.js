@@ -7,11 +7,11 @@ firebase.auth().onAuthStateChanged(function(user) {
         var type = url.searchParams.get("type");
         
         if(url_string == "http://localhost:8010/REIG-Repo-Online/more-detail.html" || url_string == "http://localhost/REIG-Repo-Online/more-detail.html" || url_string == "http://localhost/REIG-Repo-Online/more-detail.html?" || url_string == "http://localhost:8010/REIG-Repo-Online/more-detail.html?"){
-            alert('No values found');
+            alert('Redirecting to Index');
             window.location = 'index.html';
         }
         if(id == "" || type== ""){
-            alert('No values found');
+            alert('Redirecting to Index');
             window.location = 'index.html';
         }
 
@@ -78,9 +78,12 @@ firebase.auth().onAuthStateChanged(function(user) {
         
         document.getElementById('btn_delete_RE').onclick = function(){
 
-            fetchreminderRef.remove();
+            fetchreminderRef.remove(function(){
+                alert('Removed');
+                window.location = "index.html";
+            });
             
-            window.location = "index.html";
+            
         }
         
     } else {

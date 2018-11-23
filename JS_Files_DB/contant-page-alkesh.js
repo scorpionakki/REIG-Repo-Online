@@ -109,6 +109,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                     console.log('Member details added in group');
                 
             }
+
+            alert('Redirecting! Creation Successful');
+            window.location = "index.html";
             
             // databaseRef.on('value',function(snapshot_user_keys){
             //     var users_key = snapshot_user_keys.val();
@@ -152,7 +155,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             // }
             
             
-            return false;
             //window.location = 'contact-page.html?gn='+group_name;
             // databaseRef_group.on('value',function(snap){
             //     var group_names = snap.val();
@@ -233,7 +235,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             // });
             
             
-            
+            window.location = "index.html";
         };
     }
     else

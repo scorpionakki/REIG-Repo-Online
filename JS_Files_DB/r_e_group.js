@@ -194,6 +194,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 date : reminder_date_only,
                 time : reminder_fulltime_only
             });
+
             location.reload();
         };
         
