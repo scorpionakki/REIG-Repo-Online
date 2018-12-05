@@ -534,7 +534,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="table-responsive">          
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="img_table">
                                     <thead>
                                         <tr>
                                             <th>Image</th>
@@ -542,7 +542,7 @@
                                             <th>Caption</th>
                                             <th>Duration</th>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>
                                                 <a class="example-image-link" href="assets/img/faces/card-profile4-square.jpg" data-lightbox="example-1"><img class="example-image" style="border-radius: 50%; width:50%;max-width:50px" src="assets/img/faces/card-profile4-square.jpg" alt="image-1" /></a>
                                             </td>
@@ -562,8 +562,11 @@
                                             </td>
                                             <td>Caption Text</td>
                                             <td>Duration</td>
-                                        </tr>
+                                        </tr> -->
                                     </thead>
+                                    <tbody>
+
+                                    </tbody>
                                 </table>
                             </div>
                             
@@ -603,7 +606,7 @@
                             
                             <div class="profile">
                                 <div class="photo">
-                                    <input type="file" accept="image/*" id="input" onchange="getFile(event)">
+                                    <input type="file" accept="image/*" id="file">
                                     <div class="photo__helper">
                                         <div class="photo__frame photo__frame--circle">
                                             <canvas class="photo__canvas"></canvas>
@@ -637,11 +640,11 @@
                                 </div>
                             </div>
                             
-                            <input type="text" style="color:black; border: hidden;" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" placeholder="Enter Caption to remember" class="form-control" id="caption" style="color: white;" required>
+                            <input type="text" style="color:black; border: hidden;" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" placeholder="Enter Caption" class="form-control" id="caption" style="color: white;" required>
                             
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" id="add_photo_to_storage" onclick="uploadFile();return false;">ADD</button>
+                            <input type="submit" id="upload_btn" value="STORE">
                         </div>
                         
                     </div>
@@ -679,7 +682,6 @@
                 else {
                     textbox.setCustomValidity('');
                 }
-                return true;
             }
         </script>
         <!--   Core JS Files   -->
