@@ -121,7 +121,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                         // cell_row2.innerHTML =  message_content.sent_by;
                         //cell2_row2.innerHTML = " - ";
                         //cell3_row2.innerHTML = message_content.content;
-                        //table.deleteRow(messageskey.length);
+                        table.deleteRow(messageskey.length);
                     });
                     
                 }

@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var url = new URL(url_string);
         var grp_name = url.searchParams.get("name");
         var grp_id = url.searchParams.get("id");
-        
+        document.getElementById('redirect_group').href = 'group.html?id='+grp_id+'&name='+grp_name;
         firebaseRef.child(grp_id).child(grp_name).child('details').on('value',function(group_details_snapshot){
             var group_details = group_details_snapshot.val();
             

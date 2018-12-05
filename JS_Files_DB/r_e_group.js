@@ -150,9 +150,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.location.reload(true);
         });
         
-        var img = document.getElementById('loading_gif');
-        img.style.visibility = 'hidden';
-
+        
+        
         document.getElementById('reminder_add_group').onclick =  function(){
             var title = document.getElementById('reminder_title').value;
             var content = document.getElementById('reminder_content').value;
@@ -194,10 +193,13 @@ firebase.auth().onAuthStateChanged(function(user) {
                 date : reminder_date_only,
                 time : reminder_fulltime_only
             });
-
+            
             location.reload();
         };
         
+        
+        var img = document.getElementById('loading_gif');
+        img.style.visibility = 'hidden';
     } else {
         // No user is signed in.
     }

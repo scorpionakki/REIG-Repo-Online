@@ -3,13 +3,22 @@
     
 </head>
 <body>
-    <input type="file" id="file" onchange="getFile(event)">
-    <input type="submit" onclick="storefile();return false;" value="STORE">
-    <img id="put_image" alt="profPic" height="100" width="100">
+    <input type="file" id="file">
+    <input type="submit" id="upload_btn" value="STORE">
+    <!-- <img id="put_image" alt="profPic" height="100" width="100"> -->
+    <table id="img_table">
+        <th>
+            <td>Image</td>
+            <td>Caption</td>
+        </th>
+        <tbody>
+
+        </tbody>
+    </table>
     <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-    
-    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5. 2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
     <script>
         // Initialize Firebase
         var config = {

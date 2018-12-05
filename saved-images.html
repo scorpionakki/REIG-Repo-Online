@@ -585,7 +585,7 @@
         
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog" style="z-index: 3; display:none;">
-            <form action="#"> 
+            <form> 
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -603,7 +603,7 @@
                             
                             <div class="profile">
                                 <div class="photo">
-                                    <input type="file" accept="image/*">
+                                    <input type="file" accept="image/*" id="input" onchange="getFile(event)">
                                     <div class="photo__helper">
                                         <div class="photo__frame photo__frame--circle">
                                             <canvas class="photo__canvas"></canvas>
@@ -641,7 +641,7 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-primary" id="add_photo_to_storage" value="ADD">
+                            <button class="btn btn-primary" id="add_photo_to_storage" onclick="uploadFile();return false;">ADD</button>
                         </div>
                         
                     </div>
@@ -652,7 +652,6 @@
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
         <script>
             // Initialize Firebase
