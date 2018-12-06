@@ -1,4 +1,5 @@
 var firebaseRef = firebase.database().ref('groups');
+var databaseRef = firebase.database().ref('users');
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
@@ -8,6 +9,75 @@ firebase.auth().onAuthStateChanged(function(user) {
         var grp_name = url.searchParams.get("name");
         var grp_id = url.searchParams.get("id");
         
+        
+        document.getElementById('search_member_btn').onclick = function(){
+            var input_value = document.getElementById('search_value').value;
+            
+            // databaseRef = databaseRef.ref('users');
+            databaseRef.on('value',function(snap){
+                var users = snap.val();
+                var keys = Object.keys(users);
+                
+                for(var i = 0; i< keys.length;i++){
+                    databaseRef.child(keys[i]).child('details').child('email').on('value',function(email){
+                        if(input_value ==  email.val()){
+                            var table = document.getElementById("table_searchresults");
+                            if(document.getElementById('table_searchresults').rows.length > 1){
+                                for(var i = 1;i<=document.getElementById('table_searchresults').table.rows.length;i++){
+                                    document.getElementById('table_searchresults').deleteRow(i);
+                                }
+                            }
+                            else
+                            {
+                                var row = table.insertRow(1);
+                                var cell1 = row.insertCell(0);
+                                var cell2 = row.insertCell(1);
+                                
+                                var alink_more_details = document.createElement("button");
+                                var alink_more_details_text = document.createTextNode('ADD');
+                                alink_more_details.appendChild(alink_more_details_text);
+                                // alink.setAttribute("href","http://index.html");
+                                //alink_more_details.setAttribute('value',"ADD")
+                                
+                                alink_more_details.setAttribute('onclick',"add_member_in_table_newlyaddedmembers(); return false");
+                                alink_more_details.setAttribute('id',"add_member_btn");
+                                //alink_more_details.href = "more-detail.html?id="+id;
+                                
+                                // alink_more_details.href = "#table_addedmembers?id="+id;
+                                
+                                cell1.innerHTML = email.val();
+                                cell2.appendChild(alink_more_details);
+                                
+                                var hidden_field = document.createElement("INPUT");
+                                hidden_field.setAttribute("type","hidden");
+                                hidden_field.setAttribute("id","hidden_value");
+                                document.body.appendChild(hidden_field);
+                                
+                                document.getElementById('hidden_value').value = email.val();
+                                
+                                // }
+                                //document.getElementById('table_searchresults').deleteRow(table.rows.length - 1); 
+                            }  
+                        }
+                    });
+                }
+                
+            });
+            
+            
+            
+            
+            
+            
+            databaseRef.on('value',function(snap){
+                if(snap.val() == null){
+                    window.alert("No such user exist");
+                }
+            });
+            
+        };
+        
+        
         firebaseRef.child(grp_id).child(grp_name).child('members').on('value',function(groupmembersids_snapshot){
             
             var groupmembersids = groupmembersids_snapshot.val();
@@ -16,22 +86,48 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
                 firebaseRef.child(grp_id).child(grp_name).child('members').child(groupmembersidskeys[i]).on('value',function(useremails_snapshot){
                     var useremails = useremails_snapshot.val();
-                    // var tableRef = document.getElementById('member_table').getElementsByTagName('tbody')[0];
-                    // var newRow = tableRef.insertRow(0);
-                    // var member_name_cell = newRow.insertCell(0);
-                    // member_name_cell.innerHTML = useremails.member;
-                    var ul = document.getElementById('myUL');
-                    var li = document.createElement("li");
-                    li.setAttribute('class','list-group-item');
-                    li.appendChild(document.createTextNode(useremails.member));
-
-                    var button = document.createElement("a");
-                    button.setAttribute("href","#myModal");
-                    button.setAttribute("data-toggle","modal");
-                    document.getElementById('modal-content').innerHTML = "Are you sure you want to remove "+groupmembersidskeys[i]+"?";
+                    var id = useremails_snapshot.key;
+                    
+                    var tableRef = document.getElementById('table_addedmembers').getElementsByTagName('tbody')[0];
+                    var newRow = tableRef.insertRow(1);
+                    newRow.setAttribute('class','list-group-item');
+                    var member_name_cell = newRow.insertCell(0);
+                    var remove_button_cell = newRow.insertCell(1);
+                    var id_cell = newRow.insertCell(2);
+                    
+                    var remove_button = document.createElement('button');
+                    
+                    member_name_cell.appendChild(document.createTextNode(useremails.member));
+                    remove_button.appendChild(document.createTextNode('Remove'));
+                    id_cell.appendChild(document.createTextNode(id));
+                    
+                    // var button = document.createElement("a");
+                    // button.setAttribute("href","#myModal");
+                    // button.setAttribute("data-toggle","modal");
+                    // document.getElementById('modal-content').innerHTML = "Are you sure you want to remove "+id_cell.innerText+"?";
+                    // button.appendChild(document.createTextNode("Remove"));
+                    
+                    var button = document.createElement('button');
+                    button.type = "button";
+                    button.addEventListener('click',function(){
+                        removeMember(useremails_snapshot.key);
+                    });
+                    //button.setAttribute("onclick","removeMember("+useremails_snapshot.key+");return false");
                     button.appendChild(document.createTextNode("Remove"));
-                    li.appendChild(button);
-                    ul.appendChild(li);
+                    remove_button_cell.appendChild(button);
+                    
+                    // var ul = document.getElementById('myUL');
+                    // var li = document.createElement("li");
+                    // li.setAttribute('class','list-group-item');
+                    // li.appendChild(document.createTextNode(useremails.member));
+                    
+                    // var button = document.createElement("a");
+                    // button.setAttribute("href","#myModal");
+                    // button.setAttribute("data-toggle","modal");
+                    // document.getElementById('modal-content').innerHTML = "Are you sure you want to remove "+useremails.member+"?";
+                    // button.appendChild(document.createTextNode("Remove"));
+                    // li.appendChild(button);
+                    // ul.appendChild(li);
                 });
                 
                 
@@ -39,8 +135,48 @@ firebase.auth().onAuthStateChanged(function(user) {
             
         });
         
+        
+        var table_rows_am = document.getElementById('table_addedmembers'); //am = addedmembers
+        for(var i = 0;i< table_rows_am.rows.length;i++)
+        {
+            if(table_rows_am.rows[i].cells[0].innerHTML == input_value){
+                document.getElementById('add_member_btn').disabled= true;
+                document.getElementById('table_searchresults').deleteRow(0);
+                document.getElementById('table_newlyaddedmembers').deleteRow(0);
+            }
+            
+        }
+        
+        var table_rows_nam = document.getElementById('table_newlyaddedmembers'); //nam = newlyaddedmembers           
+        for(var i = 0;i< table_rows_nam.rows.length;i++)
+        {
+            if(table_rows_nam.rows[i].cells[0].innerHTML == input_value){
+                document.getElementById('add_member_btn').disabled= true;
+                document.getElementById('table_searchresults').deleteRow(1);
+            }
+            
+        }
+        
+        
     } else {
         // No user is signed in.
     }
 });
 
+function add_member_in_table_newlyaddedmembers(){
+    var table = document.getElementById("table_newlyaddedmembers");
+    var row = table.insertRow(table.rows.length);
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML = document.getElementById('hidden_value').value;
+    
+    
+    
+    
+    // document.getElementById('add_member_btn').disabled= true;
+    var table = document.getElementById("table_searchresults");
+    table.deleteRow(1);
+}
+
+function removeMember(key){
+    alert(key);
+}

@@ -379,21 +379,53 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="well">
-                                            <table id="memberTable">
+                                            
+                                            <input type="text" id="search_value" placeholder="Search Email to add in group">
+                                            <!-- <button class="btn btn-primary fa fa-user-plus" onclick="getusername();"></button> -->
+                                            <input class="btn btn-primary" type="submit" value="Search" id="search_member_btn">
+                                            
+                                            <table class="table" id="table_searchresults" border="1">
+                                                <tr>
+                                                    <th>Search Results</th>
+                                                </tr>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                            
+                                            <table class="table" id="table_newlyaddedmembers" border="1">
+                                                <tr>
+                                                    <th>Newly Added Members</th>
+                                                </tr>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                            
+                                            <table class="table" id="table_addedmembers" border="1">
+                                                <tr>
+                                                    <th>Already Added Members</th>
+                                                </tr>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                            
+                                            <!-- <table id="memberTable">
                                                 <th>
                                                     <td>
                                                         Member
                                                     </td>
                                                 </th>
                                                 <tbody>
-
+                                                    
                                                 </tbody>
-                                            </table>
+                                            </table> -->
                                             <ul class="list-group checked-list-box" id="myUL">
                                                 <!-- <div class="description" style="color: black;">
                                                     <p>Select atleast 2 contacts to create group*</p>
                                                 </div> -->
-                                                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                                                <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> -->
                                                 <!-- <li class="list-group-item">
                                                     <strong>
                                                         <img id="myImg" src="assets/img/julie.jpg" alt="Snow" style="border-radius: 50%; width:40%;max-width:40px;">
