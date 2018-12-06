@@ -39,7 +39,10 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 // alink.setAttribute("href","http://index.html");
                                 //alink_more_details.setAttribute('value',"ADD")
                                 
-                                alink_more_details.setAttribute('onclick',"add_member_in_table_newlyaddedmembers(); return false");
+                                //alink_more_details.setAttribute('onclick',"add_member_in_table_newlyaddedmembers("+ input_value+"); return false");
+                                alink_more_details.setAttribute('click',function(){
+                                    add_member_in_table_newlyaddedmembers(input_value);
+                                });
                                 alink_more_details.setAttribute('id',"add_member_btn");
                                 //alink_more_details.href = "more-detail.html?id="+id;
                                 
@@ -136,26 +139,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         });
         
         
-        var table_rows_am = document.getElementById('table_addedmembers'); //am = addedmembers
-        for(var i = 0;i< table_rows_am.rows.length;i++)
-        {
-            if(table_rows_am.rows[i].cells[0].innerHTML == input_value){
-                document.getElementById('add_member_btn').disabled= true;
-                document.getElementById('table_searchresults').deleteRow(0);
-                document.getElementById('table_newlyaddedmembers').deleteRow(0);
-            }
-            
-        }
         
-        var table_rows_nam = document.getElementById('table_newlyaddedmembers'); //nam = newlyaddedmembers           
-        for(var i = 0;i< table_rows_nam.rows.length;i++)
-        {
-            if(table_rows_nam.rows[i].cells[0].innerHTML == input_value){
-                document.getElementById('add_member_btn').disabled= true;
-                document.getElementById('table_searchresults').deleteRow(1);
-            }
-            
-        }
         
         
     } else {
@@ -163,13 +147,46 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-function add_member_in_table_newlyaddedmembers(){
-    var table = document.getElementById("table_newlyaddedmembers");
-    var row = table.insertRow(table.rows.length);
-    var cell1 = row.insertCell(0);
-    cell1.innerHTML = document.getElementById('hidden_value').value;
+function add_member_in_table_newlyaddedmembers(input_value){
     
     
+    var table_rows_am = document.getElementById('table_addedmembers'); //am = addedmembers
+    for(var i = 0;i< table_rows_am.rows.length;i++)
+    {
+        if(table_rows_am.rows[i].cells[0].innerHTML == input_value){
+            document.getElementById('add_member_btn').disabled= true;
+            document.getElementById('table_searchresults').deleteRow(1);
+            document.getElementById('table_newlyaddedmembers').deleteRow(1);
+        }
+        else
+        {
+            var table = document.getElementById("table_newlyaddedmembers");
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = document.getElementById('hidden_value').value;
+            
+        }
+        
+    }
+    
+    var table_rows_nam = document.getElementById('table_newlyaddedmembers'); //nam = newlyaddedmembers           
+    for(var i = 0;i< table_rows_nam.rows.length;i++)
+    {
+        if(table_rows_nam.rows[i].cells[0].innerHTML == input_value){
+            document.getElementById('add_member_btn').disabled= true;
+            document.getElementById('table_searchresults').deleteRow(1);
+            document.getElementById('table_newlyaddedmembers').deleteRow(1);
+        }
+        else
+        {
+            var table = document.getElementById("table_newlyaddedmembers");
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = document.getElementById('hidden_value').value;
+            
+        }
+        
+    }
     
     
     // document.getElementById('add_member_btn').disabled= true;
