@@ -379,6 +379,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="well">
+                                            <table id="memberTable">
+                                                <th>
+                                                    <td>
+                                                        Member
+                                                    </td>
+                                                </th>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
                                             <ul class="list-group checked-list-box" id="myUL">
                                                 <!-- <div class="description" style="color: black;">
                                                     <p>Select atleast 2 contacts to create group*</p>
@@ -488,10 +498,10 @@
                                 </button> -->
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure? You are about to remove (name)</p>
+                                <p id="modal-content"></p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-link">Yes</button>
+                                <button type="button" id="modal-yes" class="btn btn-link">Yes</button>
                                 <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>

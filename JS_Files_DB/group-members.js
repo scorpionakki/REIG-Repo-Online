@@ -16,12 +16,19 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
                 firebaseRef.child(grp_id).child(grp_name).child('members').child(groupmembersidskeys[i]).on('value',function(useremails_snapshot){
                     var useremails = useremails_snapshot.val();
+                    // var tableRef = document.getElementById('member_table').getElementsByTagName('tbody')[0];
+                    // var newRow = tableRef.insertRow(0);
+                    // var member_name_cell = newRow.insertCell(0);
+                    // member_name_cell.innerHTML = useremails.member;
                     var ul = document.getElementById('myUL');
                     var li = document.createElement("li");
                     li.setAttribute('class','list-group-item');
                     li.appendChild(document.createTextNode(useremails.member));
-                    var button = document.createElement("button");
-                    button.setAttribute("onclick","#myModal?id="+useremails.key+"");
+
+                    var button = document.createElement("a");
+                    button.setAttribute("href","#myModal");
+                    button.setAttribute("data-toggle","modal");
+                    document.getElementById('modal-content').innerHTML = "Are you sure you want to remove "+groupmembersidskeys[i]+"?";
                     button.appendChild(document.createTextNode("Remove"));
                     li.appendChild(button);
                     ul.appendChild(li);

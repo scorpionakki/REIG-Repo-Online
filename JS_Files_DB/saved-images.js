@@ -27,15 +27,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }
-        
         var profpicRef = firebase.database().ref('users/'+user.uid+'/data_sharing');
         document.getElementById('upload_btn').onclick = function(){
 
+           
             
             var filename = selectedFile.name;
             var storageRef = firebase.storage().ref('/'+user.uid+'/'+filename);
             var uploadTask = storageRef.put(selectedFile);
-            
             uploadTask.on('state_changed',function(snapshot){
                 
             },function(error){
@@ -45,24 +44,20 @@ firebase.auth().onAuthStateChanged(function(user) {
                     profpicRef.push({
                         imageURL : downloadURL
                     });
-                    // imgsrc = downloadURL;
-                    // document.getElementById('put_image').src = imgsrc;
-                } );
+                });
                 
-                window.alert('Uploaded');
-                
-                //document.getElementById('put_image').src = imgsrc;
-                //window.alert(imgsrc);
+                alert('Uploaded');
+               
                 
             });
 
-            return true;
+            return false;
         }
         
     } else {
         // No user is signed in.
         alert('No user is currently signed in');
-        window.location.replace = "/login.html";
+        window.location = "login.html";
     }
 });
 
