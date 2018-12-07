@@ -21,6 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 for(var i = 0; i< keys.length;i++){
                     databaseRef.child(keys[i]).child('details').child('email').on('value',function(email){
                         if(input_value ==  email.val()){
+                            
                             var table = document.getElementById("table_searchresults");
                             if(document.getElementById('table_searchresults').rows.length > 1){
                                 for(var i = 1;i<=document.getElementById('table_searchresults').table.rows.length;i++){
@@ -29,6 +30,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                             }
                             else
                             {
+                                checkforsamevalue(input_value);
                                 var row = table.insertRow(1);
                                 var cell1 = row.insertCell(0);
                                 var cell2 = row.insertCell(1);
@@ -40,9 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 //alink_more_details.setAttribute('value',"ADD")
                                 
                                 //alink_more_details.setAttribute('onclick',"add_member_in_table_newlyaddedmembers("+ input_value+"); return false");
-                                alink_more_details.setAttribute('click',function(){
-                                    add_member_in_table_newlyaddedmembers(input_value);
-                                });
+                                alink_more_details.setAttribute('onclick','add_member_in_table_newlyaddedmembers()');
                                 alink_more_details.setAttribute('id',"add_member_btn");
                                 //alink_more_details.href = "more-detail.html?id="+id;
                                 
@@ -59,7 +59,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 document.getElementById('hidden_value').value = email.val();
                                 
                                 // }
-                                //document.getElementById('table_searchresults').deleteRow(table.rows.length - 1); 
+                                //document.getElementById('table_searchresults').deleteRow(table.rows.length - 1);
+                                
+                                
                             }  
                         }
                     });
@@ -147,46 +149,46 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
-function add_member_in_table_newlyaddedmembers(input_value){
+function add_member_in_table_newlyaddedmembers(){
     
     
-    var table_rows_am = document.getElementById('table_addedmembers'); //am = addedmembers
-    for(var i = 0;i< table_rows_am.rows.length;i++)
-    {
-        if(table_rows_am.rows[i].cells[0].innerHTML == input_value){
-            document.getElementById('add_member_btn').disabled= true;
-            document.getElementById('table_searchresults').deleteRow(1);
-            document.getElementById('table_newlyaddedmembers').deleteRow(1);
-        }
-        else
-        {
-            var table = document.getElementById("table_newlyaddedmembers");
-            var row = table.insertRow(table.rows.length);
-            var cell1 = row.insertCell(0);
-            cell1.innerHTML = document.getElementById('hidden_value').value;
-            
-        }
-        
-    }
+    // var table_rows_am = document.getElementById('table_addedmembers'); //am = addedmembers
+    // for(var i = 0;i< table_rows_am.rows.length;i++)
+    // {
+    //     if(table_rows_am.rows[i].cells[0].innerHTML == input_value){
+    //         document.getElementById('add_member_btn').disabled= true;
+    //         document.getElementById('table_searchresults').deleteRow(1);
+    //         document.getElementById('table_newlyaddedmembers').deleteRow(1);
+    //     }
+    //     else
+    //     {
     
-    var table_rows_nam = document.getElementById('table_newlyaddedmembers'); //nam = newlyaddedmembers           
-    for(var i = 0;i< table_rows_nam.rows.length;i++)
-    {
-        if(table_rows_nam.rows[i].cells[0].innerHTML == input_value){
-            document.getElementById('add_member_btn').disabled= true;
-            document.getElementById('table_searchresults').deleteRow(1);
-            document.getElementById('table_newlyaddedmembers').deleteRow(1);
-        }
-        else
-        {
-            var table = document.getElementById("table_newlyaddedmembers");
-            var row = table.insertRow(table.rows.length);
-            var cell1 = row.insertCell(0);
-            cell1.innerHTML = document.getElementById('hidden_value').value;
-            
-        }
-        
-    }
+    
+    //     }
+    
+    // }
+    var table = document.getElementById("table_newlyaddedmembers");
+    var row = table.insertRow(table.rows.length);
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML = document.getElementById('hidden_value').value;
+    // var table_rows_nam = document.getElementById('table_newlyaddedmembers'); //nam = newlyaddedmembers           
+    // for(var i = 0;i< table_rows_nam.rows.length;i++)
+    // {
+    //     if(table_rows_nam.rows[i].cells[0].innerHTML == input_value){
+    //         document.getElementById('add_member_btn').disabled= true;
+    //         document.getElementById('table_searchresults').deleteRow(1);
+    //         document.getElementById('table_newlyaddedmembers').deleteRow(1);
+    //     }
+    //     else
+    //     {
+    //         var table = document.getElementById("table_newlyaddedmembers");
+    //         var row = table.insertRow(table.rows.length);
+    //         var cell1 = row.insertCell(0);
+    //         cell1.innerHTML = document.getElementById('hidden_value').value;
+    
+    //     }
+    
+    // }
     
     
     // document.getElementById('add_member_btn').disabled= true;
@@ -195,5 +197,58 @@ function add_member_in_table_newlyaddedmembers(input_value){
 }
 
 function removeMember(key){
-    alert(key);
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var grp_name = url.searchParams.get("name");
+    var grp_id = url.searchParams.get("id");
+    var firebaseRef = firebase.database().ref('groups');
+
+    firebaseRef.child(grp_id).child(grp_name).child('members').child(key).remove(function(){
+        alert('Member removed');
+        location.reload();
+    });
+}
+
+function checkforsamevalue(input_value){
+    var newlyaddedmembers = document.getElementById('table_newlyaddedmembers');
+    var searchresults = document.getElementById('table_searchresults');
+    for(var i = 1;i<newlyaddedmembers.rows.length;i++){
+        if(input_value == newlyaddedmembers.rows[i].cells[0].innerHTML)
+        {
+            alert('Member already present in Newly Added Members Table!');
+            searchresults.deleteRow(1);
+        }
+    }
+    
+    var addedmembers = document.getElementById('table_addedmembers');
+    
+    
+    for(var j = 1;j<addedmembers.rows.length;j++){
+        if(input_value == addedmembers.rows[j].cells[0].innerHTML)
+        {
+            alert('Member already present in Already Added Members Table!');
+            searchresults.deleteRow(1);
+        }
+    }
+}
+
+
+
+function updatemembers(){
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var grp_name = url.searchParams.get("name");
+    var grp_id = url.searchParams.get("id");
+    var firebaseRef = firebase.database().ref('groups');
+    
+    var newlyaddedmembers = document.getElementById('table_newlyaddedmembers');
+    if(newlyaddedmembers.rows.length > 1){
+        for(var i=1;i<newlyaddedmembers.rows.length;i++){
+            firebaseRef.child(grp_id).child(grp_name).child('members').push({
+                member : newlyaddedmembers.rows[i].cells[0].innerHTML
+            });
+        }
+    }
+
+    window.location = "group.html?id="+grp_id+"&name="+grp_name;
 }
