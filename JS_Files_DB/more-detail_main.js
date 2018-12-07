@@ -36,10 +36,20 @@ firebase.auth().onAuthStateChanged(function(user) {
         fetchreminderRef.on('value',function(snap){
             document.getElementById('more_detail_title').value = snap.child('title').val();
             document.getElementById('more_detail_description').value = snap.child('content').val();
-            document.getElementById('more_detail_date').value = snap.child('date').val();
-            document.getElementById('more_detail_time').value = snap.child('time').val();
+            var full_date = snap.child('date').val();
+            var full_date_split = full_date.split("/");
+            var actual_date = full_date_split[1];
+            var month = full_date_split[0];
+            var year = full_date_split[2];
+
+            document.getElementById('more_detail_date').value = year + "-" + month + "-" + actual_date;
+
+            var full_time = snap.child('time').val();
+            var full_time_split = full_time.split(" ");
+            var only_time = full_time_split[0];            
+            document.getElementById('more_detail_time').value = only_time;
             document.getElementById('more_detail_category').value = snap.child('category').val();
-            console.log(snap.child('category').val());
+            //console.log(snap.child('category').val());
         },function(error){
             if(error){
                 alert('Error! Please Try Again');
@@ -73,14 +83,14 @@ firebase.auth().onAuthStateChanged(function(user) {
                 category : category_updated
             });
             
-            window.location = "index.html";
+            window.location.replace = "index.html";
         }
         
         document.getElementById('btn_delete_RE').onclick = function(){
 
             fetchreminderRef.remove(function(){
                 alert('Removed');
-                window.location = "index.html";
+                window.location.replace = "index.html";
             });
             
             
