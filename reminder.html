@@ -388,7 +388,9 @@
             <a href="index.html" class="">Home</a>
             <a href="reminder.html" class="active">Reminder</a>
             <a href="event.html">Event</a>
-            <a href="#">Exit</a>
+            <a href="saved-images.html">Saved Images</a>
+            <a id="user_email"></a>
+            <a href="" style="margin-left:4% !important;"><li>Logout</li></a>
         </div>
         <div>
             <div class="row" style="background-color: black; color: white;">
@@ -396,7 +398,7 @@
                     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
                 </div>
                 <div class="col-sm-6 nav-med" style="padding-left: 6% !important; font-size:30px; padding-top: 1%;">
-                    REIG
+                    <a href="index.html" style="color: white;">REIG</a>
                 </div>
             </div>
         </div>
@@ -736,7 +738,7 @@ data-target="#darkModalForm">
                     
                     <script>
                         function openNav() {
-                            document.getElementById("mySidenav").style.width = "250px";
+                            document.getElementById("mySidenav").style.width = "auto";
                             document.getElementById("main").style.marginLeft = "250px";
                             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
                         }
@@ -863,6 +865,24 @@ data-target="#darkModalForm">
                             
                         });
                     </script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+                    <script>
+                        // Initialize Firebase
+                        var config = {
+                            apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+                            authDomain: "reig-1538140691138.firebaseapp.com",
+                            databaseURL: "https://reig-1538140691138.firebaseio.com/",
+                            projectId: "reig-1538140691138",
+                            storageBucket: "reig-1538140691138.appspot.com",
+                            messagingSenderId: "76801264020"
+                        };
+                        firebase.initializeApp(config);
+                    </script>
+                    <script type="text/javascript" src="JS_Files_DB/index_main.js"></script>
                 </body>
                 </html> 
                 

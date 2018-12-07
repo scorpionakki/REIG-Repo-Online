@@ -382,11 +382,12 @@
     <div class="main" id="main">
         <div id="mySidenav" class="sidenav main">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" class="">Home</a>
+            <a href="index.html" class="">Home</a>
             <a href="reminder.html" class="">Reminder</a>
             <a href="#" class="active">Event</a>
-            <a href="group-history.html">Group</a>
-            <a href="#">Exit</a>
+            <a href="saved-images.html">Saved Images</a>
+            <a id="user_email"></a>
+            <a href="" style="margin-left:4% !important;"><li>Logout</li></a>
         </div>
         <div>
             <div class="row" style="background-color: black; color: white;">
@@ -394,7 +395,7 @@
                     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
                 </div>
                 <div class="col-sm-6 nav-med" style="padding-left: 6% !important; font-size:30px; padding-top: 1%;">
-                    REIG
+                    <a href="index.html" style="color: white;">REIG</a>
                 </div>
             </div>
         </div>
@@ -704,6 +705,8 @@ data-target="#darkModalForm2">
                 firebase.initializeApp(config);
             </script>
             <script type="text/javascript" src="JS_Files_DB/event-user.js"></script>
+            <script type="text/javascript" src="JS_Files_DB/index_main.js"></script>
+
             
             <script>
                 // Get the modal
@@ -730,7 +733,7 @@ data-target="#darkModalForm2">
                     
                     <script>
                         function openNav() {
-                            document.getElementById("mySidenav").style.width = "250px";
+                            document.getElementById("mySidenav").style.width = "auto";
                             document.getElementById("main").style.marginLeft = "250px";
                             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
                         }
