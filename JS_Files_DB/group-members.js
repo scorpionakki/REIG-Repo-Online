@@ -148,6 +148,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         
     } else {
         // No user is signed in.
+        alert('No user currently signed in');
+        window.location = "login.html";
     }
 });
 
