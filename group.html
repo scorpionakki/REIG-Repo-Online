@@ -106,14 +106,36 @@
       padding-left: 2%;
       padding-bottom: 4%; 
     }
-    .message-form__input{
-      width: 100% !important; 
-    }
     .chat-history {
       height: 520px !important;
       padding: 8px 24px;
       overflow-y: scroll;
     }
+    .loading_gif{
+    position:fixed;
+    top:50% !important;
+    right:40% !important;
+    width:20% !important;
+    height:10% !important;
+    /* background-color:black; */
+    background-repeat:repeat;
+    background-position:center;
+    z-index:10000000;
+    opacity: 1;
+    filter: alpha(opacity=40);
+  }
+  .modify-text{
+    padding: 3% !important; margin-left: 3% !important; margin-bottom: 2% !important;  width: 80% !important; margin-top:4% !important;
+  }
+  .modify-button{
+    margin-bottom:1%; padding: 20px 17px; margin-left: 1%;
+  }
+  .side-bar{
+    margin-left: 10%;
+  }
+  }
+  .modify-text{
+    width: 50%;  
   }
   .main-down {
     padding: 16px;
@@ -204,6 +226,7 @@
     opacity: 1;
     filter: alpha(opacity=40);
   }
+  
 </style>
 <script>
 	
@@ -279,27 +302,24 @@
   </nav>
   <!-- location -->
   <div class="down-bar" style="z-index:2;">
-    <a href="#" class="fa fa-map-marker" onclick="getLocation();" title="location"> </a>
-    <!-- image uploader -->
-    <input type="file" id="upload" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept="image/*" multiple />
-    <a href="" title="upload image" onclick="document.getElementById('upload').click(); return false" class="fa fa-image"></a>
-    <!-- file uploader -->
-    <input type="file" id="upload-docx" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
-    <a href="" title="upload file" onclick="document.getElementById('upload-docx').click(); return false" class="fa fa-file-o"></a>
-    <!-- add reminder -->
-    <a href="#" class="fa fa-clock-o" title="add reminder" data-toggle="modal" data-target="#darkModalForm"> </a>
-    <!-- add event -->
-    <a href="#" title="add event" class="fa fa-calendar-o" data-toggle="modal" data-target="#darkModalForm2"> </a>
-    <!-- <div class="set">
-      <input type="text" style="padding-top: 0.5%; margin-top:1%; width: 45%;"> 
-      &nbsp;&nbsp;
-      <button class="fa fa-paper-plane btn btn-primary" style="height:37px; margin-bottom: 1%;"></button>
-    </div> -->
-    <form class="message-form" onsubmit="return false;">
-      <input class="message-form__input" style="margin-top:2%;" id="chat_message" placeholder="Type a message.." type="text"/>
-      <!-- <input class="fa fa-paper-plane btn btn-primary" style="margin-top:2%; margin-left: 1%;" value="SEND"  type="submit"/> -->
-      <button id="send_message" class="fa fa-paper-plane btn btn-primary" style="margin-top:2%; margin-left: 1%;"></button>  
-    </form>
+    <!-- <a href="#" class="fa fa-map-marker" onclick="getLocation();" title="location"> </a> -->
+    <div class="side-bar">
+      <input type="file" id="upload" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept="image/*" multiple />
+      <a href="" title="upload image" onclick="document.getElementById('upload').click(); return false" class="fa fa-image"></a>
+      <!-- file uploader -->
+      <input type="file" id="upload-docx" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
+      <a href="" title="upload file" onclick="document.getElementById('upload-docx').click(); return false" class="fa fa-file-o"></a>
+      <!-- add reminder -->
+      <a href="#" class="fa fa-clock-o" title="add reminder" data-toggle="modal" data-target="#darkModalForm"> </a>
+      <!-- add event -->
+      <a href="#" title="add event" class="fa fa-calendar-o" data-toggle="modal" data-target="#darkModalForm2"> </a>
+    </div>
+    <input class="modify-text" style="margin-top:1.5%;" id="chat_message" placeholder="Type a message.." type="text"/>
+    <button id="send_message" class="modify-button fa fa-paper-plane btn btn-primary" style="margin-top:0%; margin-left: 1%;"></button>  
+
+    <!-- <form class="message-form" onsubmit="return false;">
+      
+    </form> -->
   </div>
   <div>
     
