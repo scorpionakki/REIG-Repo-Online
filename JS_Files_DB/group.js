@@ -106,7 +106,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                         row2.appendChild(div_creation);
                         
                         var h5_creation = document.createElement('h5');
-                        var h5_creation_text = document.createTextNode(message_content.content);
+                        var decrypted = CryptoJS.AES.decrypt(message_content.content, "Secret Passphrase");
+                        var h5_creation_text = document.createTextNode(decrypted.toString(CryptoJS.enc.Utf8));
                         h5_creation.appendChild(h5_creation_text);
                         
                         cell_row2.appendChild(h5_creation);
@@ -139,12 +140,11 @@ firebase.auth().onAuthStateChanged(function(user) {
                 if(chat_message == ""){
                     chatRef.preventDefault();
                 }
-                
+                var encrypted = CryptoJS.AES.encrypt(chat_message, "Secret Passphrase");
                 chatRef.child('groups').child(grp_id).child(grp_name).child('messages').push({
-                    content : chat_message,
+                    content : encrypted.toString(),
                     sent_by : user.email
                 });
-                
                 document.getElementById('chat_message').value = "";
             }
         } else {
