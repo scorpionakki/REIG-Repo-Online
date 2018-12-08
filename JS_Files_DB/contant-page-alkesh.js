@@ -32,6 +32,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 var cell2 = row.insertCell(1);
                                 
                                 var alink_more_details = document.createElement("button");
+                                alink_more_details.setAttribute("class","btn btn-primary fa fa-plus");
                                 var alink_more_details_text = document.createTextNode('ADD');
                                 alink_more_details.appendChild(alink_more_details_text);
                                 // alink.setAttribute("href","http://index.html");
