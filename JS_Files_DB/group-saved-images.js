@@ -16,12 +16,45 @@ firebase.auth().onAuthStateChanged(function(user) {
             for(var i=0;i<data_sharing_keys.length;i++){
                 databaseRef.child(data_sharing_keys[i]).on('value',function(snapshot_imageURL){
                     var newRow   = tableRef.insertRow(0);
-                    var imageCell = newRow.insertCell(0);
+                    
+                    var aimageCell = newRow.insertCell(0);
+                    
+                    
+                    
+                    var aimageCellValue = document.createElement('a');
+                    
+                    aimageCellValue.setAttribute('class','example-image-link');
+                    
+                    aimageCellValue.setAttribute('href',snapshot_imageURL.child('imageURL').val());
+                    
+                    aimageCellValue.setAttribute('data-lightbox','example-1');
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     var imageCellValue = document.createElement('img');
+                    
                     imageCellValue.setAttribute('src',snapshot_imageURL.child('imageURL').val());
+                    
+                    imageCellValue.setAttribute('class','example-image');
+                    
+                    imageCellValue.style.borderRadius = "50%";
+                    
+                    // imageCellValue.setAttribute('border-radius','50%');
+                    
                     imageCellValue.setAttribute('height','100px');
+                    
                     imageCellValue.setAttribute('width','100px');
-                    imageCell.appendChild(imageCellValue);
+                    
+                    // imageCellValue.setAttribute('max-width','50%');
+                    
+                    aimageCellValue.appendChild(imageCellValue);
+                    
+                    aimageCell.appendChild(aimageCellValue);
+                    
                     
                     var captionCell = newRow.insertCell(1);
                     var captionCell_value = document.createTextNode(snapshot_imageURL.child('caption').val());
@@ -30,11 +63,11 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var dateCell = newRow.insertCell(2);
                     var dateCell_value = document.createTextNode(snapshot_imageURL.child('date').val());
                     dateCell.appendChild(dateCell_value);
-
+                    
                     var uploadedby = newRow.insertCell(3);
                     var uploadedby_value = document.createTextNode(snapshot_imageURL.child('uploaded_by').val());
                     uploadedby.appendChild(uploadedby_value);
-                    //tableRef.deleteRow(data_sharing_keys.length);
+                    tableRef.deleteRow(data_sharing_keys.length);
                     
                 })
                 
@@ -43,7 +76,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }
-        var profpicRef = firebase.database().ref('users/'+user.uid+'/data_sharing');
+        var profpicRef = firebase.database().ref('groups/'+grp_id+'/'+grp_name+'/data_sharing');
         document.getElementById('upload_btn').onclick = function(){
             
             
@@ -58,7 +91,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             var storageRef = firebase.storage().ref('/'+grp_id+'/'+grp_name+'/'+filename);
             var uploadTask = storageRef.put(selectedFile);
             uploadTask.on('state_changed',function(snapshot){
-                
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                alert('Upload Progress : '+progress+'%');
             },function(error){
                 
             },function(){
@@ -72,7 +106,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                 });
                 
                 alert('Uploaded');
-                
+                document.getElementById('remove_photo').click();
+                document.getElementById('caption_value').value = "";
                 
             });
             

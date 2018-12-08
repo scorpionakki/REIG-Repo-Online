@@ -1,3 +1,4 @@
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
@@ -53,7 +54,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     
                     //aimageCell.appendChild(imageCell);
                     
-                    tableRef.deleteRow(data_sharing_keys.length);
+                    
                     
                     var captionCell = newRow.insertCell(1);
                     var captionCell_value = document.createTextNode(snapshot_imageURL.child('caption').val());
@@ -62,7 +63,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var dateCell = newRow.insertCell(2);
                     var dateCell_value = document.createTextNode(snapshot_imageURL.child('date').val());
                     dateCell.appendChild(dateCell_value);
-                    //tableRef.deleteRow(data_sharing_keys.length);
+                    tableRef.deleteRow(data_sharing_keys.length);
                     
                 })
                 
@@ -86,7 +87,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             var storageRef = firebase.storage().ref('/'+user.uid+'/'+filename);
             var uploadTask = storageRef.put(selectedFile);
             uploadTask.on('state_changed',function(snapshot){
-                
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                alert('Upload Progress : '+progress+'%');
             },function(error){
                 
             },function(){
@@ -100,8 +102,10 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
                 alert('Uploaded');
                 
-                
+                document.getElementById('remove_photo').click();
+                document.getElementById('caption_value').value = "";
             });
+            
             
         }
         
