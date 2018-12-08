@@ -112,7 +112,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             //alink_more_details.href = "more-detail.html?id="+id;
             
-            alink_more_details.href = "more-detail.html?id="+id+"&type=events";
+            alink_more_details.href = "more-detail.html?id="+id+"&type=events&grpid="+grp_id+"&grpname="+grp_name;
             // d18354b4120a4ec1e9021823058e823e27b0b7ce
             
             // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
@@ -161,7 +161,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                 date : date,
                 time : time
             });
-            // location.reload();
+            alert('Reminder Added');
+            location.reload();
         };
         
         document.getElementById('event_add_group').onclick =  function(){
@@ -179,7 +180,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 time : time
             });
             
-           alert('Added');
+           alert('Event Added');
            location.reload();
         };
         

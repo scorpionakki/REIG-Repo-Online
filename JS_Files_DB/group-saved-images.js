@@ -1,11 +1,15 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var grp_name = url.searchParams.get("name");
+        var grp_id = url.searchParams.get("id");
         
         var tableRef = document.getElementById('img_table').getElementsByTagName('tbody')[0];
         // Insert a row in the table at the last row
         
-        var databaseRef = firebase.database().ref('users').child(user.uid).child('data_sharing');
+        var databaseRef = firebase.database().ref('groups').child(grp_id).child(grp_name).child('data_sharing');
         databaseRef.on('value',function(snapshot_data_sharing){
             var data_sharing = snapshot_data_sharing.val();
             var data_sharing_keys = Object.keys(data_sharing);
@@ -18,14 +22,18 @@ firebase.auth().onAuthStateChanged(function(user) {
                     imageCellValue.setAttribute('height','100px');
                     imageCellValue.setAttribute('width','100px');
                     imageCell.appendChild(imageCellValue);
-
+                    
                     var captionCell = newRow.insertCell(1);
                     var captionCell_value = document.createTextNode(snapshot_imageURL.child('caption').val());
                     captionCell.appendChild(captionCell_value);
-
+                    
                     var dateCell = newRow.insertCell(2);
                     var dateCell_value = document.createTextNode(snapshot_imageURL.child('date').val());
                     dateCell.appendChild(dateCell_value);
+
+                    var uploadedby = newRow.insertCell(3);
+                    var uploadedby_value = document.createTextNode(snapshot_imageURL.child('uploaded_by').val());
+                    uploadedby.appendChild(uploadedby_value);
                     //tableRef.deleteRow(data_sharing_keys.length);
                     
                 })
@@ -45,9 +53,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             var mm = today.getMonth()+1; //January is 0!
             var yyyy = today.getFullYear();
             var final_date_to_be_stored = dd+"-"+mm+"-"+yyyy;
-           
+            
             var filename = selectedFile.name;
-            var storageRef = firebase.storage().ref('/'+user.uid+'/'+filename);
+            var storageRef = firebase.storage().ref('/'+grp_id+'/'+grp_name+'/'+filename);
             var uploadTask = storageRef.put(selectedFile);
             uploadTask.on('state_changed',function(snapshot){
                 
@@ -58,7 +66,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                     profpicRef.push({
                         imageURL : downloadURL,
                         caption : caption,
-                        date : final_date_to_be_stored
+                        date : final_date_to_be_stored,
+                        uploaded_by : user.email
                     });
                 });
                 
