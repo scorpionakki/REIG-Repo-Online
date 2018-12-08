@@ -231,7 +231,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             if(reminder_title_val == ""){
                 eventRef.preventDefault();
             }
-
+            
             eventRef.child(user.uid).child('reminders').push({
                 title : reminder_title_val,
                 content : reminder_content_val,
@@ -270,6 +270,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log('Done');
         };
         
+        
+        
     } else {
         // No user is signed in.
         window.alert('Sorry! No user has been signed in. Please try logging in again');
@@ -286,3 +288,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 //     var event_category_val = document.getElementById('event_category').value;
 //     var event_datetime_val = document.getElementById('event_datetime').value;
 // }
+
+
+function logout_user(){
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        alert('Signout Successful');
+        window.location = 'login.html';
+    }).catch(function(error) {
+        // An error happened.
+        alert('Please try again');
+    });
+
+}
