@@ -84,48 +84,59 @@ firebase.auth().onAuthStateChanged(function(user) {
         };
         
         document.getElementById('create_group').onclick =  function(){
-            var group_name = document.getElementById('group_name').value;
-            // databaseRef_group.child(group_name).on("value",function(snap){
-            //     //window.alert('Name already taken! Please try with some different name');
-            //     console.log('Name already taken');
-            // });
-            
-            var groupID = databaseRef_group.push().getKey();
-            var group_description = document.getElementById('group_description').value;
-            
-            databaseRef_group.child(groupID).child(group_name).child('details').set({
-                created_by : user.email,
-                group_description : group_description
-            });
-            
             
             var table = document.getElementById('table_addedmembers');
-            for(var i=1;i<table.rows.length;i++){
-                var table_cell_value_email = table.rows[i].cells[0].innerHTML;
+            if(table.rows.length < 3){
+                alert('No memerbers added');
+                return false;
+            }
+            else
+            {
+                var group_name = document.getElementById('group_name').value;
+                // databaseRef_group.child(group_name).on("value",function(snap){
+                //     //window.alert('Name already taken! Please try with some different name');
+                //     console.log('Name already taken');
+                // });
                 
+                var groupID = databaseRef_group.push().getKey();
+                var group_description = document.getElementById('group_description').value;
+                
+                databaseRef_group.child(groupID).child(group_name).child('details').set({
+                    created_by : user.email,
+                    group_description : group_description
+                });
+                
+                
+                
+                for(var i=1;i<table.rows.length;i++){
+                    var table_cell_value_email = table.rows[i].cells[0].innerHTML;
+                    
                     databaseRef_group.child(groupID).child(group_name).child('members').push({
                         member : table_cell_value_email
                     });
                     console.log('Member details added in group');
+                    
+                }
                 
+                alert('Redirecting! Creation Successful');
+                window.location = "index.html";
             }
-
-            alert('Redirecting! Creation Successful');
-            window.location = "index.html";
+            
+            
             
             // databaseRef.on('value',function(snapshot_user_keys){
             //     var users_key = snapshot_user_keys.val();
             //     var keys =  Object.keys(users_key);
-                
+            
             //     for(var j=1;j<keys.length;j++){
             //         databaseRef.child(keys[j]).child('details').child('email').on('value',function(email){
-                        
-                        
+            
+            
             //         });
             //     }
-                
-                
-                
+            
+            
+            
             // });
             
             
@@ -134,7 +145,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             //         group : group_name_para,
             //         ID : groupID_para
             //     });
-                
+            
             //     break;
             // }
             //     // databaseRef.on('value',function(snap){
@@ -235,7 +246,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             // });
             
             
-            window.location = "index.html";
+            //window.location = "index.html";
         };
     }
     else
