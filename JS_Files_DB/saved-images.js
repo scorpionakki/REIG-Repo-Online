@@ -12,17 +12,53 @@ firebase.auth().onAuthStateChanged(function(user) {
             for(var i=0;i<data_sharing_keys.length;i++){
                 databaseRef.child(data_sharing_keys[i]).on('value',function(snapshot_imageURL){
                     var newRow   = tableRef.insertRow(0);
-                    var imageCell = newRow.insertCell(0);
+                    
+                    var aimageCell = newRow.insertCell(0);
+                    
+                    
+                    
+                    var aimageCellValue = document.createElement('a');
+                    
+                    aimageCellValue.setAttribute('class','example-image-link');
+                    
+                    aimageCellValue.setAttribute('href',snapshot_imageURL.child('imageURL').val());
+                    
+                    aimageCellValue.setAttribute('data-lightbox','example-1');
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     var imageCellValue = document.createElement('img');
+                    
                     imageCellValue.setAttribute('src',snapshot_imageURL.child('imageURL').val());
+                    
+                    imageCellValue.setAttribute('class','example-image');
+                    
+                    imageCellValue.style.borderRadius = "50%";
+                    
+                    // imageCellValue.setAttribute('border-radius','50%');
+                    
                     imageCellValue.setAttribute('height','100px');
+                    
                     imageCellValue.setAttribute('width','100px');
-                    imageCell.appendChild(imageCellValue);
-
+                    
+                    // imageCellValue.setAttribute('max-width','50%');
+                    
+                    aimageCellValue.appendChild(imageCellValue);
+                    
+                    aimageCell.appendChild(aimageCellValue);
+                    
+                    //aimageCell.appendChild(imageCell);
+                    
+                    tableRef.deleteRow(data_sharing_keys.length);
+                    
                     var captionCell = newRow.insertCell(1);
                     var captionCell_value = document.createTextNode(snapshot_imageURL.child('caption').val());
                     captionCell.appendChild(captionCell_value);
-
+                    
                     var dateCell = newRow.insertCell(2);
                     var dateCell_value = document.createTextNode(snapshot_imageURL.child('date').val());
                     dateCell.appendChild(dateCell_value);
@@ -45,7 +81,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             var mm = today.getMonth()+1; //January is 0!
             var yyyy = today.getFullYear();
             var final_date_to_be_stored = dd+"-"+mm+"-"+yyyy;
-           
+            
             var filename = selectedFile.name;
             var storageRef = firebase.storage().ref('/'+user.uid+'/'+filename);
             var uploadTask = storageRef.put(selectedFile);
