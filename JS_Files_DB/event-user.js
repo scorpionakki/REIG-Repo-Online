@@ -1,4 +1,4 @@
-var fetchreminderRef = firebase.database().ref('users');
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
@@ -6,8 +6,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         // console.log(user.email);
         var img = document.getElementById('loading_gif');
         img.style.visibility = 'hidden';
+        document.getElementById('user_email').innerText = user.email;
         //display reminders
-        fetchreminderRef = fetchreminderRef.child(user.uid).child('events');
         // //for getting no. of events i.e event count
         // var countRef = firebase.database().ref('users').child('testing_reig').child('total_events');
         // var event_count;
@@ -20,7 +20,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         // window.alert(event_count);
         
         //retrievingreminders
-        fetchreminderRef.on('child_added', function(snap){
+        var fetchreminderRef = firebase.database().ref('users');
+        fetchreminderRef.child(user.uid).child('events').on('child_added', function(snap){
             var title_reminder_fetch = snap.child('title').val();
             var date_reminder_fetch =  snap.child('date').val();
             var time_reminder_fetch = snap.child('time').val();
@@ -56,7 +57,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             //alink_more_details.href = "more-detail.html?id="+id;
             
-            alink_more_details.href = "more-detail.html?id="+id+"&type=reminders";
+            alink_more_details.href = "more-detail.html?id="+id+"&type=events";
             // d18354b4120a4ec1e9021823058e823e27b0b7ce
             
             // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
@@ -91,6 +92,30 @@ firebase.auth().onAuthStateChanged(function(user) {
             alert('There was some error! Please Try Again');
             document.location.reload(true);
         });
+        
+        
+        //store event
+        document.getElementById('btn_event_add').onclick = function(){
+            var event_title_val = document.getElementById('event_title').value;
+            var event_content_val = document.getElementById('event_content').value;
+            var event_category_val = document.getElementById('event_category').value;
+            var event_date_val = document.getElementById('event_date').value;
+            var event_time_val = document.getElementById('event_time').value;
+
+            if(event_title_val == ""){
+                eventRef.preventDefault();
+            }
+        
+            fetchreminderRef.child(user.uid).child('events').push({
+                title : event_title_val,
+                content : event_content_val,
+                category : event_category_val,
+                date : event_date_val,
+                time : event_time_val
+            });
+        
+            console.log('Done');
+        };
     }
     else
     {

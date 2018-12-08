@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             more_detail_category.options[1] = new Option('Personal', 'Personal');
             more_detail_category.options[2] = new Option('Shopping', 'Shopping');
             more_detail_category.options[3] = new Option('Work', 'Work');
-            more_detail_category.options[4] = new Option('Wishlist', 'Wishlist');
+            more_detail_category.options[4] = new Option('Whishlist', 'Whishlist');
         }
         
         var fetchreminderRef = firebase.database().ref('users').child(user.uid).child(type).child(id);
@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.getElementById('more_detail_title').value = snap.child('title').val();
             document.getElementById('more_detail_description').value = snap.child('content').val();
             var full_date = snap.child('date').val();
-            var full_date_split = full_date.split("/");
+            var full_date_split = full_date.split("-");
             var actual_date = full_date_split[1];
             var month = full_date_split[0];
             var year = full_date_split[2];
