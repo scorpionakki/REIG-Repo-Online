@@ -57,6 +57,41 @@ firebase.auth().onAuthStateChanged(function(user) {
             }
         });
         
+        document.getElementById('btn_update_RE').onclick = function()
+        {
+            var title_updated = document.getElementById('more_detail_title').value;
+            var description_updated = document.getElementById('more_detail_description').value;
+            var date_updated = document.getElementById('more_detail_date').value;
+            var time_updated = document.getElementById('more_detail_time').value;
+            var category_updated = document.getElementById('more_detail_category').value;
+            
+            if(title_updated == ""){
+                alert('Please provide a title');
+                window.location = "index.html";
+                fetchreminderRef.preventDefault();
+                
+            }
+            
+            fetchreminderRef.set({
+                title : title_updated,
+                content : description_updated,
+                date : date_updated,
+                time : time_updated,
+                category : category_updated
+            });
+            
+            window.location.replace = "index.html";
+        }
+        
+        document.getElementById('btn_delete_RE').onclick = function(){
+            
+            fetchreminderRef.remove(function(){
+                alert('Removed');
+                window.location.replace = "index.html";
+            });
+            
+            
+        }
     }
     else
     {
@@ -85,6 +120,42 @@ firebase.auth().onAuthStateChanged(function(user) {
                 window.location = 'index.html';
             }
         });
+        
+        document.getElementById('btn_update_RE').onclick = function()
+        {
+            var title_updated = document.getElementById('more_detail_title').value;
+            var description_updated = document.getElementById('more_detail_description').value;
+            var date_updated = document.getElementById('more_detail_date').value;
+            var time_updated = document.getElementById('more_detail_time').value;
+            var category_updated = document.getElementById('more_detail_category').value;
+            
+            if(title_updated == ""){
+                alert('Please provide a title');
+                window.location = "index.html";
+                fetchreminderRef.preventDefault();
+                
+            }
+            
+            fetchreminderRef.set({
+                title : title_updated,
+                content : description_updated,
+                date : date_updated,
+                time : time_updated,
+                category : category_updated
+            });
+            
+            window.location.replace = "index.html";
+        }
+        
+        document.getElementById('btn_delete_RE').onclick = function(){
+            
+            fetchreminderRef.remove(function(){
+                alert('Removed');
+                window.location.replace = "index.html";
+            });
+            
+            
+        }
     }
     
     
@@ -115,16 +186,17 @@ firebase.auth().onAuthStateChanged(function(user) {
             category : category_updated
         });
         
-        window.location.replace = "index.html";
+        location.reload();
     }
     
     document.getElementById('btn_delete_RE').onclick = function(){
         
         fetchreminderRef.remove(function(){
             alert('Removed');
-            window.location.replace = "index.html";
+            
         });
         
+        window.location.replace = "index.html";
         
     }
     
