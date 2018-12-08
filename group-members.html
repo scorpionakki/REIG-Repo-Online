@@ -337,6 +337,85 @@
                 .admin{
                     background-color: #bbb;
                 }
+
+                .search {
+                width: 100%;
+                position: relative
+            }
+            
+            .searchTerm {
+                float: left;
+                width: 100%;
+                border: 3px solid #00B4CC;
+                padding: 5px;
+                height: 20px;
+                border-radius: 5px;
+                outline: none;
+                color: #9DBFAF;
+            }
+            
+            .searchTerm:focus{
+                color: #00B4CC;
+            }
+            
+            .searchButton {
+                position: absolute;  
+                right: -50px;
+                width: 40px;
+                height: 36px;
+                border: 1px solid #00B4CC;
+                background: #00B4CC;
+                text-align: center;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 20px;
+            }
+            
+            /*Resize the wrap to see the search bar change!*/
+            .wrap{
+                width: 30%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            #myUL {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            #myUL li a {
+                border: 1px solid #ddd;
+                margin-top: -1px; /* Prevent double borders */
+                background-color: #f6f6f6;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 18px;
+                color: black;
+                display: block
+            }
+            
+            #myUL li a:hover:not(.header) {
+                background-color: #eee;
+            }
+            #search_value{
+                background-image: url('assets/img/110917_search.png');
+                background-position: 10px 12px;
+                background-repeat: no-repeat;
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+            }
+
+            .table{
+                width: 100%;
+                border: none;
+            }
+            
             </style>
         </head>
         
@@ -386,34 +465,27 @@
                                                 <input class="btn btn-primary" type="submit" value="Search" id="search_member_btn">
                                                 <!-- <button type="submit" class="btn btn-primary fa fa-search" value="Search" onclick="getusername();"></button> -->
                                             </div>
-
+                                            <div class="tab tab-1">
                                             <table class="table" id="table_searchresults" border="1">
                                                 <tr>
                                                     <th>Search Results</th>
                                                 </tr>
-                                                <tbody>
-                                                    
-                                                </tbody>
                                             </table>
-                                            
+                                        </div>
+                                        <div class="tab tab-1">
                                             <table class="table" id="table_newlyaddedmembers" border="1">
                                                 <tr>
                                                     <th>Newly Added Members</th>
                                                 </tr>
-                                                <tbody>
-                                                    
-                                                </tbody>
                                             </table>
-                                            
+                                        </div>
+                                        <div class="tab tab-1">
                                             <table class="table" id="table_addedmembers" border="1">
                                                 <tr>
                                                     <th>Already Added Members</th>
                                                 </tr>
-                                                <tbody>
-                                                    
-                                                </tbody>
                                             </table>
-                                            
+                                        </div>
                                             <!-- <table id="memberTable">
                                                 <th>
                                                     <td>

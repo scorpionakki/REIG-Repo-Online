@@ -93,18 +93,18 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var useremails = useremails_snapshot.val();
                     var id = useremails_snapshot.key;
                     
-                    var tableRef = document.getElementById('table_addedmembers').getElementsByTagName('tbody')[0];
+                    var tableRef = document.getElementById('table_addedmembers');
                     var newRow = tableRef.insertRow(1);
                     newRow.setAttribute('class','list-group-item');
                     var member_name_cell = newRow.insertCell(0);
                     var remove_button_cell = newRow.insertCell(1);
-                    var id_cell = newRow.insertCell(2);
+                    // var id_cell = newRow.insertCell(2);
                     
                     var remove_button = document.createElement('button');
-                    remove_button.setAttribute('class', 'btn btn-primary');
                     member_name_cell.appendChild(document.createTextNode(useremails.member));
                     remove_button.appendChild(document.createTextNode('Remove'));
-                    id_cell.appendChild(document.createTextNode(id));
+
+                    // id_cell.appendChild(document.createTextNode(id));
                     
                     // var button = document.createElement("a");
                     // button.setAttribute("href","#myModal");
@@ -114,11 +114,12 @@ firebase.auth().onAuthStateChanged(function(user) {
                     
                     var button = document.createElement('button');
                     button.type = "button";
+                    button.setAttribute("class","btn btn-primary fa fa-times");
                     button.addEventListener('click',function(){
                         removeMember(useremails_snapshot.key);
                     });
                     //button.setAttribute("onclick","removeMember("+useremails_snapshot.key+");return false");
-                    button.appendChild(document.createTextNode("Remove"));
+                    button.appendChild(document.createTextNode(""));
                     remove_button_cell.appendChild(button);
                     
                     // var ul = document.getElementById('myUL');
