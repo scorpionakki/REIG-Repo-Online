@@ -96,13 +96,15 @@ firebase.auth().onAuthStateChanged(function(user) {
                         // var cell_row = row.insertCell(0);
                         // cell_row.innerHTML =  message_content.sent_by;
                         var row2 = table.insertRow(0);
+                        
                         var cell_row2 = row2.insertCell(0);
+
                         var cell2_row2 = row2.insertCell(1);
                         var cell3_row2 = row2.insertCell(2);
                         //var cell3_row2 = row2.insertCell(2);
                         
                         var div_creation = document.createElement('div');
-                        div_creation.setAttribute('class','chat-message-content clearfix');
+                        // div_creation.setAttribute('class','chat-message-content clearfix');
                         row2.appendChild(div_creation);
                         
                         var h5_creation = document.createElement('h5');
@@ -118,7 +120,15 @@ firebase.auth().onAuthStateChanged(function(user) {
                         var p_creation_text = document.createTextNode(message_content.sent_by);
                         p_creation.appendChild(p_creation_text);
                         
+                        // var div_message = document.createElement('div');
+                        // div_message.setAttribute('class','col-md-12');
+                        
+                        // var div_sentby = document.createElement('div');
+                        // div_sentby.setAttribute('class','col-md-12');
+                        
                         cell3_row2.appendChild(p_creation);
+                        // div_sentby.appendChild(cell_row2);
+                        // div_sentby.appendChild(cell3_row2);
                         // cell_row2.innerHTML =  message_content.sent_by;
                         //cell2_row2.innerHTML = " - ";
                         //cell3_row2.innerHTML = message_content.content;
