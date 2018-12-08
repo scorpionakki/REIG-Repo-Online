@@ -101,7 +101,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var id_cell = newRow.insertCell(2);
                     
                     var remove_button = document.createElement('button');
-                    
+                    remove_button.setAttribute('class', 'btn btn-primary');
                     member_name_cell.appendChild(document.createTextNode(useremails.member));
                     remove_button.appendChild(document.createTextNode('Remove'));
                     id_cell.appendChild(document.createTextNode(id));
