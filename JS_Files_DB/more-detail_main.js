@@ -196,7 +196,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
         });
         
-        location.replace = "index.html";
+        window.location = "index.html";
         
     }
     
