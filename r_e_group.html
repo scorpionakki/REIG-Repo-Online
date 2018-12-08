@@ -430,83 +430,83 @@
             <a id="group_details_a" href="group-details.html">Group Details</a>
             <a id="group_members_a" href="group-members.html">Group Members</a>
             <a id="group_re" class="active">Reminder & Event</a>
-
+            
             <!-- <a href="#" class="active">Reminder</a>
-            <a href="event.html">Event</a> -->
-
-            <!-- <a href="group-history.html">Group</a> -->
-            <!-- <a href="#">Exit</a> -->
-        </div>
-        <div>
-            <div class="row" style="background-color: black; color: white;">
-                <div class="col-sm-5" style="padding-left: 3% !important; padding-top: 1%;">
-                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-                </div>
-                <div class="col-sm-6 nav-med" style="padding-left: 3% !important; font-size:30px; padding-top: 1%;">
-                    <a href="group.html" style="color: white;">REIG</a>
+                <a href="event.html">Event</a> -->
+                
+                <!-- <a href="group-history.html">Group</a> -->
+                <!-- <a href="#">Exit</a> -->
+            </div>
+            <div>
+                <div class="row" style="background-color: black; color: white;">
+                    <div class="col-sm-5" style="padding-left: 3% !important; padding-top: 1%;">
+                        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+                    </div>
+                    <div class="col-sm-6 nav-med" style="padding-left: 3% !important; font-size:30px; padding-top: 1%;">
+                        <a href="group.html" style="color: white;">REIG</a>
+                    </div>
                 </div>
             </div>
+            <br><br><br>
+            
+            <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm">
+                ADD Reminder
+            </button>
+            <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm2">
+                ADD Event
+            </button>
+            <div
+            id="div1">
+            
+            <h3 style="padding: 1%; text-align: center;">Reminder</h3>
+            <div
+            class="row">
+            <!-- Reminder Table -->
+            
+            <div
+            class="col-md-1">
+            
+            
+            
         </div>
-        <br><br><br>
-        
-        <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm">
-            ADD Reminder
-        </button>
-        <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm2">
-            ADD Event
-        </button>
-        <div
-        id="div1">
-        
-        <h3 style="padding: 1%; text-align: center;">Reminder</h3>
-        <div
-        class="row">
-        <!-- Reminder Table -->
         
         <div
-        class="col-md-1">
+        class="col-md-10">
+        
+        <div
+        class="table-responsive">
         
         
+        <table
+        class="table table-hover"
+        id='reminder_table_group'
+        >
         
-    </div>
-    
-    <div
-    class="col-md-10">
-    
-    <div
-    class="table-responsive">
-    
-    
-    <table
-    class="table table-hover"
-    id='reminder_table_group'
-    >
-    
-    <thead>
+        <thead>
+            
+            <tr>
+                
+                <th>Title</th>
+                
+                <th>Date</th>
+                
+                <th>Time</th>
+                
+                <th></th>
+                
+                <th></th>
+                
+            </tr>
+            
+        </thead>
         
-        <tr>
+        <tbody>
             
-            <th>Title</th>
-            
-            <th>Date</th>
-            
-            <th>Time</th>
-            
-            <th></th>
-            
-            <th></th>
-            
-        </tr>
+        </tbody>
         
-    </thead>
+    </table>
     
-    <tbody>
-        
-    </tbody>
-    
-</table>
-
-<img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
+    <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
 </div>
 
 
@@ -633,66 +633,71 @@ class="col-md-10">
                 </div>
                 <!--Body-->
                 <div class="modal-body">
-                    <form method="POST">
-                        <!--Body-->
-                        <div class="md-form mb-5">
-                            <label data-error="Some error occured" data-success="Correct" for="Form-email5">Title</label>
-                            <input type="text" id="reminder_title" class="form-control validate white-text" required>
-                        </div>
-                        
-                        <div class="md-form pb-3">
-                            <br>
-                            <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
-                            <input type="text" id="reminder_content" class="form-control validate white-text">
-                        </div>
-                        <div class="md-form pb-3">
-                            <br>
-                            <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
-                            <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
-                            <select class="form-control validate white-text" id="reminder_category">
-                                <option value="Default">Default</option>
-                                <option value="Personal">Personal</option>
-                                <option value="Shopping">Shopping</option>
-                                <option value="Shopping">Work</option>
-                                <option value="Whishlist">Whishlist</option>
-                            </select>
-                        </div>  
-                        <div class="form-group">
-                            <br>
-                            <label class="label-control" style="color: black;">Select date & time</label>
-                            <input type="text" id="reminder_date_time" class="form-control datetimepicker" value="10/05/2016">
-                        </div>
-                        <!-- <div class="form-group mt-4">
-                            <input class="form-check-input" type="checkbox" id="checkbox624">
-                            <label for="checkbox624" class="white-text form-check-label">
-                                Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
-                            </div> -->
-                            <!--Grid row-->
-                            <div class="row d-flex align-items-center mb-4">
-                                
-                                <!--Grid column-->
-                                <div class="text-center mb-3 col-md-12">
-                                    <br>
-                                    <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1" id="reminder_add_group">ADD</button>
-                                </div>
-                                <!--Grid column-->
-                                
-                            </div>
-                            <!--Grid row-->
+                    
+                    <!--Body-->
+                    <div class="md-form mb-5">
+                        <label data-error="Some error occured" data-success="Correct" for="Form-email5">Title</label>
+                        <input type="text" id="reminder_title" class="form-control validate white-text" required>
+                    </div>
+                    
+                    <div class="md-form pb-3">
+                        <br>
+                        <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
+                        <input type="text" id="reminder_content" class="form-control validate white-text">
+                    </div>
+                    <div class="md-form pb-3">
+                        <br>
+                        <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
+                        <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
+                        <select class="form-control validate white-text" id="reminder_category">
+                            <option value="Default">Default</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Shopping">Work</option>
+                            <option value="Whishlist">Whishlist</option>
+                        </select>
+                    </div>  
+                    <div class="form-group">
+                        <br>
+                        <label class="label-control" style="color: black;">Date</label>
+                        <input type="date" id="reminder_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <br>
+                        <label class="label-control" style="color: black;">Time</label>
+                        <input type="time" id="reminder_time" class="form-control">
+                    </div>
+                    <!-- <div class="form-group mt-4">
+                        <input class="form-check-input" type="checkbox" id="checkbox624">
+                        <label for="checkbox624" class="white-text form-check-label">
+                            Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                        </div> -->
+                        <!--Grid row-->
+                        <div class="row d-flex align-items-center mb-4">
                             
-                            <!--Grid row-->
-                            <div class="row">
-                                
-                                <!--Grid column-->
-                                <!-- <div class="col-md-12">
-                                    <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#darkModalForm2"> Register Here!</a></p>
-                                    <p class="font-small white-text d-flex justify-content-end">Forgot Password? <a href="fgt_pswd.html" class="green-text ml-1 font-weight-bold"> Click Here!</a></p>
-                                </div> -->
-                                <!--Grid column-->
-                                
+                            <!--Grid column-->
+                            <div class="text-center mb-3 col-md-12">
+                                <br>
+                                <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="reminder_add_group">ADD</button>
                             </div>
-                            <!--Grid row-->
-                        </form>
+                            <!--Grid column-->
+                            
+                        </div>
+                        <!--Grid row-->
+                        
+                        <!--Grid row-->
+                        <div class="row">
+                            
+                            <!--Grid column-->
+                            <!-- <div class="col-md-12">
+                                <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#darkModalForm2"> Register Here!</a></p>
+                                <p class="font-small white-text d-flex justify-content-end">Forgot Password? <a href="fgt_pswd.html" class="green-text ml-1 font-weight-bold"> Click Here!</a></p>
+                            </div> -->
+                            <!--Grid column-->
+                            
+                        </div>
+                        <!--Grid row-->
+                        
                     </div>
                 </div>
             </div>
@@ -717,250 +722,253 @@ class="col-md-10">
                     </div>
                     <!--Body-->
                     <div class="modal-body">
-                        <form>
-                            <form method="POST">
-                                <!--Body-->
-                                <div class="md-form mb-5">
-                                    <label data-error="Some error occured" data-success="Correct" for="Form-email5">Title</label>
-                                    <input type="text" id="event_title" class="form-control" required>
-                                </div>
+                        
+                        <!--Body-->
+                        <div class="md-form mb-5">
+                            <label data-error="Some error occured" data-success="Correct" for="Form-email5">Title</label>
+                            <input type="text" id="event_title" class="form-control" required>
+                        </div>
+                        
+                        <div class="md-form pb-3">
+                            <br>
+                            <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
+                            <input type="text" id="event_content" class="form-control validate white-text">
+                        </div>
+                        <div class="md-form pb-3">
+                            <br>
+                            <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
+                            <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
+                            <select class="form-control validate white-text" id="event_category">
+                                <option value="Default">Default</option>
+                                <option value="Birthday">Birthday</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Fest">Fest</option>
+                            </select>
+                        </div>  
+                        <div class="form-group">
+                            <br>
+                            <label class="label-control" style="color: black;">Date</label>
+                            <input type="date" id="event_date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <label class="label-control" style="color: black;">Time</label>
+                            <input type="time" id="event_time" class="form-control" required>
+                        </div>
+                        <!-- <div class="form-group mt-4">
+                            <input class="form-check-input" type="checkbox" id="checkbox624">
+                            <label for="checkbox624" class="white-text form-check-label">
+                                Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                            </div> -->
+                            <!--Grid row-->
+                            <div class="row d-flex align-items-center mb-4">
                                 
-                                <div class="md-form pb-3">
-                                    <br>
-                                    <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
-                                    <input type="text" id="event_content" class="form-control validate white-text">
+                                <!--Grid column-->
+                                <div class="text-center mb-3 col-md-12">
+                                    <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="event_add_group">ADD</button>
                                 </div>
-                                <div class="md-form pb-3">
-                                    <br>
-                                    <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
-                                    <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
-                                    <select class="form-control validate white-text" id="event_category">
-                                        <option value="Default">Default</option>
-                                        <option value="Personal">Personal</option>
-                                        <option value="Shopping">Shopping</option>
-                                        <option value="Shopping">Work</option>
-                                        <option value="Whishlist">Whishlist</option>
-                                    </select>
-                                </div>  
-                                <div class="form-group">
-                                    <br>
-                                    <label class="label-control" style="color: black;">Select date & time</label>
-                                    <input type="text" id="event_date_time" class="form-control datetimepicker" value="10/05/2016" required>
-                                </div>
-                                <!-- <div class="form-group mt-4">
-                                    <input class="form-check-input" type="checkbox" id="checkbox624">
-                                    <label for="checkbox624" class="white-text form-check-label">
-                                        Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
-                                    </div> -->
-                                    <!--Grid row-->
-                                    <div class="row d-flex align-items-center mb-4">
-                                        
-                                        <!--Grid column-->
-                                        <div class="text-center mb-3 col-md-12">
-                                            <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1" id="event_add_group">ADD</button>
-                                        </div>
-                                        <!--Grid column-->
-                                        
-                                    </div>
-                                    <!--Grid row-->
-                                    
-                                    
-                                    <!--Grid row-->
-                                    
-                                    <!--Grid row-->
-                                </form>
+                                <!--Grid column-->
+                                
                             </div>
+                            <!--Grid row-->
+                            
+                            
+                            <!--Grid row-->
+                            
+                            <!--Grid row-->
+                            
                         </div>
                     </div>
-                    <!--/.Content-->
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- Modal -->  
+        
+        
+        <br><br>
+        <footer class="footer">
+            <div class="container">
+                <div class="copyright" id="copyright">
+                    &copy;
+                    <script>
+                        document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                    </script>, Designed by
+                    <a href="#" target="_blank">Bhargav Borse</a>. Coded by
+                    <a href="#" target="_blank">Alkesh Kataria</a>.
                 </div>
             </div>
-            <!-- Modal -->  
+        </footer>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+                authDomain: "reig-1538140691138.firebaseapp.com",
+                databaseURL: "https://reig-1538140691138.firebaseio.com/",
+                projectId: "reig-1538140691138",
+                storageBucket: "reig-1538140691138.appspot.com",
+                messagingSenderId: "76801264020"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script type="text/javascript" src="JS_Files_DB/r_e_group.js"></script>
+        <script>
+            // Get the modal
+            var modal = document.getElementById('myModal');
             
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            var img = document.getElementById('myImg');
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
             
-            <br><br>
-            <footer class="footer">
-                <div class="container">
-                    <div class="copyright" id="copyright">
-                        &copy;
-                        <script>
-                            document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                        </script>, Designed by
-                        <a href="#" target="_blank">Bhargav Borse</a>. Coded by
-                        <a href="#" target="_blank">Alkesh Kataria</a>.
-                    </div>
-                </div>
-            </footer>
-            <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
-            <script>
-                // Initialize Firebase
-                var config = {
-                    apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
-                    authDomain: "reig-1538140691138.firebaseapp.com",
-                    databaseURL: "https://reig-1538140691138.firebaseio.com/",
-                    projectId: "reig-1538140691138",
-                    storageBucket: "reig-1538140691138.appspot.com",
-                    messagingSenderId: "76801264020"
-                };
-                firebase.initializeApp(config);
-            </script>
-            <script type="text/javascript" src="JS_Files_DB/r_e_group.js"></script>
-            <script>
-                // Get the modal
-                var modal = document.getElementById('myModal');
+            // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
                 
-                // Get the image and insert it inside the modal - use its "alt" text as a caption
-                var img = document.getElementById('myImg');
-                var modalImg = document.getElementById("img01");
-                var captionText = document.getElementById("caption");
-                img.onclick = function(){
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
-                }
+                // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() { 
+                        modal.style.display = "none";
+                    }
+                </script>
                 
-                // Get the <span> element that closes the modal
-                    var span = document.getElementsByClassName("close")[0];
+                <script>
+                    function openNav() {
+                        document.getElementById("mySidenav").style.width = "250px";
+                        document.getElementById("main").style.marginLeft = "250px";
+                        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+                    }
                     
-                    // When the user clicks on <span> (x), close the modal
-                        span.onclick = function() { 
-                            modal.style.display = "none";
-                        }
-                    </script>
-                    
-                    <script>
-                        function openNav() {
-                            document.getElementById("mySidenav").style.width = "250px";
-                            document.getElementById("main").style.marginLeft = "250px";
-                            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-                        }
+                    function closeNav() {
+                        document.getElementById("mySidenav").style.width = "0";
                         
-                        function closeNav() {
-                            document.getElementById("mySidenav").style.width = "0";
-                            
-                            minwidth = $('html').css('min-width');
-                            if(minwidth >= '450px'){
-                                document.getElementById("main").style.marginLeft= "50";
-                            }
-                            else{
-                                document.getElementById("main").style.marginLeft= "0";
-                            }
-                            document.body.style.backgroundColor = "white";
+                        minwidth = $('html').css('min-width');
+                        if(minwidth >= '450px'){
+                            document.getElementById("main").style.marginLeft= "50";
                         }
-                    </script>
-                    <!--   Core JS Files   -->
-                    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
-                    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-                    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-                    <script src="assets/js/plugins/moment.min.js" type="text/javascript"></script>
-                    <!--  Google Maps Plugin    -->
-                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                        else{
+                            document.getElementById("main").style.marginLeft= "0";
+                        }
+                        document.body.style.backgroundColor = "white";
+                    }
+                </script>
+                <!--   Core JS Files   -->
+                <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+                <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+                <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                <script src="assets/js/plugins/moment.min.js" type="text/javascript"></script>
+                <!--  Google Maps Plugin    -->
+                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                
+                
+                <!--   Core JS Files   -->
+                <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script> -->
+                <!-- <script src="assets/js/core/popper.min.js" type="text/javascript"></script> -->
+                <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+                <script src="assets/js/plugins/moment.min.js"></script>
+                <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+                <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+                <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+                <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+                <!--	Plugin for Sharrre btn -->
+                <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+                <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+                <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                
+                <script>
+                    $(document).ready(function() {
+                        //init DateTimePickers
+                        materialKit.initFormExtendedDatetimepickers();
+                        
+                        // Sliders Init
+                        materialKit.initSliders();
+                    });
                     
                     
-                    <!--   Core JS Files   -->
-                    <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script> -->
-                    <!-- <script src="assets/js/core/popper.min.js" type="text/javascript"></script> -->
-                    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-                    <script src="assets/js/plugins/moment.min.js"></script>
-                    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-                    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-                    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-                    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-                    <!--	Plugin for Sharrre btn -->
-                    <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
-                    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-                    <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+                    function scrollToDownload() {
+                        if ($('.section-download').length != 0) {
+                            $("html, body").animate({
+                                scrollTop: $('.section-download').offset().top
+                            }, 1000);
+                        }
+                    }
                     
-                    <script>
-                        $(document).ready(function() {
-                            //init DateTimePickers
-                            materialKit.initFormExtendedDatetimepickers();
-                            
-                            // Sliders Init
-                            materialKit.initSliders();
+                    $(document).ready(function() {
+                        // the body of this function is in assets/js/now-ui-kit.js
+                        nowuiKit.initSliders();
+                    });
+                    
+                    function scrollToDownload() {
+                        
+                        if ($('.section-download').length != 0) {
+                            $("html, body").animate({
+                                scrollTop: $('.section-download').offset().top
+                            }, 1000);
+                        }
+                    }
+                    
+                    $(document).ready(function() {
+                        
+                        $('#facebook').sharrre({
+                            share: {
+                                facebook: true
+                            },
+                            enableHover: false,
+                            enableTracking: false,
+                            enableCounter: false,
+                            click: function(api, options) {
+                                api.simulateClick();
+                                api.openPopup('facebook');
+                            },
+                            template: '<i class="fab fa-facebook-f"></i> Facebook',
+                            url: 'https://demos.creative-tim.com/material-kit/index.html'
                         });
                         
-                        
-                        function scrollToDownload() {
-                            if ($('.section-download').length != 0) {
-                                $("html, body").animate({
-                                    scrollTop: $('.section-download').offset().top
-                                }, 1000);
-                            }
-                        }
-                        
-                        $(document).ready(function() {
-                            // the body of this function is in assets/js/now-ui-kit.js
-                            nowuiKit.initSliders();
+                        $('#googlePlus').sharrre({
+                            share: {
+                                googlePlus: true
+                            },
+                            enableCounter: false,
+                            enableHover: false,
+                            enableTracking: true,
+                            click: function(api, options) {
+                                api.simulateClick();
+                                api.openPopup('googlePlus');
+                            },
+                            template: '<i class="fab fa-google-plus"></i> Google',
+                            url: 'https://demos.creative-tim.com/material-kit/index.html'
                         });
                         
-                        function scrollToDownload() {
-                            
-                            if ($('.section-download').length != 0) {
-                                $("html, body").animate({
-                                    scrollTop: $('.section-download').offset().top
-                                }, 1000);
-                            }
-                        }
-                        
-                        $(document).ready(function() {
-                            
-                            $('#facebook').sharrre({
-                                share: {
-                                    facebook: true
-                                },
-                                enableHover: false,
-                                enableTracking: false,
-                                enableCounter: false,
-                                click: function(api, options) {
-                                    api.simulateClick();
-                                    api.openPopup('facebook');
-                                },
-                                template: '<i class="fab fa-facebook-f"></i> Facebook',
-                                url: 'https://demos.creative-tim.com/material-kit/index.html'
-                            });
-                            
-                            $('#googlePlus').sharrre({
-                                share: {
-                                    googlePlus: true
-                                },
-                                enableCounter: false,
-                                enableHover: false,
-                                enableTracking: true,
-                                click: function(api, options) {
-                                    api.simulateClick();
-                                    api.openPopup('googlePlus');
-                                },
-                                template: '<i class="fab fa-google-plus"></i> Google',
-                                url: 'https://demos.creative-tim.com/material-kit/index.html'
-                            });
-                            
-                            $('#twitter').sharrre({
-                                share: {
-                                    twitter: true
-                                },
-                                enableHover: false,
-                                enableTracking: false,
-                                enableCounter: false,
-                                buttons: {
-                                    twitter: {
-                                        via: 'CreativeTim'
-                                    }
-                                },
-                                click: function(api, options) {
-                                    api.simulateClick();
-                                    api.openPopup('twitter');
-                                },
-                                template: '<i class="fab fa-twitter"></i> Twitter',
-                                url: 'https://demos.creative-tim.com/material-kit/index.html'
-                            });
-                            
+                        $('#twitter').sharrre({
+                            share: {
+                                twitter: true
+                            },
+                            enableHover: false,
+                            enableTracking: false,
+                            enableCounter: false,
+                            buttons: {
+                                twitter: {
+                                    via: 'CreativeTim'
+                                }
+                            },
+                            click: function(api, options) {
+                                api.simulateClick();
+                                api.openPopup('twitter');
+                            },
+                            template: '<i class="fab fa-twitter"></i> Twitter',
+                            url: 'https://demos.creative-tim.com/material-kit/index.html'
                         });
-                    </script>
-                </body>
-                </html> 
-                
+                        
+                    });
+                </script>
+            </body>
+            </html> 
+            

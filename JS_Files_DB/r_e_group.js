@@ -43,7 +43,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             //alink_more_details.href = "more-detail.html?id="+id;
             
-            alink_more_details.href = "more-detail.html?id="+id+"&type=reminders";
+            alink_more_details.href = "more-detail.html?id="+id+"&type=reminders&grpid="+grp_id+"&grpname="+grp_name;
             // d18354b4120a4ec1e9021823058e823e27b0b7ce
             
             // alink_more_details.href = "more-detail.html?id="+id+"?type=reminders";
@@ -74,9 +74,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             
             
-        },function(error){
-            alert('There was some error! Please Try Again');
-            document.location.reload(true);
         });
         
         firebaseRef.child(grp_id).child(grp_name).child('events').on('child_added', function(snap){
@@ -145,61 +142,49 @@ firebase.auth().onAuthStateChanged(function(user) {
             id_cell = appendChild(id_value_cell);
             
             
-        },function(error){
-            alert('There was some error! Please Try Again');
-            document.location.reload(true);
         });
         
-        
+        var img = document.getElementById('loading_gif');
+        img.style.visibility = 'hidden';
         
         document.getElementById('reminder_add_group').onclick =  function(){
             var title = document.getElementById('reminder_title').value;
             var content = document.getElementById('reminder_content').value;
             var category = document.getElementById('reminder_category').value;
-            var date_time = document.getElementById('reminder_date_time').value;
-            
-            var reminder_datetime_split = date_time.split(" ");
-            var reminder_date_only = reminder_datetime_split[0];
-            var reminder_time_only = reminder_datetime_split[1];
-            var reminder_ampm_only = reminder_datetime_split[2];
-            var reminder_fulltime_only = reminder_time_only + " " + reminder_ampm_only;
+            var date = document.getElementById('reminder_date').value;
+            var time = document.getElementById('reminder_time').value;
             
             firebaseRef.child(grp_id).child(grp_name).child('reminders').push({
                 title : title,
                 content : content,
                 category : category,
-                date : reminder_date_only,
-                time : reminder_fulltime_only
+                date : date,
+                time : time
             });
-            location.reload();
+            // location.reload();
         };
         
         document.getElementById('event_add_group').onclick =  function(){
             var title = document.getElementById('event_title').value;
             var content = document.getElementById('event_content').value;
             var category = document.getElementById('event_category').value;
-            var date_time = document.getElementById('event_date_time').value;
-            
-            var reminder_datetime_split = date_time.split(" ");
-            var reminder_date_only = reminder_datetime_split[0];
-            var reminder_time_only = reminder_datetime_split[1];
-            var reminder_ampm_only = reminder_datetime_split[2];
-            var reminder_fulltime_only = reminder_time_only + " " + reminder_ampm_only;
+            var date = document.getElementById('event_date').value;
+            var time = document.getElementById('event_time').value;
             
             firebaseRef.child(grp_id).child(grp_name).child('events').push({
                 title : title,
                 content : content,
                 category : category,
-                date : reminder_date_only,
-                time : reminder_fulltime_only
+                date : date,
+                time : time
             });
             
-            location.reload();
+           alert('Added');
+           location.reload();
         };
         
         
-        var img = document.getElementById('loading_gif');
-        img.style.visibility = 'hidden';
+        
     } else {
         // No user is signed in.
     }
