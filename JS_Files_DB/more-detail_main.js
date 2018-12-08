@@ -26,10 +26,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         more_detail_category.options[3] = new Option('Work', 'Work');
         more_detail_category.options[4] = new Option('Whishlist', 'Whishlist');
     }
+    var img = document.getElementById('loading_gif');
+    img.style.visibility = 'hidden';
+    
     if(id == "" || type== ""){
         alert('Redirecting to Index');
         window.location = 'index.html';
     }
+    
     else if(grpid == null || grpname== null){
         var fetchreminderRef = firebase.database().ref('users').child(user.uid).child(type).child(id);
         
@@ -80,17 +84,17 @@ firebase.auth().onAuthStateChanged(function(user) {
                 category : category_updated
             });
             
-            window.location.replace = "index.html";
+            location.reload();
         }
         
         document.getElementById('btn_delete_RE').onclick = function(){
             
             fetchreminderRef.remove(function(){
                 alert('Removed');
-                window.location.replace = "index.html";
+                
             });
             
-            
+            window.location = "index.html";
         }
     }
     else
@@ -144,61 +148,60 @@ firebase.auth().onAuthStateChanged(function(user) {
                 category : category_updated
             });
             
-            window.location.replace = "index.html";
+            location.reload();
         }
         
         document.getElementById('btn_delete_RE').onclick = function(){
             
             fetchreminderRef.remove(function(){
                 alert('Removed');
-                window.location.replace = "index.html";
+                
             });
             
-            
-        }
-    }
-    
-    
-    
-    var img = document.getElementById('loading_gif');
-    img.style.visibility = 'hidden';
-    
-    document.getElementById('btn_update_RE').onclick = function()
-    {
-        var title_updated = document.getElementById('more_detail_title').value;
-        var description_updated = document.getElementById('more_detail_description').value;
-        var date_updated = document.getElementById('more_detail_date').value;
-        var time_updated = document.getElementById('more_detail_time').value;
-        var category_updated = document.getElementById('more_detail_category').value;
-        
-        if(title_updated == ""){
-            alert('Please provide a title');
             window.location = "index.html";
-            fetchreminderRef.preventDefault();
-            
         }
-        
-        fetchreminderRef.set({
-            title : title_updated,
-            content : description_updated,
-            date : date_updated,
-            time : time_updated,
-            category : category_updated
-        });
-        
-        location.reload();
     }
     
-    document.getElementById('btn_delete_RE').onclick = function(){
-        
-        fetchreminderRef.remove(function(){
-            alert('Removed');
-            
-        });
-        
-        window.location = "index.html";
-        
-    }
+    
+    
+    
+    
+    // document.getElementById('btn_update_RE').onclick = function()
+    // {
+    //     var title_updated = document.getElementById('more_detail_title').value;
+    //     var description_updated = document.getElementById('more_detail_description').value;
+    //     var date_updated = document.getElementById('more_detail_date').value;
+    //     var time_updated = document.getElementById('more_detail_time').value;
+    //     var category_updated = document.getElementById('more_detail_category').value;
+    
+    //     if(title_updated == ""){
+    //         alert('Please provide a title');
+    //         window.location = "index.html";
+    //         fetchreminderRef.preventDefault();
+    
+    //     }
+    
+    //     fetchreminderRef.set({
+    //         title : title_updated,
+    //         content : description_updated,
+    //         date : date_updated,
+    //         time : time_updated,
+    //         category : category_updated
+    //     });
+    
+    //     location.reload();
+    // }
+    
+    // document.getElementById('btn_delete_RE').onclick = function(){
+    
+    //     fetchreminderRef.remove(function(){
+    //         alert('Removed');
+    
+    //     });
+    
+    //     window.location = "index.html";
+    
+    // }
     
 } else {
     // No user is signed in.
