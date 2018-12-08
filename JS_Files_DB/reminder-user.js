@@ -6,6 +6,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         // console.log(user.email);
         var img = document.getElementById('loading_gif');
         img.style.visibility = 'hidden';
+        document.getElementById('user_email').innerText = user.email;
         //display reminders
         // //for getting no. of events i.e event count
         // var countRef = firebase.database().ref('users').child('testing_reig').child('total_events');
