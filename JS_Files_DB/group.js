@@ -13,6 +13,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById('group_members_a').href = "group-members.html?id="+grp_id+"&name="+grp_name;
         document.getElementById('group_re').href = "r_e_group.html?id="+grp_id+"&name="+grp_name;
         document.getElementById('group_saved_images').href = "group-saved-images.html?id="+grp_id+"&name="+grp_name;
+        document.getElementById('group_saved_data').href = "group-saved-data.html?id="+grp_id+"&name="+grp_name;
         //check if the current user is member of that group if somehow he directly pastes the url.
         var groupRef = firebase.database().ref('groups');
         groupRef.on('value',function(groupids_snapshot){
