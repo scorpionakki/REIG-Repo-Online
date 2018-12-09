@@ -13,27 +13,27 @@ self.addEventListener('fetch', event => {
 // fetching part
 const filesToCache = [
   '/',
-  'index.html'
-  // 'reminder.html',
-  // 'event.html',
-  // 'saved-images.html',
-  // 'assets/css/main.css',
-  // 'assets/css/material-kit.css',
-  // 'assets/css/material-kit-min.css',
-  // 'assets/css/prof_pic_upload.css',
-  // 'assets/css/util.css',
-  // 'assets/img/backlit-clouds-dusk-853168 - Copy.jpg',
-  // 'assets/img/backlit-clouds-dusk-853168.jpg',
-  // 'assets/img/favicon.jpg',
-  // 'assets/js/material-kit.js',
-  // 'assets/js/material-kit-min.js',
-  // 'assets/js/prof_pic_upload.js',
-  // 'lightbox/src/css/lightbox.css',
-  // 'lightbox/src/js/lightbox.js',
-  // 'lightbox/src/images/close.png',
-  // 'lightbox/src/images/next.png',
-  // 'lightbox/src/images/prev.png',
-  // 'lightbox/src/images/loading.gif'
+  'index.html',
+  'reminder.html',
+  'event.html',
+  'saved-images.html',
+  'assets/css/main.css',
+  'assets/css/material-kit.css',
+  'assets/css/material-kit-min.css',
+  'assets/css/prof_pic_upload.css',
+  'assets/css/util.css',
+  'assets/img/backlit-clouds-dusk-853168 - Copy.jpg',
+  'assets/img/backlit-clouds-dusk-853168.jpg',
+  'assets/img/favicon.jpg',
+  'assets/js/material-kit.js',
+  'assets/js/material-kit-min.js',
+  'assets/js/prof_pic_upload.js',
+  'lightbox/src/css/lightbox.css',
+  'lightbox/src/js/lightbox.js',
+  'lightbox/src/images/close.png',
+  'lightbox/src/images/next.png',
+  'lightbox/src/images/prev.png',
+  'lightbox/src/images/loading.gif'
   
 ];
 
