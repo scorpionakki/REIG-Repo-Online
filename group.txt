@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>REIG-Group Panel</title>
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- <link rel="stylesheet" href="navbar-fixed-right.min.css"> -->
+  <link rel="stylesheet" href="group-sidebar/docs/navbar-fixed-left.min.css">
+  <!-- <link rel="stylesheet" href="group-sidebar/docs/docs.css"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="group-sidebar/docs/docs.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+  
+  <!-- sticker link -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/prefixfree.js"></script>
+</head>
+
+<style>
+  body{
+    font-family: "Lato", sans-serif;
+  }
+  .members-count,
+  .members-list,
+  .messages {
+    border: 1px solid #e4e4e4;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .messages {
+    flex-shrink: 1;
+    /* overflow: auto; */
+  }
+  
+  .message {
+    padding: 5px 0;
+  }
+  .message .member {
+    display: inline-block;
+  }
+  
+  .member {
+    padding-right: 10px;
+    position: relative;
+  }
+  
+  .message-form {
+    display: flex;
+    flex-shrink: 0;
+  }
+  .message-form__input {
+    /* flex-grow: 1; */
+    border: 1px solid #dfdfdf;
+    padding: 10px 15px;
+    font-size: 16px;
+    width: 65% !important;
+  }
+  .message-form__button {
+    margin: 10px;
+  }
+  
+  a{
+    font-size: 13pt; 
+  }
+  .down-bar {
+    /* overflow: hidden; */
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+  }
+  .down-bar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 24px 30px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .down-bar a:hover {
+    background: #f1f1f1;
+    color: black;
+  }
+  
+  .down-bar a.active {
+    background-color: #2b6cc4;
+    color: white;
+  }
+  @media screen and (max-width: 450px){
+    .set{
+      width: 170%;
+      padding-left: 2%;
+    }
+    .message-form{
+      padding-right: 10%;
+      padding-left: 2%;
+      padding-bottom: 4%; 
+    }
+    .chat-history {
+      height: 520px !important;
+      padding: 8px 24px;
+      /* overflow-y: scroll; */
+    }
+    .loading_gif{
+      position:fixed;
+      top:50% !important;
+      right:40% !important;
+      width:20% !important;
+      height:10% !important;
+      /* background-color:black; */
+      background-repeat:repeat;
+      background-position:center;
+      z-index:10000000;
+      opacity: 1;
+      filter: alpha(opacity=40);
+    }
+    .modify-text{
+      padding: 3% !important; margin-left: 3% !important; margin-bottom: 2% !important;  width: 80% !important; margin-top:4% !important;
+    }
+    .modify-button{
+      margin-bottom:1%; padding: 20px 17px; margin-left: 1%;
+    }
+    .side-bar{
+      margin-left: 4%;
+    }
+  }
+  .modify-text{
+    width: 45%;  
+  }
+  .main-down {
+    padding: 16px;
+    margin-bottom: 30px;
+  }
+  .navbar-fixed-left{
+    background-color: #2b6cc4;
+  }
+  .vertical{
+    border-left: thick solid white;
+  }
+  
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h4, h5 {
+    line-height: 1.5em;
+    margin: 0;
+  }
+  
+  hr {
+    background: #e9e9e9;
+    border: 0;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 1px;
+    margin: 0;
+    min-height: 1px;
+  }
+  
+  /* img {
+    border: 0;
+    display: block;
+    height: auto;
+    max-width: 100%;
+  } */
+  
+  p { margin: 0; }
+  
+  .clearfix { *zoom: 1; } /* For IE 6/7 */
+  .clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+  }
+  .clearfix:after { clear: both; }
+  
+  .chat {
+    background: #fff;
+  }
+  
+  .chat-history {
+    height: 525px;
+    padding: 8px 24px;
+    /* overflow-y: scroll; */
+  }
+  
+  .chat-message {
+    margin: 16px 0;
+  }
+  
+  .chat-message img {
+    border-radius: 50%;
+    float: left;
+  }
+  
+  /* .chat-message-content {
+    margin-left: 56px;
+  } */
+  
+  .chat-time {
+    float: right;
+    font-size: 10px;
+  }
+  
+  .loading_gif{
+    position:fixed;
+    top:50% !important;
+    right:40% !important;
+    width:5% !important;
+    height:10% !important;
+    /* background-color:black; */
+    background-repeat:repeat;
+    background-position:center;
+    z-index:10000000;
+    opacity: 1;
+    filter: alpha(opacity=40);
+  }
+  
+ 
+  
+  
+</style>
+<script>
+	
+  
+  function showLocation(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    alert("Latitude : " + latitude + " Longitude: " + longitude);
+  }
+  
+  function errorHandler(err) {
+    if(err.code == 1) {
+      alert("Error: Access is denied!");
+    } else if( err.code == 2) {
+      alert("Error: Position is unavailable!");
+    }
+  }
+  
+  function getLocation() {
+    
+    if(navigator.geolocation) {
+      
+      // timeout at 60000 milliseconds (60 seconds)
+      var options = {timeout:60000};
+      navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+    } else {
+      alert("Sorry, browser does not support geolocation!");
+    }
+  }
+  
+</script>
+<body>
+  
+  <nav class="navbar navbar-inverse navbar-fixed-left">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html" style="color: white; font-size:20pt !important;">REIG</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="index.html" style="color:white;">
+              <i class="fa fa-arrow-left" style="color:white;"></i>
+              &nbsp; Back
+            </a>
+          </li>
+          <li><a id="group_details_a">Group Details</a></li>
+          <li><a id="group_members_a">Group Members</a></li>
+          <li><a id="group_saved_images">Saved Images</a></li>
+          <li><a id="group_saved_data">Saved Data</a></li>
+          <li><a id="group_re">Reminder & Event</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal">Exit Group</a></li>
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li> 
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- location -->
+  <div class="down-bar" style="z-index:2;">
+    <!-- <a href="#" class="fa fa-map-marker" onclick="getLocation();" title="location"> </a> -->
+    <div class="side-bar">
+      <input type="file" id="upload" name="upload" style="visibility: hidden;width: 1px; height: 1px" accept="image/*" multiple/>
+      <a id="upload-image" title="upload image" onclick="document.getElementById('upload').click(); return false" class="fa fa-image"></a>
+      <!-- file uploader -->
+      <input type="file" id="upload-docx" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
+      <a href="" title="upload file" onclick="document.getElementById('upload-docx').click(); return false" class="fa fa-file-o"></a>
+      <!-- add reminder -->
+      <a href="#" class="fa fa-clock-o" title="add reminder" data-toggle="modal" data-target="#darkModalForm"> </a>
+      <!-- add event -->
+      <a href="#" title="add event" class="fa fa-calendar-o" data-toggle="modal" data-target="#darkModalForm2"> </a>
+      <a href="#" title="add event" class="fa fa-meh-o" data-toggle="modal" data-target="#myModal2"> </a>
+      
+    </div>
+    <input class="modify-text" style="margin-top:1.5%;" id="chat_message" placeholder="Type a message.." type="text"/>
+    <button id="send_message" class="modify-button fa fa-paper-plane btn btn-primary" style="margin-top:0%; margin-left: 1%;"></button>  
+    
+    <!-- <form class="message-form" onsubmit="return false;">
+      
+    </form> -->
+  </div>
+  <div>
+    
+    <!-- <div class="members-count">-</div>
+      <div class="members-list">-</div> -->
+      <div class="messages">
+        <div class="chat">
+          <!-- <table id="chat_table" rules="rows">
+            <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
+          </table> -->
+          
+          
+          
+          
+          
+          
+          <div
+          class="div1">
+          
+          <div
+          class="row">
+          <!--Reminder Table-->
+          
+          
+          <div
+          class="col-md-12">
+          
+          <div class="">
+            
+            
+            <table class="table" id='chat_table'>
+              
+              <thead>
+                
+                <tr>
+                  
+                  <!-- <th rowspan="2"></th> -->
+                  <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
+                </tr>
+                
+              </thead>
+              
+              <tbody>
+                
+                
+                
+                
+              </tbody>
+              
+              
+            </table>
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        
+      </div>
+      <!--Reminder Table Close-->
+      
+    </div>
+    
+    
+    
+    
+    
+    <!-- <div class="chat-history">
+      
+      <div class="chat-message clearfix"> -->
+        
+        
+        
+        <div class="chat-message-content clearfix">
+          
+          <span class="chat-time" id="current_time"></span>
+          
+          <h5 id="current_sender"></h5>
+          
+          <p id="current_message"></p>
+          
+        </div>
+        
+        <!--</div>
+          
+          <hr>
+          
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:37</span>
+              
+              <h5>Marco Biedermann</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
+              
+            </div> 
+            
+          </div>
+          
+          <hr>
+          
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:38</span>
+              
+              <h5>John Doe</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              
+            </div> 
+            
+          </div> 
+          
+          <hr>
+          
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:37</span>
+              
+              <h5>Marco Biedermann</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
+              
+            </div> 
+            
+          </div>
+          
+          <hr>
+          
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:38</span>
+              
+              <h5>John Doe</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              
+            </div> 
+            
+          </div>
+          <hr>
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:37</span>
+              
+              <h5>Marco Biedermann</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
+              
+            </div> 
+            
+          </div>
+          
+          <hr>
+          
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:38</span>
+              
+              <h5>John Doe</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              
+            </div> 
+            
+          </div>
+          <hr>
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:37</span>
+              
+              <h5>Marco Biedermann</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
+              
+            </div> 
+            
+          </div>
+          
+          <hr>
+          
+          <div class="chat-message clearfix">
+            
+            
+            
+            <div class="chat-message-content clearfix">
+              
+              <span class="chat-time">13:38</span>
+              
+              <h5>John Doe</h5>
+              
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+              
+            </div> 
+            
+          </div>
+          
+        </div>  -->
+        
+      </div>    
+    </div>
+    <!-- <form class="message-form" onsubmit="return false;">
+      <input class="message-form__input" placeholder="Type a message.." type="text"/>
+      <input class="message-form__button" value="Send" type="submit"/>
+    </form> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <div class="jumbotron">
+      <h1>
+        Bootstrap Navbar Sidebar
+        <br>
+        <small>Fixed to Left or Right</small>
+      </h1>
+      <p>
+        <strong>
+          Use classic Bootstrap navbar as sidebar, on left or right side.
+        </strong>
+      </p>
+      <p>
+        <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar" data-icon="octicon-star" data-style="mega" data-count-href="/mladenplavsic/bootstrap-navbar-sidebar/stargazers" data-count-api="/repos/mladenplavsic/bootstrap-navbar-sidebar#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star mladenplavsic/bootstrap-navbar-sidebar on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/mladenplavsic/bootstrap-navbar-sidebar/network" aria-label="Fork mladenplavsic/bootstrap-navbar-sidebar on GitHub">Fork</a>
+        <a class="github-button" href="https://github.com/mladenplavsic" data-style="mega" aria-label="Follow @mladenplavsic on GitHub">Follow @mladenplavsic</a>
+      </p>
+      <p>Same when using <code>.navbar-fixed-top</code> - add class <code>.navbar-fixed-left</code> or <code>.navbar-fixed-right</code> where needed.</p>
+      <p>Click buttons below, and appropriate class will be added to example navbar.</p>
+      <p>
+        <span class="btn-group">
+          <a data-class="navbar-fixed-left" class="btn btn-lg btn-default">
+            <i class="fa fa-arrow-left"></i>
+            Fixed Left
+          </a>
+          <a data-class="navbar-fixed-top" class="btn btn-lg btn-default">
+            <i class="fa fa-arrow-up"></i>
+            Fixed Top
+            <small>(original)</small>
+          </a>
+          <a data-class="navbar-fixed-right" class="btn btn-lg btn-default">
+            <i class="fa fa-arrow-right"></i>
+            Fixed Right
+          </a>
+        </span>
+      </p>
+    </div> -->
+    
+    <!-- <footer>
+      Designed by <a href="#">Bhargav Borse</a>. Developed by <a href="#">Alkesh Kataria</a> 
+    </footer> -->
+    
+  </div>
+  <!-- Classic Modal for exit group -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Exit Group</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="material-icons" ></i>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to leave this group?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Yes</button>
+          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  End Modal -->
+  
+  <!-- Classic Modal for sticker -->
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Stickers</h5>
+          <button type="button" style="float:right;" class="btn btn-danger fa fa-close" data-dismiss="modal"></button>
+          
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="material-icons" ></i>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          
+          <!-- <div class="sticker" id="coding">I &lt;3 <br> Coding</div>
+          <div class="sticker" id="web">HTML &amp; CSS</div>
+          
+          <div class="sticker" id="save">Save the <br>Robots</div> -->
+          
+          <!-- <div class="sticker" id="greenrobot"> -->
+            <button type="button" style="margin:1%; border: 1px solid; background-color: white;" onclick=""> <img style="height: 100px !important;" src="assets/img/stickers/greenrobot.png"/> </button>
+            <!-- <span id="greentext">Hello!</span> -->
+          <!-- </div> -->
+          
+          <!-- <div class="sticker" id="firerobot"> -->
+            <button type="button" style="margin:1%; border: 1px solid; background-color: white;" onclick=""> <img style="height: 100px !important;" src="assets/img/stickers/firerobot.png"/> </button>
+            <!-- <span id="firetext">ROBOTS</span> -->
+          <!-- </div> -->
+          
+          <!-- <div class="sticker" id="dogrobot"> -->
+            <button type="button" style="margin:1%; border: 1px solid; background-color: white;" onclick=""> <img style="height: 100px !important;" src="assets/img/stickers/dogrobot.png"/></button>
+            <!-- <span id="dogtext">WOOF! BEEP!</span> -->
+          <!-- </div> -->
+          
+          <!-- <div class="sticker" id="purplerobot"> -->
+            <button type="button" style="margin:1%; border: 1px solid; background-color: white;" onclick=""> <img style="height: 100px !important;" src="assets/img/stickers/purplerobot.png"/></button>
+          <!-- </div> -->
+          
+          <!-- <div class="sticker" id="bluerobot"> -->
+            <button type="button" style="margin:1%; border: 1px solid; background-color: white;" onclick=""> <img style="height: 100px !important;" src="assets/img/stickers/bluerobot.png"/></button>
+          <!-- </div> -->
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-link">Yes</button> -->
+          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  End Modal -->
+  
+  <!-- Modal Start reminder -->
+  <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog form-dark" role="document">
+      <!--Content-->
+      <div class="modal-content card card-image">
+        <div class="text-white rgba-stylish-strong py-5 px-4 z-depth-4">
+          <!--Header-->
+          <div class="modal-header text-center pb-4">
+            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>ADD</strong> <a class="green-text font-weight-bold" style="font-size:23pt;"><strong> REMINDER</strong></a></h3>
+          </div>
+          <!--Body-->
+          <div class="modal-body">
+            
+            <!--Body-->
+            <div class="md-form mb-5">
+              <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
+              <input type="text" id="reminder_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control validate white-text" required>
+            </div>
+            
+            <div class="md-form pb-3">
+              <br>
+              <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
+              <input type="text" id="reminder_content" class="form-control validate white-text">
+            </div>
+            <div class="md-form pb-3">
+              <br>
+              <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
+              <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
+              <select class="form-control validate white-text" id="reminder_category">
+                <option value="Default">Default</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Shopping">Work</option>
+                <option value="Whishlist">Whishlist</option>
+              </select>
+            </div>  
+            <div class="form-group">
+              <br>
+              <label class="label-control" style="color: black;">Date</label>
+              <input type="date" id="reminder_date" class="form-control">
+            </div>
+            <div class="form-group">
+              <br>
+              <label class="label-control" style="color: black;">Time</label>
+              <input type="time" id="reminder_time" class="form-control">
+            </div>
+            <!-- <div class="form-group mt-4">
+              <input class="form-check-input" type="checkbox" id="checkbox624">
+              <label for="checkbox624" class="white-text form-check-label">
+                Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+              </div> --> 
+              <!--Grid row-->
+              <div class="row d-flex align-items-center mb-4">
+                
+                <!--Grid column-->
+                <div class="text-center mb-3 col-md-12">
+                  <br>
+                  <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_add_reminder">ADD</button>
+                  <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_modal_reminder_close" data-dismiss="modal" aria-label="Close">CLOSE</button>
+                </div>
+                <!--Grid column-->
+                
+              </div>
+              <!--Grid row-->
+              
+              <!--Grid row-->
+              <div class="row">
+                
+                <!--Grid column-->
+                <!-- <div class="col-md-12">
+                  <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#darkModalForm2"> Register Here!</a></p>
+                  <p class="font-small white-text d-flex justify-content-end">Forgot Password? <a href="fgt_pswd.html" class="green-text ml-1 font-weight-bold"> Click Here!</a></p>
+                </div> -->
+                <!--Grid column-->
+                
+              </div>
+              <!--Grid row-->
+              
+            </div>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+    <!-- Modal -->  
+    
+    
+    <!-- Modal Start event -->
+    <div class="modal fade" id="darkModalForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog form-dark" role="document">
+        <!--Content-->
+        <div class="modal-content card card-image bgm">
+          <div class="text-white rgba-stylish-strong py-5 px-4 z-depth-4">
+            <!--Header-->
+            <div class="modal-header text-center pb-4">
+              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>ADD</strong> <a class="green-text font-weight-bold" style="font-size:23pt;"><strong>EVENT</strong></a></h3>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+              
+              <!--Body-->
+              <div class="md-form mb-5">
+                <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
+                <input type="text" id="event_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control" required>
+              </div>
+              
+              <div class="md-form pb-3">
+                <br>
+                <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
+                <input type="text" id="event_content" class="form-control validate white-text">
+              </div>
+              <div class="md-form pb-3">
+                <br>
+                <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
+                <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
+                <select class="form-control validate white-text" id="event_category">
+                  <option value="Default">Default</option>
+                  <option value="Personal">Birthday</option>
+                  <option value="Shopping">Anniversary</option>
+                  <option value="Shopping">Fest</option>
+                </select>
+              </div>  
+              <div class="form-group">
+                <br>
+                <label class="label-control" style="color: black;">Date</label>
+                <input type="date" id="event_date" class="form-control">
+              </div>
+              <div class="form-group">
+                <br>
+                <label class="label-control" style="color: black;">Time</label>
+                <input type="time" id="event_time" class="form-control">
+              </div>
+              <!-- <div class="form-group mt-4">
+                <input class="form-check-input" type="checkbox" id="checkbox624">
+                <label for="checkbox624" class="white-text form-check-label">
+                  Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                </div> -->
+                <!--Grid row-->
+                <div class="row d-flex align-items-center mb-4">
+                  
+                  <!--Grid column-->
+                  <div class="text-center mb-3 col-md-12">
+                    <button type="button" id="btn_add_event" class="btn btn-primary btn-block btn-rounded z-depth-1">ADD</button>
+                    <button type="button" id="btn_modal_event_close"class="btn btn-primary btn-block btn-rounded z-depth-1" data-dismiss="modal" aria-label="Close">CLOSE</button>
+                  </div>
+                  <!--Grid column-->
+                  
+                </div>
+                <!--Grid row-->
+                
+                
+                <!--Grid row-->
+                <div class="row">
+                  
+                  <!--Grid column-->
+                  <!-- <div class="col-md-12">
+                    <br>
+                    <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#darkModalForm2"> Register Here!</a></p>
+                    <p class="font-small white-text d-flex justify-content-end">Forgot Password? <a href="fgt_pswd.html" class="green-text ml-1 font-weight-bold"> Click Here!</a></p>
+                  </div> -->
+                  <!--Grid column-->
+                  
+                </div>
+                <!--Grid row-->
+                
+              </div>
+            </div>
+          </div>
+          <!--/.Content-->
+        </div>
+      </div>
+      <!-- Modal -->  
+      
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+      <!-- <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script> -->
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyD24iQ_6nTppktpmW9kIIPkuOoZB2AxO5I",
+          authDomain: "reig-1538140691138.firebaseapp.com",
+          databaseURL: "https://reig-1538140691138.firebaseio.com/",
+          projectId: "reig-1538140691138",
+          storageBucket: "reig-1538140691138.appspot.com",
+          messagingSenderId: "76801264020"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script type="text/javascript" src="JS_Files_DB/group.js"></script>
+      
+      <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+      <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+      <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+      <script src="assets/js/plugins/moment.min.js" type="text/javascript"></script>
+      <!--  Google Maps Plugin    -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+      
+      
+      <!--   Core JS Files   -->
+      <!-- <script src="assets/js/core/jquery.min.js" type="text/javascript"></script> -->
+      <!-- <script src="assets/js/core/popper.min.js" type="text/javascript"></script> -->
+      <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+      <script src="assets/js/plugins/moment.min.js"></script>
+      <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+      <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+      <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+      <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+      <!--	Plugin for Sharrre btn -->
+      <script src="assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+      <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+      <script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+      
+      <script>
+        $(document).ready(function() {
+          //init DateTimePickers
+          materialKit.initFormExtendedDatetimepickers();
+          
+          // Sliders Init
+          materialKit.initSliders();
+        });
+        
+        
+        function scrollToDownload() {
+          if ($('.section-download').length != 0) {
+            $("html, body").animate({
+              scrollTop: $('.section-download').offset().top
+            }, 1000);
+          }
+        }
+        
+        $(document).ready(function() {
+          // the body of this function is in assets/js/now-ui-kit.js
+          nowuiKit.initSliders();
+        });
+        
+        function scrollToDownload() {
+          
+          if ($('.section-download').length != 0) {
+            $("html, body").animate({
+              scrollTop: $('.section-download').offset().top
+            }, 1000);
+          }
+        }
+        
+        $(document).ready(function() {
+          
+          $('#facebook').sharrre({
+            share: {
+              facebook: true
+            },
+            enableHover: false,
+            enableTracking: false,
+            enableCounter: false,
+            click: function(api, options) {
+              api.simulateClick();
+              api.openPopup('facebook');
+            },
+            template: '<i class="fab fa-facebook-f"></i> Facebook',
+            url: 'https://demos.creative-tim.com/material-kit/index.html'
+          });
+          
+          $('#googlePlus').sharrre({
+            share: {
+              googlePlus: true
+            },
+            enableCounter: false,
+            enableHover: false,
+            enableTracking: true,
+            click: function(api, options) {
+              api.simulateClick();
+              api.openPopup('googlePlus');
+            },
+            template: '<i class="fab fa-google-plus"></i> Google',
+            url: 'https://demos.creative-tim.com/material-kit/index.html'
+          });
+          
+          $('#twitter').sharrre({
+            share: {
+              twitter: true
+            },
+            enableHover: false,
+            enableTracking: false,
+            enableCounter: false,
+            buttons: {
+              twitter: {
+                via: 'CreativeTim'
+              }
+            },
+            click: function(api, options) {
+              api.simulateClick();
+              api.openPopup('twitter');
+            },
+            template: '<i class="fab fa-twitter"></i> Twitter',
+            url: 'https://demos.creative-tim.com/material-kit/index.html'
+          });
+          
+        });
+      </script>
+    </body>
+    </html>

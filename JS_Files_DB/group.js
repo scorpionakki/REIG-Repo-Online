@@ -109,6 +109,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     // div_creation.setAttribute('class','chat-message-content clearfix');
                     row2.appendChild(div_creation);
                     var p_creation = document.createElement('p');
+                    
                     var p_creation_text = document.createTextNode(message_content.sent_by);
                     p_creation.appendChild(p_creation_text);
                     cell_row2.appendChild(p_creation);
