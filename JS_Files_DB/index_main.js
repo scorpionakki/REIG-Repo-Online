@@ -2,20 +2,7 @@ var eventRef = firebase.database().ref('users');
 var groupRef = firebase.database().ref('groups');
 var fetchreminderRef = firebase.database().ref('users');
 var eventRef2 = firebase.database().ref('users');
-var enableNotifications = document.getElementById('enableNotifications').onclick = function(){
-    if('Notification' in window){
-        Notification.requestPermission(function(result){
-            console.log('User choice',result);
-            if(result != 'granted'){
-                console.log('No notification permission granted');
-            }
-            else
-            {
-                
-            }
-        })
-    }
-}
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
