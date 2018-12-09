@@ -114,10 +114,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 
                     if(message_content_snapshot.child('type').val() == 'image'){
                         var aimageCellValue = document.createElement('a');
-                        
+                        var decrypted = CryptoJS.AES.decrypt(message_content_snapshot.child('imageURL').val(), "Secret Passphrase");
                         aimageCellValue.setAttribute('class','example-image-link');
                         
-                        aimageCellValue.setAttribute('href',message_content_snapshot.child('imageURL').val());
+                        aimageCellValue.setAttribute('href',decrypted.toString(CryptoJS.enc.Utf8));
                         
                         aimageCellValue.setAttribute('data-lightbox','example-1');
                         
@@ -129,7 +129,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                         
                         var imageCellValue = document.createElement('img');
                         
-                        imageCellValue.setAttribute('src',message_content_snapshot.child('imageURL').val());
+                        imageCellValue.setAttribute('src',decrypted.toString(CryptoJS.enc.Utf8));
                         
                         //imageCellValue.setAttribute('class','example-image');
                         
@@ -156,7 +156,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                         cell_row2.appendChild(docImageCell);
 
                         var textDocCell = document.createElement('a');
-                        textDocCell.setAttribute('href',message_content_snapshot.child('imageURL').val());
+                        var decrypted = CryptoJS.AES.decrypt(message_content_snapshot.child('imageURL').val(), "Secret Passphrase");
+                        textDocCell.setAttribute('href',decrypted.toString(CryptoJS.enc.Utf8));
                         var textDocCellValue = document.createTextNode(message_content_snapshot.child('name').val());
                         textDocCell.appendChild(textDocCellValue);
                         cell_row2.appendChild(textDocCell);
@@ -213,8 +214,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 alert('error');
             },function(){
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+                    var encrypted = CryptoJS.AES.encrypt(downloadURL, "Secret Passphrase");
                     chatRef.child('groups').child(grp_id).child(grp_name).child('messages').push({
-                        imageURL : downloadURL,
+                        imageURL : encrypted.toString(),
                         type : 'file',
                         sent_by : user.email,
                         name : filename
@@ -237,8 +239,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 alert('error');
             },function(){
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+                    var encrypted = CryptoJS.AES.encrypt(downloadURL, "Secret Passphrase");
                     chatRef.child('groups').child(grp_id).child(grp_name).child('messages').push({
-                        imageURL : downloadURL,
+                        imageURL : encrypted.toString(),
                         type : 'image',
                         sent_by : user.email
                     });
