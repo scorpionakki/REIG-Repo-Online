@@ -131,15 +131,15 @@ firebase.auth().onAuthStateChanged(function(user) {
                         
                         imageCellValue.setAttribute('src',message_content_snapshot.child('imageURL').val());
                         
-                        imageCellValue.setAttribute('class','example-image');
+                        //imageCellValue.setAttribute('class','example-image');
                         
                         //imageCellValue.style.borderRadius = "50%";
                         
                         // imageCellValue.setAttribute('border-radius','50%');
                         
-                        imageCellValue.setAttribute('height','150px');
-                        
-                        imageCellValue.setAttribute('width','150px');
+                        //imageCellValue.setAttribute('height','50% !important');
+                        imageCellValue.setAttribute ('height','130px');
+                        imageCellValue.setAttribute('width','100px');
                         
                         // imageCellValue.setAttribute('max-width','50%');
                         
@@ -150,12 +150,15 @@ firebase.auth().onAuthStateChanged(function(user) {
                     else if(message_content_snapshot.child('type').val() == 'file'){
                         var docImageCell = document.createElement('img');
                         docImageCell.setAttribute('src','assets/img/doc_logo.png');
-                        docImageCell.setAttribute('height','20px');
-                        docImageCell.setAttribute('width','20px');
+                        docImageCell.setAttribute('height','40px');
+                        docImageCell.setAttribute('width','30px');
 
                         cell_row2.appendChild(docImageCell);
 
-                        var textDocCell = document.createTextNode(message_content_snapshot.child('imageURL').val());
+                        var textDocCell = document.createElement('a');
+                        textDocCell.setAttribute('href',message_content_snapshot.child('imageURL').val());
+                        var textDocCellValue = document.createTextNode(message_content_snapshot.child('imageURL').val());
+                        textDocCell.appendChild(textDocCellValue);
                         cell_row2.appendChild(textDocCell);
                     }
                     else
