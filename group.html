@@ -309,8 +309,8 @@
   <div class="down-bar" style="z-index:2;">
     <!-- <a href="#" class="fa fa-map-marker" onclick="getLocation();" title="location"> </a> -->
     <div class="side-bar">
-      <input type="file" id="upload" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept="image/*" multiple />
-      <a href="" title="upload image" onclick="document.getElementById('upload').click(); return false" class="fa fa-image"></a>
+      <input type="file" id="upload" name="upload" style="visibility: hidden;width: 1px; height: 1px" accept="image/*" multiple/>
+      <a id="upload-image" title="upload image" onclick="document.getElementById('upload').click(); return false" class="fa fa-image"></a>
       <!-- file uploader -->
       <input type="file" id="upload-docx" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
       <a href="" title="upload file" onclick="document.getElementById('upload-docx').click(); return false" class="fa fa-file-o"></a>
@@ -354,7 +354,7 @@
           <div
           class="col-md-12">
           
-          <div class="table-responsive">
+          <div class="">
             
             
             <table class="table" id='chat_table'>
@@ -850,11 +850,10 @@
       </div>
       <!-- Modal -->  
       
-      
-      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
       <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
+      <!-- <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script> -->
       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
       <script>
         // Initialize Firebase
