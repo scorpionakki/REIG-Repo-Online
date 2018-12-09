@@ -29,7 +29,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="lightbox/dist/css/lightbox.min.css">
     
-    
+    <script>
+        if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+    .then(registration => {
+      console.log('Service Worker is registered', registration);
+    })
+    .catch(err => {
+      console.error('Registration failed:', err);
+    });
+  });
+}
+    </script>
     
     <!-- <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" /> -->
     

@@ -252,7 +252,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
     else
     {
-        console.log('Error');
+        alert('No user currently signed in');
+        window.location = "login.html";
     }
     
     
