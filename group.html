@@ -131,7 +131,7 @@
       margin-bottom:1%; padding: 20px 17px; margin-left: 1%;
     }
     .side-bar{
-      margin-left: 10%;
+      margin-left: 4%;
     }
   }
   .modify-text{
@@ -343,6 +343,8 @@
       <a href="#" class="fa fa-clock-o" title="add reminder" data-toggle="modal" data-target="#darkModalForm"> </a>
       <!-- add event -->
       <a href="#" title="add event" class="fa fa-calendar-o" data-toggle="modal" data-target="#darkModalForm2"> </a>
+      <a href="#" title="add event" class="fa fa-meh-o" data-toggle="modal" data-target="#myModal2"> </a>
+
     </div>
     <input class="modify-text" style="margin-top:1.5%;" id="chat_message" placeholder="Type a message.." type="text"/>
     <button id="send_message" class="modify-button fa fa-paper-plane btn btn-primary" style="margin-top:0%; margin-left: 1%;"></button>  
@@ -642,6 +644,28 @@
         </div>
         <div class="modal-footer">
           <button type="button" id="exit_group" class="btn btn-link">Yes</button>
+          <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  End Modal -->
+
+  <!-- Classic Modal for sticker -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Stickers</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="material-icons" ></i>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to leave this group?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link">Yes</button>
           <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Cancel</button>
         </div>
       </div>
