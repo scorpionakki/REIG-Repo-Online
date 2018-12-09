@@ -3,7 +3,6 @@ var url = new URL(url_string);
 var grp_name = url.searchParams.get("name");
 var grp_id = url.searchParams.get("id");
 
-firebase.auth().onAuthStateChanged(function(user) {
     
     // User is signed in.
     
@@ -84,6 +83,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             
             var table = document.getElementById('chat_table');
+            
             chatRef.child('groups').child(grp_id).child(grp_name).child('messages').on('value',function(messages_snapshot){
                 var messages = messages_snapshot.val();
                 messageskey = Object.keys(messages);
@@ -108,15 +108,15 @@ firebase.auth().onAuthStateChanged(function(user) {
                         // div_creation.setAttribute('class','chat-message-content clearfix');
                         row2.appendChild(div_creation);
                         
-                        var h5_creation = document.createElement('h5');
+                        var h5_creation = document.createElement('h6');
                         var decrypted = CryptoJS.AES.decrypt(message_content.content, "Secret Passphrase");
                         var h5_creation_text = document.createTextNode(decrypted.toString(CryptoJS.enc.Utf8));
                         h5_creation.appendChild(h5_creation_text);
                         
                         cell_row2.appendChild(h5_creation);
                         
-                        cell2_row2.innerHTML ="&nbsp; &nbsp;";
                         
+
                         var p_creation = document.createElement('p');
                         var p_creation_text = document.createTextNode(message_content.sent_by);
                         p_creation.appendChild(p_creation_text);
@@ -147,12 +147,60 @@ firebase.auth().onAuthStateChanged(function(user) {
             // User is signed in.
 
             document.getElementById('btn_add_reminder').onclick =  function(){
+
+                
                 var reminder_title = document.getElementById('reminder_title').value;
                 var reminder_content = document.getElementById('reminder_content').value;
                 var reminder_category = document.getElementById('reminder_category').value;
                 var reminder_date = document.getElementById('reminder_date').value;
                 var reminder_time = document.getElementById('reminder_time').value;
+
+                chatRef.child('groups').child(grp_id).child(grp_name).child('reminders').push({
+                    title : reminder_title,
+                    content : reminder_content,
+                    category : reminder_category,
+                    date : reminder_date,
+                    time : reminder_time
+                });
+
+                alert('Reminder Added');
+                document.getElementById('reminder_title').value = "";
+                document.getElementById('reminder_content').value = "";
+                document.getElementById('reminder_category').value = "Default";
+                document.getElementById('reminder_date').value = "";
+                document.getElementById('reminder_time').value = "";
+                document.getElementById('btn_modal_reminder_close').click();
+                document.getElementById('chat_message').value = "Reminder - Titled : "+reminder_title+" has been added by : "+user.email;
+                document.getElementById('send_message').click();
+                
             }
+
+            document.getElementById('btn_add_event').onclick =  function(){
+                var event_title = document.getElementById('event_title').value;
+                var event_content = document.getElementById('event_content').value;
+                var event_category = document.getElementById('event_category').value;
+                var event_date = document.getElementById('event_date').value;
+                var event_time = document.getElementById('event_time').value;
+
+                chatRef.child('groups').child(grp_id).child(grp_name).child('events').push({
+                    title : event_title,
+                    content : event_content,
+                    category : event_category,
+                    date : event_date,
+                    time : event_time
+                });
+
+                alert('Event Added');
+                document.getElementById('event_title').value = "";
+                document.getElementById('event_content').value = "";
+                document.getElementById('event_category').value = "Default";
+                document.getElementById('event_date').value = "";
+                document.getElementById('event_time').value = "";
+                document.getElementById('btn_modal_event_close').click();
+                document.getElementById('chat_message').value = "Event - Titled : "+event_title+" has been added by : "+user.email;
+                document.getElementById('send_message').click();
+            }
+
 
             document.getElementById('send_message').onclick =  function(){
                 var chat_message = document.getElementById('chat_message').value;
@@ -194,7 +242,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
     
     
-});
+
 
 
 

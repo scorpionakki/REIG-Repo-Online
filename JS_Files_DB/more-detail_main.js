@@ -158,7 +158,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
             });
             
-            window.location = "index.html";
+            window.location = "group.html?name="+grp_name+"&id="+grp_id;
         }
     }
     

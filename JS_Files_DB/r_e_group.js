@@ -42,7 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             var alink_more_details_text = document.createTextNode('');
             alink_more_details.appendChild(alink_more_details_text);
             // alink.setAttribute("href","http://index.html");
-            alink_more_details.setAttribute('class',"btn btn-primary")
+            //alink_more_details.setAttribute('class',"btn btn-primary")
             alink_more_details.setAttribute('class',"fa fa-info")
             
             //alink_more_details.href = "more-detail.html?id="+id;
@@ -166,7 +166,12 @@ firebase.auth().onAuthStateChanged(function(user) {
                 time : time
             });
             alert('Reminder Added');
-            location.reload();
+            document.getElementById('reminder_title').value = "";
+            document.getElementById('reminder_content').value = "";
+            document.getElementById('reminder_category').value = "Default";
+            document.getElementById('reminder_date').value = "";
+            document.getElementById('reminder_time').value = "";
+            document.getElementById('btn_modal_reminder_close').click();
         };
         
         document.getElementById('event_add_group').onclick =  function(){
@@ -184,8 +189,13 @@ firebase.auth().onAuthStateChanged(function(user) {
                 time : time
             });
             
-           alert('Event Added');
-           location.reload();
+            alert('Event Added');
+            document.getElementById('event_title').value = "";
+            document.getElementById('event_content').value = "";
+            document.getElementById('event_category').value = "Default";
+            document.getElementById('event_date').value = "";
+            document.getElementById('event_time').value = "";
+            document.getElementById('btn_modal_event_close').click();
         };
         
         

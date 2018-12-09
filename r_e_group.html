@@ -449,14 +449,13 @@
             </div>
             <br><br><br>
             
-            <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm">
+            <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#darkModalForm">
                 ADD Reminder
             </button>
-            <button class="btn btn-primary btn-round" type="submit" data-toggle="modal" data-target="#darkModalForm2">
+            <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#darkModalForm2">
                 ADD Event
             </button>
-            <div
-            id="div1">
+            <div id="div1">
             
             <h3 style="padding: 1%; text-align: center;">Reminder</h3>
             <div
@@ -627,7 +626,7 @@ class="col-md-10">
                 <!--Header-->
                 <div class="modal-header text-center pb-4">
                     <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>ADD</strong> <a class="green-text font-weight-bold"><strong> REMINDER</strong></a></h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" id="btn_modal_reminder_close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-close" style="color: black !important; height: 5% !important;"></i>
                     </button>
                 </div>
@@ -716,7 +715,7 @@ class="col-md-10">
                     <!--Header-->
                     <div class="modal-header text-center pb-4">
                         <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>ADD</strong> <a class="green-text font-weight-bold"><strong>EVENT</strong></a></h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" id="btn_modal_event_close" data-dismiss="modal" aria-label="Close">
                             <i class="fa fa-close" style="color: black !important; height: 5% !important;"></i>
                         </button>
                     </div>
