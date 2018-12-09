@@ -7,10 +7,13 @@ firebase.auth().onAuthStateChanged(function(user) {
         var grp_name = url.searchParams.get("name");
         var grp_id = url.searchParams.get("id");
         document.getElementById('group_main').href = "group.html?id="+grp_id+"&name="+grp_name;
-        document.getElementById('group_main_2').href = "group.html?id="+grp_id+"&name="+grp_name;
+        //document.getElementById('group_main_2').href = "group.html?id="+grp_id+"&name="+grp_name;
         document.getElementById('group_details_a').href = "group-details.html?id="+grp_id+"&name="+grp_name;
         document.getElementById('group_members_a').href = "group-members.html?id="+grp_id+"&name="+grp_name;
         document.getElementById('group_re').href = "r_e_group.html?id="+grp_id+"&name="+grp_name;
+        document.getElementById('redirect_group').href = "group.html?id="+grp_id+"&name="+grp_name;
+        
+        
         firebaseRef.child(grp_id).child(grp_name).child('reminders').on('child_added', function(snap){
             var title_reminder_fetch = snap.child('title').val();
             var date_reminder_fetch =  snap.child('date').val();
