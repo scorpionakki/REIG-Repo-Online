@@ -1,3 +1,4 @@
+var profpicRef = firebase.database().ref();
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
@@ -9,7 +10,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var tableRef = document.getElementById('img_table').getElementsByTagName('tbody')[0];
         // Insert a row in the table at the last row
         
-        var databaseRef = firebase.database().ref('groups').child(grp_id).child(grp_name).child('data_sharing');
+        var databaseRef = firebase.database().ref('groups').child(grp_id).child(grp_name).child('data_sharing').child('images');
         databaseRef.on('value',function(snapshot_data_sharing){
             var data_sharing = snapshot_data_sharing.val();
             var data_sharing_keys = Object.keys(data_sharing);
@@ -24,8 +25,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var aimageCellValue = document.createElement('a');
                     
                     aimageCellValue.setAttribute('class','example-image-link');
-                    
-                    aimageCellValue.setAttribute('href',snapshot_imageURL.child('imageURL').val());
+                    var decrypted = CryptoJS.AES.decrypt(snapshot_imageURL.child('imageURL').val(), "Secret Passphrase");
+                    aimageCellValue.setAttribute('href',decrypted.toString(CryptoJS.enc.Utf8));
                     
                     aimageCellValue.setAttribute('data-lightbox','example-1');
                     
@@ -37,7 +38,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     
                     var imageCellValue = document.createElement('img');
                     
-                    imageCellValue.setAttribute('src',snapshot_imageURL.child('imageURL').val());
+                    imageCellValue.setAttribute('src',decrypted.toString(CryptoJS.enc.Utf8));
                     
                     imageCellValue.setAttribute('class','example-image');
                     
@@ -78,7 +79,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }
-        var profpicRef = firebase.database().ref('groups/'+grp_id+'/'+grp_name+'/data_sharing');
+        
         document.getElementById('upload_btn').onclick = function(){
             
             
@@ -99,8 +100,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
             },function(){
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
-                    profpicRef.push({
-                        imageURL : downloadURL,
+                    var encrypted = CryptoJS.AES.encrypt(downloadURL, "Secret Passphrase");
+                    profpicRef.child('groups').child(grp_id).child(grp_name).child('data_sharing').child('images').push({
+                        imageURL : encrypted.toString(),
                         caption : caption,
                         date : final_date_to_be_stored,
                         uploaded_by : user.email

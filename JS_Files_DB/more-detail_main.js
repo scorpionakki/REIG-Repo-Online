@@ -71,7 +71,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             if(title_updated == ""){
                 alert('Please provide a title');
-                window.location = "index.html";
+               
                 fetchreminderRef.preventDefault();
                 
             }
@@ -135,7 +135,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             
             if(title_updated == ""){
                 alert('Please provide a title');
-                window.location = "index.html";
+                
                 fetchreminderRef.preventDefault();
                 
             }

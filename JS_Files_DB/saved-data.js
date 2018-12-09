@@ -1,28 +1,20 @@
-var url_string = window.location.href;
-var url = new URL(url_string);
-var grp_name = url.searchParams.get("name");
-var grp_id = url.searchParams.get("id");
-
-
-// User is signed in.
-
 var profpicRef = firebase.database().ref();
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        document.getElementById('redirect_group').href = "group.html?id="+grp_id+"&name="+grp_name;
+        
         var tableRef = document.getElementById('img_table').getElementsByTagName('tbody')[0];
         // Insert a row in the table at the last row
         
         
-        profpicRef.child('groups').child(grp_id).child(grp_name).child('data_sharing').child('files').on('value',function(snapshot_data_sharing){
+        profpicRef.child('users').child(user.uid).child('data_sharing').child('files').on('value',function(snapshot_data_sharing){
             var data_sharing = snapshot_data_sharing.val();
             var data_sharing_keys = Object.keys(data_sharing);
             for(var i=0;i<data_sharing_keys.length;i++){
-                profpicRef.child('groups').child(grp_id).child(grp_name).child('data_sharing').child('files').child(data_sharing_keys[i]).on('value',function(snapshot_imageURL){
+                profpicRef.child('users').child(user.uid).child('data_sharing').child('files').child(data_sharing_keys[i]).on('value',function(snapshot_imageURL){
                     var newRow   = tableRef.insertRow(0);
                     var cell_row2 = newRow.insertCell(0);
-                    
+
                     var textDocCell = document.createElement('a');
                     var decrypted = CryptoJS.AES.decrypt(snapshot_imageURL.child('imageURL').val(), "Secret Passphrase");
                     textDocCell.setAttribute('href',decrypted.toString(CryptoJS.enc.Utf8));
@@ -30,8 +22,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                     textDocCell.appendChild(textDocCellValue);
                     cell_row2.appendChild(textDocCell);
                     
-                    
-                    
+
+
                     var captionCell = newRow.insertCell(1);
                     var captionCell_value = document.createTextNode(snapshot_imageURL.child('caption').val());
                     captionCell.appendChild(captionCell_value);
@@ -39,10 +31,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var dateCell = newRow.insertCell(2);
                     var dateCell_value = document.createTextNode(snapshot_imageURL.child('date').val());
                     dateCell.appendChild(dateCell_value);
-                    
-                    var uploadedBy = newRow.insertCell(3);
-                    var uploadedBy_value = document.createTextNode(snapshot_imageURL.child('uploaded_by').val());
-                    uploadedBy.appendChild(uploadedBy_value);
                     tableRef.deleteRow(data_sharing_keys.length);
                     
                 })
@@ -50,7 +38,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             }
         });
         
-        
+
         document.getElementById('upload-docx').onchange = function(event){
             selectedFile = event.target.files[0];
             alert('File Selected! Proceed');
@@ -79,17 +67,19 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
                     var encrypted = CryptoJS.AES.encrypt(downloadURL, "Secret Passphrase");
-                    profpicRef.child('groups').child(grp_id).child(grp_name).child('data_sharing').child('files').push({
+                    profpicRef.child('users').child(user.uid).child('data_sharing').child('files').push({
                         imageURL : encrypted.toString(),
                         caption : caption,
                         name : filename,
-                        date : final_date_to_be_stored,
-                        uploaded_by : user.email
+                        date : final_date_to_be_stored
                     });
-                    
+
                     alert('Uploaded');
-                   
+                    
                 });
+                
+                
+                
                 
                 
             });
@@ -104,4 +94,5 @@ firebase.auth().onAuthStateChanged(function(user) {
         window.location = "login.html";
     }
 });
+
 

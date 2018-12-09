@@ -16,6 +16,7 @@
     <!-- CSS Files -->
     <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" />
     <link href="assets/demo/demo.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
     <style>
@@ -523,6 +524,7 @@
                                                 <!-- <input type="file" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" id="file"> -->
                                                 <input type="file" id="upload-docx" name="upload" style="visibility: hidden; width: 1px; height: 1px" accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" />
                                                 <a href="" title="upload file" style="width:100%;" onclick="document.getElementById('upload-docx').click(); return false" class="btn btn-primary">Select File</a>
+                                                <p id="filename"></p>
                                                 <div class="md-form mb-5">
                                                     <label data-error="Some error occured"  data-success="Correct" for="Form-email5"></label>
                                                     <input style="border: none;" type="text" id="caption_value" class="form-control validate white-text" placeholder="Enter Caption" required>
@@ -573,7 +575,7 @@
                     <br><br>
                     
                     <div class="col-md-12 font-head">
-                        <center><h3>Saved Data</h3></center>
+                        <center><h3>Group Saved Data</h3></center>
                     </div>
                     <br>
                     <div class="row">
