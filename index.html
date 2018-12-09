@@ -640,13 +640,13 @@
                         <!--Header-->
                         <div class="modal-header text-center pb-4">
                             <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>ADD</strong> <a class="green-text font-weight-bold"><strong> REMINDER</strong></a></h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" id="modal_reminder_close" aria-label="Close">
                                 <i class="fa fa-close" style="color: black !important; height: 5% !important;"></i>
                             </button>
                         </div>
                         <!--Body-->
                         <div class="modal-body">
-                            <form id="reminderform" >
+                           
                                 <!--Body-->
                                 <div class="md-form mb-5">
                                     <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
@@ -691,7 +691,7 @@
                                         <!--Grid column-->
                                         <div class="text-center mb-3 col-md-12">
                                             <br>
-                                            <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_reminder_add">ADD</button>
+                                            <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_reminder_add">ADD</button>
                                         </div>
                                         <!--Grid column-->
                                         
@@ -710,7 +710,7 @@
                                         
                                     </div>
                                     <!--Grid row-->
-                                </form>
+                             
                             </div>
                         </div>
                     </div>
@@ -729,14 +729,14 @@
                             <!--Header-->
                             <div class="modal-header text-center pb-4">
                                 <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>ADD</strong> <a class="green-text font-weight-bold"><strong>EVENT</strong></a></h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-dismiss="modal"  id="modal_event_close" aria-label="Close">
                                     <i class="fa fa-close" style="color: black !important; height: 5% !important;"></i>
                                 </button>
                             </div>
                             <!--Body-->
                             <div class="modal-body">
                                 
-                                <form method="POST" id="eventform">
+                               
                                     <!--Body-->
                                     <div class="md-form mb-5" id="title_div"> 
                                         <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
@@ -786,7 +786,7 @@
                                                 <!--Grid column-->
                                                 <div class="text-center mb-3 col-md-12">
                                                     <!-- <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_event_add">ADD</button> -->
-                                                    <input class="btn btn-primary btn-block btn-rounded z-depth-1" type="submit" value="ADD" id="btn_event_add">
+                                                    <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1"   id="btn_event_add">ADD</button>
                                                 </div>
                                                 <!--Grid column-->
                                                 
@@ -797,7 +797,7 @@
                                             <!--Grid row-->
                                             
                                             <!--Grid row-->
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>

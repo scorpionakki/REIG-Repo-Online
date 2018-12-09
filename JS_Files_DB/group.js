@@ -145,6 +145,15 @@ firebase.auth().onAuthStateChanged(function(user) {
             var img = document.getElementById('loading_gif');
             img.style.visibility = 'hidden';
             // User is signed in.
+
+            document.getElementById('btn_add_reminder').onclick =  function(){
+                var reminder_title = document.getElementById('reminder_title').value;
+                var reminder_content = document.getElementById('reminder_content').value;
+                var reminder_category = document.getElementById('reminder_category').value;
+                var reminder_date = document.getElementById('reminder_date').value;
+                var reminder_time = document.getElementById('reminder_time').value;
+            }
+
             document.getElementById('send_message').onclick =  function(){
                 var chat_message = document.getElementById('chat_message').value;
                 

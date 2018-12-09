@@ -222,12 +222,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             var reminder_title_val = document.getElementById('reminder_title').value;
             var reminder_content_val = document.getElementById('reminder_content').value;
             var reminder_category_val = document.getElementById('reminder_category').value;
-            var reminder_datetime_val = document.getElementById('reminder_datetime').value;
-            var reminder_datetime_split = reminder_datetime_val.split(" ");
-            var reminder_date_only = reminder_datetime_split[0];
-            var reminder_time_only = reminder_datetime_split[1];
-            var reminder_ampm_only = reminder_datetime_split[2];
-            var reminder_fulltime_only = reminder_time_only + " " + reminder_ampm_only;
+            var reminder_date_val = document.getElementById('reminder_date').value;
+            var reminder_time_val = document.getElementById('reminder_time').value;
+            
             
             if(reminder_title_val == ""){
                 eventRef.preventDefault();
@@ -237,11 +234,18 @@ firebase.auth().onAuthStateChanged(function(user) {
                 title : reminder_title_val,
                 content : reminder_content_val,
                 category : reminder_category_val,
-                date : reminder_date_only,
-                time : reminder_fulltime_only
+                date : reminder_date_val,
+                time : reminder_time_val
             });
             
             console.log('Done');
+            alert('Added');
+            document.getElementById('reminder_title').value = "";
+            document.getElementById('reminder_content').value = "";
+            document.getElementById('reminder_category').value = "Default";
+            document.getElementById('reminder_date').value = "";
+            document.getElementById('reminder_time').value = "";
+            document.getElementById('modal_reminder_close').click();
         };
         
         //store event
@@ -249,12 +253,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             var event_title_val = document.getElementById('event_title').value;
             var event_content_val = document.getElementById('event_content').value;
             var event_category_val = document.getElementById('event_category').value;
-            var event_datetime_val = document.getElementById('event_datetime').value;
-            var event_datetime_split = event_datetime_val.split(" ");
-            var event_date_only = event_datetime_split[0];
-            var event_time_only = event_datetime_split[1];
-            var event_ampm_only = event_datetime_split[2];
-            var event_fulltime_only = event_time_only + " " + event_ampm_only;
+            var event_date_val = document.getElementById('event_date').value;
+            var event_time_val = document.getElementById('event_time').value;
+           
             
             if(event_title_val == ""){
                 eventRef.preventDefault();
@@ -264,11 +265,18 @@ firebase.auth().onAuthStateChanged(function(user) {
                 title : event_title_val,
                 content : event_content_val,
                 category : event_category_val,
-                date : event_date_only,
-                time : event_fulltime_only
+                date : event_date_val,
+                time : event_time_val
             });
             
             console.log('Done');
+            alert('Added');
+            document.getElementById('event_title').value = "";
+            document.getElementById('event_content').value = "";
+            document.getElementById('event_category').value = "Default";
+            document.getElementById('event_date').value = "";
+            document.getElementById('event_time').value = "";
+            document.getElementById('modal_event_close').click();
         };
         
         
