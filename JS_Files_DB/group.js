@@ -101,8 +101,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     
                     var cell_row2 = row2.insertCell(0);
                     
-                    var cell2_row2 = row2.insertCell(1);
-                    var cell3_row2 = row2.insertCell(2);
+                   
                     //var cell3_row2 = row2.insertCell(2);
                     
                     var div_creation = document.createElement('div');
