@@ -32,8 +32,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             }
             
             alert('Updated');
-            return false;
-            window.location = "index.html";
+            window.location = 'group.html?id='+grp_id+'&name='+grp_name;
         };
         
     } else {

@@ -158,6 +158,25 @@ firebase.auth().onAuthStateChanged(function(user) {
                 });
                 document.getElementById('chat_message').value = "";
             }
+
+
+            document.getElementById('exit_group').onclick = function(){
+                chatRef.child('groups').child(grp_id).child(grp_name).child('members').on('value',function(snapshot_members){
+                    var members_value = snapshot_members.val();
+                    var members_value_keys = Object.keys(members_value);
+                    
+                    for(var j=0;j<=members_value_keys.length;j++){
+                        chatRef.child('groups').child(grp_id).child(grp_name).child('members').child(members_value_keys[j]).on('value',function(member_snapshot){
+                            if(member_snapshot.val().member == user.email){
+                                chatRef.child('groups').child(grp_id).child(grp_name).child('members').child(members_value_keys[j]).remove(function(){
+                                    alert('Group Exit Successful');
+                                })
+                            }
+                        });
+                        
+                    }
+                });
+            }
         } else {
             // No user is signed in.
             alert('No user has been signed in');

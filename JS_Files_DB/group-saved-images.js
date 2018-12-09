@@ -5,7 +5,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var url = new URL(url_string);
         var grp_name = url.searchParams.get("name");
         var grp_id = url.searchParams.get("id");
-        
+        document.getElementById('group_redirect').href = "group.html?id="+grp_id+"&name="+grp_name;
         var tableRef = document.getElementById('img_table').getElementsByTagName('tbody')[0];
         // Insert a row in the table at the last row
         
@@ -73,6 +73,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
             }
         });
+        var img = document.getElementById('loading_gif');
+        img.style.visibility = 'hidden';
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }

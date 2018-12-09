@@ -9,7 +9,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         var grp_name = url.searchParams.get("name");
         var grp_id = url.searchParams.get("id");
         
-        
+        document.getElementById('loading_gif').style.visibility = 'hidden';
+        document.getElementById('group_redirect').href = "group.html?id="+grp_id+"&name="+grp_name;
         document.getElementById('search_member_btn').onclick = function(){
             var input_value = document.getElementById('search_value').value;
             
@@ -63,6 +64,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 //document.getElementById('table_searchresults').deleteRow(table.rows.length - 1);
                                 
                                 
+                                
                             }  
                         }
                     });
@@ -104,7 +106,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     var remove_button = document.createElement('button');
                     member_name_cell.appendChild(document.createTextNode(useremails.member));
                     remove_button.appendChild(document.createTextNode('Remove'));
-
+                    
                     // id_cell.appendChild(document.createTextNode(id));
                     
                     // var button = document.createElement("a");
@@ -204,7 +206,7 @@ function removeMember(key){
     var grp_name = url.searchParams.get("name");
     var grp_id = url.searchParams.get("id");
     var firebaseRef = firebase.database().ref('groups');
-
+    
     firebaseRef.child(grp_id).child(grp_name).child('members').child(key).remove(function(){
         alert('Member removed');
         location.reload();
@@ -251,6 +253,6 @@ function updatemembers(){
             });
         }
     }
-
+    
     window.location = "group.html?id="+grp_id+"&name="+grp_name;
 }

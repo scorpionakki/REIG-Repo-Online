@@ -337,85 +337,97 @@
                 .admin{
                     background-color: #bbb;
                 }
-
+                
                 .search {
-                width: 100%;
-                position: relative
-            }
-            
-            .searchTerm {
-                float: left;
-                width: 100%;
-                border: 3px solid #00B4CC;
-                padding: 5px;
-                height: 20px;
-                border-radius: 5px;
-                outline: none;
-                color: #9DBFAF;
-            }
-            
-            .searchTerm:focus{
-                color: #00B4CC;
-            }
-            
-            .searchButton {
-                position: absolute;  
-                right: -50px;
-                width: 40px;
-                height: 36px;
-                border: 1px solid #00B4CC;
-                background: #00B4CC;
-                text-align: center;
-                color: #fff;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 20px;
-            }
-            
-            /*Resize the wrap to see the search bar change!*/
-            .wrap{
-                width: 30%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-            #myUL {
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-            }
-            
-            #myUL li a {
-                border: 1px solid #ddd;
-                margin-top: -1px; /* Prevent double borders */
-                background-color: #f6f6f6;
-                padding: 12px;
-                text-decoration: none;
-                font-size: 18px;
-                color: black;
-                display: block
-            }
-            
-            #myUL li a:hover:not(.header) {
-                background-color: #eee;
-            }
-            #search_value{
-                background-image: url('assets/img/110917_search.png');
-                background-position: 10px 12px;
-                background-repeat: no-repeat;
-                width: 100%;
-                font-size: 16px;
-                padding: 12px 20px 12px 40px;
-                border: 1px solid #ddd;
-                margin-bottom: 12px;
-            }
-
-            .table{
-                width: 100%;
-                border: none;
-            }
-            
+                    width: 100%;
+                    position: relative
+                }
+                
+                .searchTerm {
+                    float: left;
+                    width: 100%;
+                    border: 3px solid #00B4CC;
+                    padding: 5px;
+                    height: 20px;
+                    border-radius: 5px;
+                    outline: none;
+                    color: #9DBFAF;
+                }
+                
+                .searchTerm:focus{
+                    color: #00B4CC;
+                }
+                
+                .searchButton {
+                    position: absolute;  
+                    right: -50px;
+                    width: 40px;
+                    height: 36px;
+                    border: 1px solid #00B4CC;
+                    background: #00B4CC;
+                    text-align: center;
+                    color: #fff;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 20px;
+                }
+                
+                /*Resize the wrap to see the search bar change!*/
+                .wrap{
+                    width: 30%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                #myUL {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                
+                #myUL li a {
+                    border: 1px solid #ddd;
+                    margin-top: -1px; /* Prevent double borders */
+                    background-color: #f6f6f6;
+                    padding: 12px;
+                    text-decoration: none;
+                    font-size: 18px;
+                    color: black;
+                    display: block
+                }
+                
+                #myUL li a:hover:not(.header) {
+                    background-color: #eee;
+                }
+                #search_value{
+                    background-image: url('assets/img/110917_search.png');
+                    background-position: 10px 12px;
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    font-size: 16px;
+                    padding: 12px 20px 12px 40px;
+                    border: 1px solid #ddd;
+                    margin-bottom: 12px;
+                }
+                
+                .table{
+                    width: 100%;
+                    border: none;
+                }
+                #loading_gif{
+                    position:fixed;
+                    top:55%;
+                    right:50%;
+                    width:15%;
+                    height:20%;
+                    /* background-color:black; */
+                    background-repeat:repeat;
+                    background-position:center;
+                    z-index:10000000;
+                    opacity: 1;
+                    filter: alpha(opacity=40);
+                }
             </style>
         </head>
         
@@ -423,7 +435,7 @@
             <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
                 <div class="container">
                     <div class="navbar-translate">
-                        <a class="navbar-brand" href="group.html">
+                        <a class="navbar-brand" id="group_redirect">
                             REIG </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="sr-only">Toggle navigation</span>
@@ -465,27 +477,28 @@
                                                 <input class="btn btn-primary" type="submit" value="Search" id="search_member_btn">
                                                 <!-- <button type="submit" class="btn btn-primary fa fa-search" value="Search" onclick="getusername();"></button> -->
                                             </div>
+                                            <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
                                             <div class="tab tab-1">
-                                            <table class="table" id="table_searchresults" border="1">
-                                                <tr>
-                                                    <th>Search Results</th>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="tab tab-1">
-                                            <table class="table" id="table_newlyaddedmembers" border="1">
-                                                <tr>
-                                                    <th>Newly Added Members</th>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="tab tab-1">
-                                            <table class="table" id="table_addedmembers" border="1">
-                                                <tr>
-                                                    <th>Already Added Members</th>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                                <table class="table" id="table_searchresults" border="1">
+                                                    <tr>
+                                                        <th>Search Results</th>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="tab tab-1">
+                                                <table class="table" id="table_newlyaddedmembers" border="1">
+                                                    <tr>
+                                                        <th>Newly Added Members</th>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="tab tab-1">
+                                                <table class="table" id="table_addedmembers" border="1">
+                                                    <tr>
+                                                        <th>Already Added Members</th>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                             <!-- <table id="memberTable">
                                                 <th>
                                                     <td>

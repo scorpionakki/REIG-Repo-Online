@@ -486,7 +486,19 @@
         }
         
         
-        
+        #loading_gif{
+            position:fixed;
+            top:55%;
+            right:47%;
+            width:15%;
+            height:20%;
+            /* background-color:black; */
+            background-repeat:repeat;
+            background-position:center;
+            z-index:10000000;
+            opacity: 1;
+            filter: alpha(opacity=40);
+        }
         
         
         
@@ -498,7 +510,7 @@
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"  color-on-scroll="100" id="sectionsNav">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" title="Designed & Developed by Bhargav Borse and Alkesh Kataria">
+                <a class="navbar-brand" id="group_redirect" title="Designed & Developed by Bhargav Borse and Alkesh Kataria">
                     REIG </a>
                 </div>
                 
@@ -597,7 +609,7 @@
                                         </tr> -->
                                     </thead>
                                     <tbody>
-                                        
+                                        <img src="https://static.wubook.net/shstatic/imgs/cloading.gif" class="loading_gif" id="loading_gif">
                                     </tbody>
                                 </table>
                             </div>

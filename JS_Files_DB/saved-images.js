@@ -69,6 +69,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                 
             }
         });
+        var img = document.getElementById('loading_gif');
+        img.style.visibility = 'hidden';
         document.getElementById('file').onchange = function(event){
             selectedFile = event.target.files[0];
         }
