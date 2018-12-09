@@ -157,7 +157,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
                         var textDocCell = document.createElement('a');
                         textDocCell.setAttribute('href',message_content_snapshot.child('imageURL').val());
-                        var textDocCellValue = document.createTextNode(message_content_snapshot.child('imageURL').val());
+                        var textDocCellValue = document.createTextNode(message_content_snapshot.child('name').val());
                         textDocCell.appendChild(textDocCellValue);
                         cell_row2.appendChild(textDocCell);
                     }
@@ -216,7 +216,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                     chatRef.child('groups').child(grp_id).child(grp_name).child('messages').push({
                         imageURL : downloadURL,
                         type : 'file',
-                        sent_by : user.email
+                        sent_by : user.email,
+                        name : filename
                     });
                 });
                 
