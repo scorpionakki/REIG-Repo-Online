@@ -25,6 +25,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     document.getElementById('table_searchresults').deleteRow(i);
                                 }
                             }
+                            else if(input_value == usere.email){
+                                alert('Current already added');
+                            }
                             else
                             {
                                 var row = table.insertRow(1);
