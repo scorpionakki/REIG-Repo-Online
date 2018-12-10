@@ -25,8 +25,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     document.getElementById('table_searchresults').deleteRow(i);
                                 }
                             }
-                            else if(input_value == usere.email){
-                                alert('Current already added');
+                            else if(input_value == user.email){
+                                alert('Current member already added');
+                                return false;
                             }
                             else
                             {
