@@ -31,16 +31,16 @@
     
     <script>
         if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-    .then(registration => {
-      console.log('Service Worker is registered', registration);
-    })
-    .catch(err => {
-      console.error('Registration failed:', err);
-    });
-  });
-}
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Service Worker is registered', registration);
+                })
+                .catch(err => {
+                    console.error('Registration failed:', err);
+                });
+            });
+        }
     </script>
     
     <!-- <link href="assets/css/material-kit.css?v=2.0.4" rel="stylesheet" /> -->
@@ -417,7 +417,7 @@
                 <a href="saved-data.html">Saved Data</a>
                 <a id="user_email"></a>
                 <button class="btn btn-primary btn-block" id="logout_btn" onclick="logout_user()">LOGOUT</button>
-
+                
                 <!-- <script>
                     document.getElementById("session_result").innerHTML = sessionStorage.getItem("username");
                 </script> -->
@@ -647,71 +647,71 @@
                         </div>
                         <!--Body-->
                         <div class="modal-body">
-                           
-                                <!--Body-->
-                                <div class="md-form mb-5">
-                                    <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
-                                    <input type="text" id="reminder_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control validate white-text" required>
-                                </div>
-                                
-                                <div class="md-form pb-3">
-                                    <br>
-                                    <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
-                                    <input type="text" id="reminder_content" class="form-control validate white-text">
-                                </div>
-                                <div class="md-form pb-3">
-                                    <br>
-                                    <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
-                                    <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
-                                    <select class="form-control validate white-text" id="reminder_category">
-                                        <option value="Default">Default</option>
-                                        <option value="Personal">Personal</option>
-                                        <option value="Shopping">Shopping</option>
-                                        <option value="Shopping">Work</option>
-                                        <option value="Whishlist">Whishlist</option>
-                                    </select>
-                                </div>  
-                                <div class="form-group">
-                                    <br>
-                                    <label class="label-control" style="color: black;">Date</label>
-                                    <input type="date" id="reminder_date" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label class="label-control" style="color: black;">Time</label>
-                                    <input type="time" id="reminder_time" class="form-control">
-                                </div>
-                                <!-- <div class="form-group mt-4">
-                                    <input class="form-check-input" type="checkbox" id="checkbox624">
-                                    <label for="checkbox624" class="white-text form-check-label">
-                                        Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
-                                    </div> --> 
-                                    <!--Grid row-->
-                                    <div class="row d-flex align-items-center mb-4">
-                                        
-                                        <!--Grid column-->
-                                        <div class="text-center mb-3 col-md-12">
-                                            <br>
-                                            <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_reminder_add">ADD</button>
-                                        </div>
-                                        <!--Grid column-->
-                                        
-                                    </div>
-                                    <!--Grid row-->
+                            
+                            <!--Body-->
+                            <div class="md-form mb-5">
+                                <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
+                                <input type="text" id="reminder_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control validate white-text" required>
+                            </div>
+                            
+                            <div class="md-form pb-3">
+                                <br>
+                                <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
+                                <input type="text" id="reminder_content" class="form-control validate white-text">
+                            </div>
+                            <div class="md-form pb-3">
+                                <br>
+                                <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
+                                <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
+                                <select class="form-control validate white-text" id="reminder_category">
+                                    <option value="Default">Default</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="Shopping">Shopping</option>
+                                    <option value="Shopping">Work</option>
+                                    <option value="Whishlist">Whishlist</option>
+                                </select>
+                            </div>  
+                            <div class="form-group">
+                                <br>
+                                <label class="label-control" style="color: black;">Date</label>
+                                <input type="date" id="reminder_date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <br>
+                                <label class="label-control" style="color: black;">Time</label>
+                                <input type="time" id="reminder_time" class="form-control">
+                            </div>
+                            <!-- <div class="form-group mt-4">
+                                <input class="form-check-input" type="checkbox" id="checkbox624">
+                                <label for="checkbox624" class="white-text form-check-label">
+                                    Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                                </div> --> 
+                                <!--Grid row-->
+                                <div class="row d-flex align-items-center mb-4">
                                     
-                                    <!--Grid row-->
-                                    <div class="row">
-                                        
-                                        <!--Grid column-->
-                                        <!-- <div class="col-md-12">
-                                            <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#darkModalForm2"> Register Here!</a></p>
-                                            <p class="font-small white-text d-flex justify-content-end">Forgot Password? <a href="fgt_pswd.html" class="green-text ml-1 font-weight-bold"> Click Here!</a></p>
-                                        </div> -->
-                                        <!--Grid column-->
-                                        
+                                    <!--Grid column-->
+                                    <div class="text-center mb-3 col-md-12">
+                                        <br>
+                                        <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_reminder_add">ADD</button>
                                     </div>
-                                    <!--Grid row-->
-                             
+                                    <!--Grid column-->
+                                    
+                                </div>
+                                <!--Grid row-->
+                                
+                                <!--Grid row-->
+                                <div class="row">
+                                    
+                                    <!--Grid column-->
+                                    <!-- <div class="col-md-12">
+                                        <p class="font-small white-text d-flex justify-content-end">Don't have an account? <a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#darkModalForm2"> Register Here!</a></p>
+                                        <p class="font-small white-text d-flex justify-content-end">Forgot Password? <a href="fgt_pswd.html" class="green-text ml-1 font-weight-bold"> Click Here!</a></p>
+                                    </div> -->
+                                    <!--Grid column-->
+                                    
+                                </div>
+                                <!--Grid row-->
+                                
                             </div>
                         </div>
                     </div>
@@ -737,67 +737,67 @@
                             <!--Body-->
                             <div class="modal-body">
                                 
-                               
-                                    <!--Body-->
-                                    <div class="md-form mb-5" id="title_div"> 
-                                        <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
-                                        <input type="text" id="event_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control" required>
-                                        <div id="title_error"></div>
-                                    </div>
-                                    
-                                    <div class="md-form pb-3">
-                                        <br>
-                                        <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
-                                        <input type="text" id="event_content" class="form-control validate white-text">
-                                    </div>
-                                    <div class="md-form pb-3">
-                                        <br>
-                                        <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
-                                        <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
-                                        <select class="form-control validate white-text" id="event_category">
-                                            <option value="Default">Default</option>
-                                            <option value="Birthday">Birthday</option>
-                                            <option value="Anniversary">Anniversary</option>
-                                            <option value="Fest">Fest</option>
-                                        </select>
-                                    </div>  
-                                    <div class="form-group" id="datetimepicker1">
-                                        <br>
-                                        <label class="label-control" style="color: black;">Date</label>
-                                        <input type="date" class="form-control" id="event_date">
-                                    </div>
-                                    <div class="form-group" id="datetimepicker1">
-                                        <br>
-                                        <label class="label-control" style="color: black;">Time</label>
-                                        <input type="time" class="form-control" id="event_time">
-                                    </div>
-                                    <script type="text/javascript">
-                                        // $(function () {
-                                            //     $('#datetimepicker1').datetimepicker();
-                                            // });
-                                        </script>
-                                        <!-- <div class="form-group mt-4">
-                                            <input class="form-check-input" type="checkbox" id="checkbox624">
-                                            <label for="checkbox624" class="white-text form-check-label">
-                                                Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
-                                            </div> -->
-                                            <!--Grid row-->
-                                            <div class="row d-flex align-items-center mb-4">
-                                                
-                                                <!--Grid column-->
-                                                <div class="text-center mb-3 col-md-12">
-                                                    <!-- <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_event_add">ADD</button> -->
-                                                    <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1"   id="btn_event_add">ADD</button>
-                                                </div>
-                                                <!--Grid column-->
-                                                
+                                
+                                <!--Body-->
+                                <div class="md-form mb-5" id="title_div"> 
+                                    <label data-error="Some error occured"  data-success="Correct" for="Form-email5">Title</label>
+                                    <input type="text" id="event_title" oninput="InvalidMsg(this);" oninvalid="InvalidMsg(this);" class="form-control" required>
+                                    <div id="title_error"></div>
+                                </div>
+                                
+                                <div class="md-form pb-3">
+                                    <br>
+                                    <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Content</label>
+                                    <input type="text" id="event_content" class="form-control validate white-text">
+                                </div>
+                                <div class="md-form pb-3">
+                                    <br>
+                                    <label data-error="Some error occured" data-success="Correct" for="Form-pass5">Category</label>
+                                    <!-- <input type="text" id="Form-pass5" class="form-control validate white-text"> -->
+                                    <select class="form-control validate white-text" id="event_category">
+                                        <option value="Default">Default</option>
+                                        <option value="Birthday">Birthday</option>
+                                        <option value="Anniversary">Anniversary</option>
+                                        <option value="Fest">Fest</option>
+                                    </select>
+                                </div>  
+                                <div class="form-group" id="datetimepicker1">
+                                    <br>
+                                    <label class="label-control" style="color: black;">Date</label>
+                                    <input type="date" class="form-control" id="event_date">
+                                </div>
+                                <div class="form-group" id="datetimepicker1">
+                                    <br>
+                                    <label class="label-control" style="color: black;">Time</label>
+                                    <input type="time" class="form-control" id="event_time">
+                                </div>
+                                <script type="text/javascript">
+                                    // $(function () {
+                                        //     $('#datetimepicker1').datetimepicker();
+                                        // });
+                                    </script>
+                                    <!-- <div class="form-group mt-4">
+                                        <input class="form-check-input" type="checkbox" id="checkbox624">
+                                        <label for="checkbox624" class="white-text form-check-label">
+                                            Accept the<a href="#" class="green-text font-weight-bold"> Terms and Conditions</a></label>
+                                        </div> -->
+                                        <!--Grid row-->
+                                        <div class="row d-flex align-items-center mb-4">
+                                            
+                                            <!--Grid column-->
+                                            <div class="text-center mb-3 col-md-12">
+                                                <!-- <button class="btn btn-primary btn-block btn-rounded z-depth-1" id="btn_event_add">ADD</button> -->
+                                                <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1"   id="btn_event_add">ADD</button>
                                             </div>
-                                            <!--Grid row-->
+                                            <!--Grid column-->
                                             
-                                            
-                                            <!--Grid row-->
-                                            
-                                            <!--Grid row-->
+                                        </div>
+                                        <!--Grid row-->
+                                        
+                                        
+                                        <!--Grid row-->
+                                        
+                                        <!--Grid row-->
                                         
                                     </div>
                                 </div>
@@ -815,8 +815,8 @@
                                 &copy;
                                 <script>
                                     document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                                </script>, Designed by
-                                <a href="#" target="_blank">Bhargav Borse</a>. Coded by
+                                </script>, Developed by
+                                <a href="#" target="_blank">Bhargav Borse</a> &
                                 <a href="#" target="_blank">Alkesh Kataria</a>.
                             </div>
                         </div>
@@ -841,7 +841,7 @@
                         firebase.initializeApp(config);
                     </script>
                     <script type="text/javascript" src="JS_Files_DB/index_main.js"></script>
-
+                    
                     <!--   Core JS Files   -->
                     <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
                     <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
